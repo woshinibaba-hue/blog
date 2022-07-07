@@ -3,6 +3,8 @@
   --border-color: #e4e6eb;
   --not-hover: #1e80ff;
   --hover-color: #1171ee;
+  --header-height: 60px;
+  --footer-height: 75px;
 }
 
 body {
@@ -18,4 +20,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+p {
+  margin: 0;
 }
