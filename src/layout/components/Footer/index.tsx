@@ -10,14 +10,40 @@ function Footer() {
       <div className="copyright">
         Copyright © 2022
         <HeartFilled className="like" />
-        <span>一名菜鸡(zz)</span>
+        <a href="" target="_blank" rel="noreferrer">
+          一名菜鸡
+        </a>
       </div>
       <div className="introduce">
         <p>
-          该博客由 <span>React</span> + <span>antd</span> 搭建完成
+          该网站采用{' '}
+          <a
+            href="https://react.docschina.org/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            React
+          </a>{' '}
+          +{' '}
+          <a
+            href="https://ant.design/index-cn"
+            target="_blank"
+            rel="noreferrer"
+          >
+            antd
+          </a>{' '}
+          完成
         </p>
         <p>
-          后端采用 <span>Node.js</span> + <span>MySql</span> 搭建
+          后端采用{' '}
+          <a href="http://nodejs.cn/" target="_blank" rel="noreferrer">
+            Node.js
+          </a>{' '}
+          +{' '}
+          <a href="https://www.mysql.com/cn/" target="_blank" rel="noreferrer">
+            MySql
+          </a>{' '}
+          数据库
         </p>
       </div>
     </FooterWrap>

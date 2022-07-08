@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
 export const FooterWrap = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,6 +13,7 @@ export const FooterWrap = styled.div`
   box-sizing: border-box;
   height: var(--footer-height);
   font-size: 14px;
+  background-color: var(--header-footer);
 
   .copyright {
     .like {
@@ -33,10 +38,5 @@ export const FooterWrap = styled.div`
         opacity: 1;
       }
     }
-  }
-
-  span {
-    font-size: 16px;
-    color: var(--not-hover);
   }
 `
