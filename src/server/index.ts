@@ -25,8 +25,7 @@ const request = new Request({
 })
 
 const requestMusic = new Request({
-  baseURL: process.env.REACT_APP_MUSIC_URL,
-  timeout: 5000
+  baseURL: process.env.REACT_APP_MUSIC_URL
 })
 
 export { requestMusic }

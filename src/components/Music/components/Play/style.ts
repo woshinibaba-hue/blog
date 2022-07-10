@@ -16,10 +16,13 @@ export const PlayStyle = styled.div<Props>`
   bottom: 0;
   left: 0;
   z-index: 999;
-
-  background: url(${({ bg }) => bg});
+  background: url(${({ bg }) => bg}) center;
+  background-size: cover;
   transition: all 0.5s;
+  overflow: hidden;
+  transform: translateX(${({ isOpen }) => (isOpen ? '0%' : '-100%')});
 
+  /* 背景图片模糊 */
   &::after {
     content: '';
     position: absolute;
@@ -31,14 +34,8 @@ export const PlayStyle = styled.div<Props>`
     height: 100%;
     z-index: -1;
     background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(50px);
+    backdrop-filter: saturate(180%) contrast(80%) blur(50px);
   }
-
-  overflow: hidden;
-
-  transform: translateX(${({ isOpen }) => (isOpen ? '0%' : '-100%')});
-
-  transition: all 0.3s;
 
   main {
     width: var(--container);
@@ -178,10 +175,11 @@ export const PlayStyle = styled.div<Props>`
         }
 
         .lyric {
-          margin-top: 20px;
+          margin-top: 15px;
           height: 300px;
           overflow-y: auto;
-          transition: all 0.3s;
+          font-size: 16px;
+
           ::-webkit-scrollbar-thumb {
             background-color: transparent;
           }
@@ -195,6 +193,12 @@ export const PlayStyle = styled.div<Props>`
           li {
             height: 30px;
             line-height: 30px;
+            opacity: 0.5;
+            transition: all 0.3s;
+
+            &.active {
+              opacity: 0.9;
+            }
           }
         }
       }

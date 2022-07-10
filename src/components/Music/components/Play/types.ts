@@ -6,4 +6,6 @@ export type PropsType = {
   setId: (id: string) => void
   songDetail: DetailType | undefined
   player: (ids?: string) => void
+  lyrics: { time: number; lyric: string }[]
+  currentTime: number
 }

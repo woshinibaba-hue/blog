@@ -13,3 +13,10 @@ export const getSongDetail = (id: string) => {
     url: `/song/detail?ids=${id}`
   })
 }
+
+// 获取当前音乐歌词
+export const getSongLyric = (id: string) => {
+  return requestMusic.get({
+    url: `/lyric?id=${id}`
+  })
+}

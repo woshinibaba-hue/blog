@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-
+import React, { useEffect, useState, useRef } from 'react'
+import classNames from 'classnames'
 import { Table, Space, Input } from 'antd'
 import { PlayCircleOutlined, PlusCircleOutlined } from '@ant-design/icons'
 
@@ -10,16 +10,26 @@ import { PlayStyle } from './style'
 import { PropsType } from './types'
 import { SongDefault } from '../../types'
 
-import { getMusicList } from '@/api/music'
-
 import format from '@/utils/format'
+
+import { getMusicList } from '@/api/music'
 
 interface DataType extends SongDefault {
   key: string
 }
 
-function Play({ isOpen, setIsOpen, setId, songDetail, player }: PropsType) {
+function Play({
+  isOpen,
+  setIsOpen,
+  setId,
+  songDetail,
+  player,
+  lyrics,
+  currentTime
+}: PropsType) {
   const [songList, setSongList] = useState<DataType[]>()
+  const [currentIndex, setCurrentIndex] = useState(-1)
+  const lyricEl = useRef<HTMLUListElement>(null)
 
   const columns: ColumnsType<DataType> = [
     {
@@ -79,6 +89,25 @@ function Play({ isOpen, setIsOpen, setId, songDetail, player }: PropsType) {
     })
   }, [])
 
+  useEffect(() => {
+    const index = lyrics.findIndex((item) => currentTime <= item.time)
+
+    if (currentIndex === 0) {
+      lyricEl.current?.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+    }
+
+    if (currentIndex !== index - 1) {
+      setCurrentIndex(index - 1)
+      lyricEl.current?.scrollTo({
+        top: (index - 5) * 30,
+        behavior: 'smooth'
+      })
+    }
+  }, [currentTime])
+
   return (
     <PlayStyle isOpen={isOpen} bg={songDetail?.cover}>
       <main>
@@ -107,6 +136,7 @@ function Play({ isOpen, setIsOpen, setId, songDetail, player }: PropsType) {
               pagination={{
                 showSizeChanger: false
               }}
+              loading={!songList?.length}
             />
           </div>
           <div className="detail">
@@ -117,10 +147,16 @@ function Play({ isOpen, setIsOpen, setId, songDetail, player }: PropsType) {
             <p className="ellipsis-1">歌曲名称: {songDetail?.name}</p>
             <p className="ellipsis-1">歌手: {songDetail?.ar}</p>
             <p className="ellipsis-1">专辑名称: {songDetail?.al}</p>
-            <ul className="lyric">
-              {new Array(100).fill(1).map((item, index) => (
-                <li className="ellipsis-1" key={index}>
-                  hhh
+            <ul className="lyric" ref={lyricEl}>
+              {lyrics.map((item, index) => (
+                <li
+                  key={index}
+                  className={classNames([
+                    { active: currentIndex === index },
+                    'ellipsis-1'
+                  ])}
+                >
+                  {item.lyric}
                 </li>
               ))}
             </ul>

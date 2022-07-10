@@ -2,17 +2,16 @@ import React, { useState, useRef, useEffect } from 'react'
 
 import { PauseCircleFilled, PlayCircleFilled } from '@ant-design/icons'
 
-import PlayPage from './components/Play'
-
-import { MusicWrap } from './styled'
-
-import Play from '@/utils/play'
+import { getSongDetail, getSongLyric } from '@/api/music'
 
 import { useText } from '@/hooks'
-
-import { getSongDetail } from '@/api/music'
+import Play from '@/utils/play'
+import format from '@/utils/format'
 
 import { DetailType } from './types'
+
+import PlayPage from './components/Play'
+import { MusicWrap } from './styled'
 
 let play: Play
 
@@ -21,18 +20,24 @@ function Music() {
   const [isOpen, setIsOpen] = useState(false)
   const elRef = useRef<HTMLSpanElement>(null)
   const audioRef = useRef<HTMLAudioElement>(null)
+  const [currentTime, setCurrentTime] = useState(0)
 
   useText(elRef, { strings: ['点击进入播放页'], loop: false })
 
   useEffect(() => {
     if (audioRef.current) {
       play = new Play(audioRef.current)
+
+      play.audioEl.ontimeupdate = () => {
+        setCurrentTime(play.audioEl.currentTime * 1000)
+      }
     }
   }, [audioRef.current])
 
   // 当前音乐详情
   const [id, setId] = useState('1930213637')
   const [detail, setDetail] = useState<DetailType>()
+  const [lyrics, setLycics] = useState<{ time: number; lyric: string }[]>([])
 
   const getDetail = () => {
     getSongDetail(id).then((res) => {
@@ -44,6 +49,11 @@ function Music() {
         dt: songDetail.dt,
         ar: songDetail.ar[0].name
       })
+    })
+
+    getSongLyric(id).then((res) => {
+      const lyricArr = format.formatLyric((res as any).lrc.lyric)
+      setLycics(lyricArr)
     })
   }
 
@@ -91,6 +101,8 @@ function Music() {
         setId={setId}
         songDetail={detail}
         player={player}
+        lyrics={lyrics}
+        currentTime={currentTime}
       />
     </>
   )
