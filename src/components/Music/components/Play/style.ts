@@ -10,7 +10,7 @@ type Props = {
 export const PlayStyle = styled.div<Props>`
   user-select: none;
 
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
@@ -193,11 +193,11 @@ export const PlayStyle = styled.div<Props>`
           li {
             height: 30px;
             line-height: 30px;
-            opacity: 0.5;
             transition: all 0.3s;
+            color: rgba(255, 255, 255, 0.5);
 
             &.active {
-              opacity: 0.9;
+              color: var(--lyric);
             }
           }
         }

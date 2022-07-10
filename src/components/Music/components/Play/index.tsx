@@ -12,7 +12,7 @@ import { SongDefault } from '../../types'
 
 import format from '@/utils/format'
 
-import { getMusicList } from '@/api/music'
+import { getMusicList, searchSong } from '@/api/music'
 
 interface DataType extends SongDefault {
   key: string
@@ -25,10 +25,11 @@ function Play({
   songDetail,
   player,
   lyrics,
-  currentTime
+  currentTime,
+  currentIndex,
+  setCurrentIndex
 }: PropsType) {
   const [songList, setSongList] = useState<DataType[]>()
-  const [currentIndex, setCurrentIndex] = useState(-1)
   const lyricEl = useRef<HTMLUListElement>(null)
 
   const columns: ColumnsType<DataType> = [
@@ -70,10 +71,26 @@ function Play({
   ]
 
   const search = (value: string) => {
-    console.log(value)
+    if (value.trim()) {
+      searchSong(value).then((res) => {
+        const songs: DataType[] = (res as any).result.songs.map(
+          (item: any) => ({
+            key: item.id,
+            name: item.name,
+            ar: item.artists[0].name,
+            al: item.album.name,
+            dt: format.formatTime(item.duration, 'mm:ss')
+          })
+        )
+
+        setSongList(songs)
+      })
+    } else {
+      getList()
+    }
   }
 
-  useEffect(() => {
+  const getList = () => {
     getMusicList().then((res) => {
       const songs: DataType[] = (res as any).playlist.tracks.map(
         (item: any): DataType => ({
@@ -87,7 +104,9 @@ function Play({
 
       setSongList(songs)
     })
-  }, [])
+  }
+
+  useEffect(getList, [])
 
   useEffect(() => {
     const index = lyrics.findIndex((item) => currentTime <= item.time)

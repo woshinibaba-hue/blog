@@ -8,4 +8,6 @@ export type PropsType = {
   player: (ids?: string) => void
   lyrics: { time: number; lyric: string }[]
   currentTime: number
+  currentIndex: number
+  setCurrentIndex: (index: number) => void
 }

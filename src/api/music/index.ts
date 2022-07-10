@@ -20,3 +20,13 @@ export const getSongLyric = (id: string) => {
     url: `/lyric?id=${id}`
   })
 }
+
+// 搜索
+export const searchSong = (key: string) => {
+  return requestMusic.get({
+    url: `/search?keywords=${key}`,
+    params: {
+      limit: 80
+    }
+  })
+}

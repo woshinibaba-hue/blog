@@ -21,6 +21,7 @@ function Music() {
   const elRef = useRef<HTMLSpanElement>(null)
   const audioRef = useRef<HTMLAudioElement>(null)
   const [currentTime, setCurrentTime] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   useText(elRef, { strings: ['点击进入播放页'], loop: false })
 
@@ -88,7 +89,10 @@ function Music() {
             {!isPlay ? <PlayCircleFilled /> : <PauseCircleFilled />}
           </div>
         </div>
-        <span ref={elRef} onClick={() => setIsOpen(true)}></span>
+        <span className="lyric ellipsis-1">{lyrics[currentIndex]?.lyric}</span>
+        <div>
+          <span ref={elRef} onClick={() => setIsOpen(true)}></span>
+        </div>
         <audio
           src={`https://music.163.com/song/media/outer/url?id=${id}.mp3`}
           ref={audioRef}
@@ -103,6 +107,8 @@ function Music() {
         player={player}
         lyrics={lyrics}
         currentTime={currentTime}
+        currentIndex={currentIndex}
+        setCurrentIndex={setCurrentIndex}
       />
     </>
   )

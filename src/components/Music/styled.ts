@@ -1,12 +1,17 @@
 import styled from 'styled-components'
 
 export const MusicWrap = styled.div`
-  position: relative;
   cursor: pointer;
 
-  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 150px;
+  padding: 0 8px;
+
+  position: fixed;
   bottom: 100px;
-  left: 20px;
 
   .audio {
     width: 100px;
@@ -36,7 +41,7 @@ export const MusicWrap = styled.div`
   .mask {
     display: none;
     position: absolute;
-    top: 10px;
+    top: 11px;
     left: 0;
     line-height: 100px;
 
@@ -55,5 +60,14 @@ export const MusicWrap = styled.div`
     100% {
       transform: rotate(360deg);
     }
+  }
+
+  .lyric {
+    text-align: center;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    color: var(--lyric);
   }
 `
