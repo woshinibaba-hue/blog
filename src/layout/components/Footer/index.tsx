@@ -16,7 +16,7 @@ function Footer() {
       </div>
       <div className="introduce">
         <p>
-          该网站采用{' '}
+          本网站由{' '}
           <a
             href="https://react.docschina.org/"
             target="_blank"
@@ -26,13 +26,21 @@ function Footer() {
           </a>{' '}
           +{' '}
           <a
+            href="https://www.typescriptlang.org/zh/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            ts
+          </a>{' '}
+          +{' '}
+          <a
             href="https://ant.design/index-cn"
             target="_blank"
             rel="noreferrer"
           >
             antd
           </a>{' '}
-          完成
+          强力驱动
         </p>
         <p>
           后端采用{' '}

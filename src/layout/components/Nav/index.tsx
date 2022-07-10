@@ -1,39 +1,16 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef } from 'react'
 
-import Typed, { TypedOptions } from 'typed.js'
-
-import { NavLink } from 'react-router-dom'
-
-import {
-  HomeOutlined,
-  TeamOutlined,
-  EnvironmentOutlined
-} from '@ant-design/icons'
+import { EnvironmentOutlined } from '@ant-design/icons'
 import { Avatar } from 'antd'
+
+import { useText } from '@/hooks'
 
 import { NavStyle } from './styled'
 
 function Nav() {
   const elRef = useRef<HTMLSpanElement>(null)
 
-  const options: TypedOptions = {
-    strings: ['一名正在努力变强的菜鸡'],
-    typeSpeed: 200,
-    backSpeed: 100,
-    cursorChar: '__',
-    loop: true
-  }
-
-  useEffect(() => {
-    let typed: Typed
-    if (elRef.current) {
-      typed = new Typed(elRef.current, options)
-    }
-
-    return () => {
-      typed.destroy()
-    }
-  }, [])
+  useText(elRef, { strings: ['一名正在努力变强的菜鸡'] })
 
   return (
     <NavStyle>
@@ -103,17 +80,6 @@ function Nav() {
           <span className="introduce" ref={elRef}></span>
         </div>
       </header>
-      <div className="nav">
-        <div className="title">导航</div>
-        <NavLink to="/">
-          <HomeOutlined />
-          首页
-        </NavLink>
-        <NavLink to="/about">
-          <TeamOutlined />
-          关于我
-        </NavLink>
-      </div>
     </NavStyle>
   )
 }

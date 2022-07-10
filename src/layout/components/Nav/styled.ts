@@ -42,38 +42,4 @@ export const NavStyle = styled.div`
       color: #837d7d;
     }
   }
-
-  .nav {
-    display: flex;
-    flex-direction: column;
-
-    .title,
-    a {
-      padding: 0 15px;
-      height: 40px;
-      line-height: 40px;
-    }
-
-    .title {
-      font-size: 12px;
-      color: var(--nav-color);
-    }
-
-    a {
-      color: var(--nav-color);
-      transition: all 0.4s;
-
-      .anticon {
-        margin-right: 15px;
-      }
-
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.05);
-      }
-    }
-
-    .active {
-      background-color: rgba(0, 0, 0, 0.05);
-    }
-  }
 `

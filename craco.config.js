@@ -18,6 +18,13 @@ module.exports = {
         pathRewrite: {
           '^/api': ''
         }
+      },
+      '/music': {
+        target: 'https://netease-cloud-music-api-weld-ten.vercel.app/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/music': ''
+        }
       }
     }
   }

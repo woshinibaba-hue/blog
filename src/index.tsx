@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import 'antd/dist/antd.min.css'
 
+import 'default-passive-events'
+
 import './index.css'
 import App from './App'
 

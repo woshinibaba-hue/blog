@@ -23,6 +23,7 @@
     "quotes": ["error", "single"],
     "semi": ["error", "never"],
     "@typescript-eslint/no-var-requires": 0,
-    "@typescript-eslint/ban-types": 0
+    "@typescript-eslint/ban-types": 0,
+    "@typescript-eslint/no-explicit-any": 0
   }
 }

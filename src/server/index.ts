@@ -24,4 +24,11 @@ const request = new Request({
   withCredentials: true
 })
 
+const requestMusic = new Request({
+  baseURL: process.env.REACT_APP_MUSIC_URL,
+  timeout: 5000
+})
+
+export { requestMusic }
+
 export default request

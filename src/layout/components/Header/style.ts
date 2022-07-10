@@ -38,16 +38,26 @@ export const HeaderWrap = styled.div`
         }
       }
     }
-  }
 
-  .nav {
-    margin: 0 40px;
-    flex: 1;
+    .nav {
+      flex: 1;
+      margin: 0 40px;
 
-    a {
-      text-decoration: none;
-      color: var(--font-color);
-      margin-right: 20px;
+      a {
+        padding: 0 15px;
+        height: 40px;
+        line-height: 40px;
+        color: var(--nav-color);
+        transition: all 0.4s;
+
+        &:hover {
+          color: var(--hover-color);
+        }
+      }
+
+      .active {
+        color: var(--hover-color);
+      }
     }
   }
 `
