@@ -1,7 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react'
 import classNames from 'classnames'
 import { Table, Space, Input } from 'antd'
-import { PlayCircleOutlined, PlusCircleOutlined } from '@ant-design/icons'
+
+import {
+  PlayCircleOutlined,
+  PlusCircleOutlined,
+  PauseCircleOutlined
+} from '@ant-design/icons'
 
 import type { ColumnsType } from 'antd/lib/table'
 
@@ -14,6 +19,8 @@ import format from '@/utils/format'
 
 import { getMusicList, searchSong } from '@/api/music'
 
+import wave from '@/assets/img/wave.gif'
+
 interface DataType extends SongDefault {
   key: string
 }
@@ -21,18 +28,34 @@ interface DataType extends SongDefault {
 function Play({
   isOpen,
   setIsOpen,
+  isPlay,
+  songId,
   setId,
   songDetail,
-  player,
-  lyrics,
   currentTime,
+  lyrics,
   currentIndex,
-  setCurrentIndex
+  setCurrentIndex,
+  player
 }: PropsType) {
   const [songList, setSongList] = useState<DataType[]>()
   const lyricEl = useRef<HTMLUListElement>(null)
 
   const columns: ColumnsType<DataType> = [
+    {
+      title: '序号',
+      width: 80,
+      align: 'center',
+      render: (_, { key }, index) => (
+        <>
+          {isPlay && key === songId ? (
+            <img className="mave" src={wave} alt="" />
+          ) : (
+            <span>{index + 1}</span>
+          )}
+        </>
+      )
+    },
     {
       title: '歌曲名称',
       dataIndex: 'name',
@@ -58,17 +81,41 @@ function Play({
       key: 'action',
       render: (_, { key }) => (
         <Space size="middle">
-          <PlayCircleOutlined
-            onClick={() => {
-              setId(key)
-              player(key)
-            }}
-          />
+          {isPlay && key === songId ? (
+            <PauseCircleOutlined
+              onClick={() => {
+                setId(key)
+                player(key)
+              }}
+            />
+          ) : (
+            <PlayCircleOutlined
+              onClick={() => {
+                setId(key)
+                player(key)
+              }}
+            />
+          )}
+
           <PlusCircleOutlined />
         </Space>
       )
     }
   ]
+
+  // const {
+  //   isOpen,
+  //   id: songId,
+  //   setIsOpen,
+  //   setId,
+  //   player,
+  //   lyrics,
+  //   currentTime,
+  //   detail: songDetail,
+  //   currentIndex,
+  //   setCurrentIndex,
+  //   isPlay
+  // } = usePlay()
 
   const search = (value: string) => {
     if (value.trim()) {
@@ -156,6 +203,9 @@ function Play({
                 showSizeChanger: false
               }}
               loading={!songList?.length}
+              rowClassName={(record) =>
+                record.key == songId ? 'highlight' : ''
+              }
             />
           </div>
           <div className="detail">

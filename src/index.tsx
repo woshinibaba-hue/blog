@@ -12,8 +12,9 @@ import { BrowserRouter } from 'react-router-dom'
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <BrowserRouter>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    {/* 不使用 StrictMode 严格模式 可以避免 useEfect 在不依赖任何依赖项的条件下触发两次 */}
+    {/* <React.StrictMode> */}
+    <App />
+    {/* </React.StrictMode> */}
   </BrowserRouter>
 )

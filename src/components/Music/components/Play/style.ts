@@ -33,8 +33,8 @@ export const PlayStyle = styled.div<Props>`
     width: 100%;
     height: 100%;
     z-index: -1;
-    background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: saturate(180%) contrast(80%) blur(50px);
+    background-color: rgba(0, 0, 0, 0.55);
+    backdrop-filter: saturate(170%) contrast(60%) blur(65px);
   }
 
   main {
@@ -202,6 +202,21 @@ export const PlayStyle = styled.div<Props>`
           }
         }
       }
+    }
+
+    tr {
+      transition: all 0.4s;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .mave {
+      width: 10px;
+      height: 10px;
+    }
+
+    .highlight {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
     }
   }
 `

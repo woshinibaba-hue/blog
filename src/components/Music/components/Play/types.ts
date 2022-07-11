@@ -10,4 +10,6 @@ export type PropsType = {
   currentTime: number
   currentIndex: number
   setCurrentIndex: (index: number) => void
+  songId: string
+  isPlay: boolean
 }

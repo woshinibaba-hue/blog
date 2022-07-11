@@ -27,7 +27,7 @@ function Music() {
 
   useEffect(() => {
     if (audioRef.current) {
-      play = new Play(audioRef.current)
+      play = new Play(audioRef.current, setIsPlay)
 
       play.audioEl.ontimeupdate = () => {
         setCurrentTime(play.audioEl.currentTime * 1000)
@@ -63,18 +63,13 @@ function Music() {
   }, [id])
 
   const player = (ids?: string) => {
-    if (ids) {
-      if (ids == id) {
-        setIsPlay(!isPlay)
-        play?.player(!isPlay)
-      } else {
-        setIsPlay(true)
-        play?.player(true, true)
-      }
-    } else {
-      setIsPlay(!isPlay)
-      play?.player(!isPlay)
+    if (ids && ids != id) {
+      setIsPlay(true)
+      play?.player(true, true)
+      return
     }
+    setIsPlay(!isPlay)
+    play?.player(!isPlay)
   }
 
   return (
@@ -82,14 +77,16 @@ function Music() {
       <MusicWrap>
         <div className="audio">
           <img
-            src={`${detail?.cover}?param=100y100`}
+            src={`${detail?.cover}?param=120y120`}
             style={{ animationPlayState: !isPlay ? 'paused' : 'running' }}
           />
           <div className="mask" onClick={() => player()}>
             {!isPlay ? <PlayCircleFilled /> : <PauseCircleFilled />}
           </div>
         </div>
-        <span className="lyric ellipsis-1">{lyrics[currentIndex]?.lyric}</span>
+        <span className="lyric ellipsis-1" onClick={() => setIsOpen(true)}>
+          {lyrics[currentIndex]?.lyric}
+        </span>
         <div>
           <span ref={elRef} onClick={() => setIsOpen(true)}></span>
         </div>
@@ -109,6 +106,8 @@ function Music() {
         currentTime={currentTime}
         currentIndex={currentIndex}
         setCurrentIndex={setCurrentIndex}
+        songId={id}
+        isPlay={isPlay}
       />
     </>
   )
