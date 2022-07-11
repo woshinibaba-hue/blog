@@ -3,13 +3,18 @@ import styled from 'styled-components'
 export const NavStyle = styled.div`
   width: 260px;
   height: 100%;
-  overflow: auto;
-  background-color: var(--main-bg);
 
-  header {
+  .social,
+  .blog_Info {
     cursor: pointer;
-    text-align: center;
     padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    background-color: var(--main-bg);
+  }
+
+  .blog_Info {
+    text-align: center;
 
     .avatar {
       transition: all 0.5s;
@@ -20,8 +25,6 @@ export const NavStyle = styled.div`
 
     .info {
       margin-top: 10px;
-      padding-bottom: 15px;
-      border-bottom: 2px solid #fff;
 
       .name {
         font-size: 16px;
@@ -41,5 +44,16 @@ export const NavStyle = styled.div`
       font-size: 13px;
       color: #837d7d;
     }
+
+    .social {
+      .ant-divider {
+        margin: 0;
+      }
+    }
+  }
+
+  .ant-collapse > .ant-collapse-item,
+  .ant-collapse {
+    border: 0;
   }
 `

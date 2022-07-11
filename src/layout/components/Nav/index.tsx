@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 
 import { EnvironmentOutlined } from '@ant-design/icons'
-import { Avatar } from 'antd'
+import { Avatar, Collapse } from 'antd'
 
 import { useText } from '@/hooks'
 
@@ -14,7 +14,7 @@ function Nav() {
 
   return (
     <NavStyle>
-      <header>
+      <div className="blog_Info">
         <div className="avatar">
           <Avatar
             size={50}
@@ -79,7 +79,23 @@ function Nav() {
           <p>邮箱: 2011358693@qq.com</p>
           <span className="introduce" ref={elRef}></span>
         </div>
-      </header>
+      </div>
+
+      <Collapse className="social" expandIconPosition="end">
+        <Collapse.Panel header="设置" key="1"></Collapse.Panel>
+      </Collapse>
+
+      <Collapse className="social" expandIconPosition="end">
+        <Collapse.Panel header="流量信息" key="1"></Collapse.Panel>
+      </Collapse>
+
+      <Collapse className="social" expandIconPosition="end">
+        <Collapse.Panel header="最近更新" key="1"></Collapse.Panel>
+      </Collapse>
+
+      <Collapse className="social" expandIconPosition="end">
+        <Collapse.Panel header="标签云" key="1"></Collapse.Panel>
+      </Collapse>
     </NavStyle>
   )
 }
