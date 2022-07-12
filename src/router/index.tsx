@@ -15,6 +15,22 @@ const routers: IRoute[] = [
       {
         path: '/about',
         component: lazy(() => import('@/view/About'))
+      },
+      {
+        path: '/link',
+        component: lazy(() => import('@/view/FriendLink'))
+      },
+      {
+        path: '/msg',
+        component: lazy(() => import('@/view/LeaveMessage'))
+      },
+      {
+        path: '/history',
+        component: lazy(() => import('@/view/Pigeonhole'))
+      },
+      {
+        path: '/tags',
+        component: lazy(() => import('@/view/Tags'))
       }
     ]
   },

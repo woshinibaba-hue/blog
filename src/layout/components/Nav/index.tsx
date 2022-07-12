@@ -1,16 +1,39 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
-import { EnvironmentOutlined } from '@ant-design/icons'
-import { Avatar, Collapse } from 'antd'
+import {
+  EnvironmentOutlined,
+  SettingOutlined,
+  LineChartOutlined,
+  SendOutlined,
+  TagsOutlined,
+  RocketOutlined
+} from '@ant-design/icons'
+import { Avatar, Collapse, Switch } from 'antd'
 
 import { useText } from '@/hooks'
 
+import { getvisitorinfo } from '@/api/sidebar'
+
+import Music from '@/components/Music'
+
 import { NavStyle } from './styled'
+
+import { VisitorinfoType } from '@/api/sidebar/type'
 
 function Nav() {
   const elRef = useRef<HTMLSpanElement>(null)
 
   useText(elRef, { strings: ['一名正在努力变强的菜鸡'] })
+
+  const [isShowMusic, setIsShowMusic] = useState(true)
+
+  const [visitorinfo, setVisitorinfo] = useState<VisitorinfoType>()
+
+  useEffect(() => {
+    getvisitorinfo().then((res) => {
+      setVisitorinfo(res.data)
+    })
+  }, [])
 
   return (
     <NavStyle>
@@ -80,22 +103,92 @@ function Nav() {
           <span className="introduce" ref={elRef}></span>
         </div>
       </div>
-
-      <Collapse className="social" expandIconPosition="end">
-        <Collapse.Panel header="设置" key="1"></Collapse.Panel>
+      <Collapse
+        className="social"
+        expandIconPosition="end"
+        defaultActiveKey={1}
+      >
+        <Collapse.Panel
+          header={
+            <span>
+              <SettingOutlined /> 设置
+            </span>
+          }
+          key="1"
+        >
+          <div className="item">
+            <span>音乐播放器</span>
+            <Switch
+              size="small"
+              defaultChecked={isShowMusic}
+              onChange={(checked) => setIsShowMusic(checked)}
+            />
+          </div>
+        </Collapse.Panel>
+      </Collapse>
+      <Collapse
+        className="social"
+        expandIconPosition="end"
+        defaultActiveKey={1}
+      >
+        <Collapse.Panel
+          header={
+            <span>
+              <SendOutlined /> 访客信息
+            </span>
+          }
+          key="1"
+        >
+          <p>您的 IP: {visitorinfo?.cip}</p>
+          <p>您的地址: {visitorinfo?.cname}</p>
+          <p>您的操作系统: {visitorinfo?.os}</p>
+          <p>您的浏览器: {visitorinfo?.browser}</p>
+        </Collapse.Panel>
+      </Collapse>
+      <Collapse
+        className="social"
+        expandIconPosition="end"
+        defaultActiveKey={1}
+      >
+        <Collapse.Panel
+          header={
+            <span>
+              <LineChartOutlined /> 流量信息
+            </span>
+          }
+          key="1"
+        ></Collapse.Panel>
+      </Collapse>
+      <Collapse
+        className="social"
+        expandIconPosition="end"
+        defaultActiveKey={1}
+      >
+        <Collapse.Panel
+          header={
+            <span>
+              <RocketOutlined /> 最近更新
+            </span>
+          }
+          key="1"
+        ></Collapse.Panel>
+      </Collapse>
+      <Collapse
+        className="social"
+        expandIconPosition="end"
+        defaultActiveKey={1}
+      >
+        <Collapse.Panel
+          header={
+            <span>
+              <TagsOutlined /> 标签
+            </span>
+          }
+          key="1"
+        ></Collapse.Panel>
       </Collapse>
 
-      <Collapse className="social" expandIconPosition="end">
-        <Collapse.Panel header="流量信息" key="1"></Collapse.Panel>
-      </Collapse>
-
-      <Collapse className="social" expandIconPosition="end">
-        <Collapse.Panel header="最近更新" key="1"></Collapse.Panel>
-      </Collapse>
-
-      <Collapse className="social" expandIconPosition="end">
-        <Collapse.Panel header="标签云" key="1"></Collapse.Panel>
-      </Collapse>
+      <Music isShowMusic={isShowMusic} />
     </NavStyle>
   )
 }

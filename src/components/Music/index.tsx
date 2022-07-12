@@ -15,7 +15,7 @@ import { MusicWrap } from './styled'
 
 let play: Play
 
-function Music() {
+function Music({ isShowMusic }: { isShowMusic: boolean }) {
   const [isPlay, setIsPlay] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const elRef = useRef<HTMLSpanElement>(null)
@@ -74,7 +74,7 @@ function Music() {
 
   return (
     <>
-      <MusicWrap>
+      <MusicWrap isShowMusic={isShowMusic}>
         <div className="audio">
           <img
             src={`${detail?.cover}?param=120y120`}

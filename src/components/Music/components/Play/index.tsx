@@ -48,7 +48,7 @@ function Play({
       align: 'center',
       render: (_, { key }, index) => (
         <>
-          {isPlay && key === songId ? (
+          {isPlay && key == songId ? (
             <img className="mave" src={wave} alt="" />
           ) : (
             <span>{index + 1}</span>
@@ -102,20 +102,6 @@ function Play({
       )
     }
   ]
-
-  // const {
-  //   isOpen,
-  //   id: songId,
-  //   setIsOpen,
-  //   setId,
-  //   player,
-  //   lyrics,
-  //   currentTime,
-  //   detail: songDetail,
-  //   currentIndex,
-  //   setCurrentIndex,
-  //   isPlay
-  // } = usePlay()
 
   const search = (value: string) => {
     if (value.trim()) {
@@ -202,7 +188,6 @@ function Play({
               pagination={{
                 showSizeChanger: false
               }}
-              loading={!songList?.length}
               rowClassName={(record) =>
                 record.key == songId ? 'highlight' : ''
               }

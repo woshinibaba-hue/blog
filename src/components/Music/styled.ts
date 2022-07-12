@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const MusicWrap = styled.div`
+export const MusicWrap = styled.div<{ isShowMusic: boolean }>`
   cursor: pointer;
 
   display: flex;
@@ -11,7 +11,10 @@ export const MusicWrap = styled.div`
   padding: 0 8px;
 
   position: fixed;
-  bottom: 100px;
+  right: ${({ isShowMusic }) => (isShowMusic ? '10px' : '-100%')};
+  bottom: 200px;
+
+  transition: all 0.3s;
 
   .audio {
     width: 100px;

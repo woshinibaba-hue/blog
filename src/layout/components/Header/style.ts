@@ -36,22 +36,45 @@ export const HeaderWrap = styled.div`
 
     .nav {
       flex: 1;
-      margin: 0 40px;
+      margin: 0 80px;
 
       a {
-        padding: 0 15px;
+        position: relative;
+
+        font-size: 16px;
         height: 40px;
         line-height: 40px;
+        padding: 0 3px 5px;
+        margin: 0 20px;
         color: var(--nav-color);
-        transition: all 0.4s;
+        transition: all 0.3s;
 
         &:hover {
           color: var(--hover-color);
+        }
+
+        &::after {
+          content: '';
+
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+
+          width: 38px;
+          height: 2px;
+
+          transform: scaleX(0);
+          transform-origin: center;
+          transition: all 0.2s;
+          background-color: var(--hover-color);
         }
       }
 
       .active {
         color: var(--hover-color);
+        &::after {
+          transform: scaleX(1);
+        }
       }
     }
   }

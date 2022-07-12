@@ -7,7 +7,7 @@ export const NavStyle = styled.div`
   .social,
   .blog_Info {
     cursor: pointer;
-    padding: 15px;
+    padding: 10px;
     border-radius: 6px;
     margin-bottom: 10px;
     background-color: var(--main-bg);
@@ -55,5 +55,21 @@ export const NavStyle = styled.div`
   .ant-collapse > .ant-collapse-item,
   .ant-collapse {
     border: 0;
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    span {
+      margin-right: 5px;
+    }
+  }
+
+  .ant-collapse-content > .ant-collapse-content-box {
+    padding: 10px;
+  }
+
+  p {
+    margin-bottom: 5px;
   }
 `
