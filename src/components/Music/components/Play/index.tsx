@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react'
 import classNames from 'classnames'
-import { Table, Space, Input } from 'antd'
+import { Table, Space, Input, Tooltip } from 'antd'
 
 import {
   PlayCircleOutlined,
   PlusCircleOutlined,
-  PauseCircleOutlined
+  PauseCircleOutlined,
+  SyncOutlined
 } from '@ant-design/icons'
 
 import type { ColumnsType } from 'antd/lib/table'
@@ -16,6 +17,7 @@ import { PropsType } from './types'
 import { SongDefault } from '../../types'
 
 import format from '@/utils/format'
+import storage from '@/utils/storage'
 
 import { getMusicList, searchSong } from '@/api/music'
 
@@ -124,19 +126,26 @@ function Play({
   }
 
   const getList = () => {
-    getMusicList().then((res) => {
-      const songs: DataType[] = (res as any).playlist.tracks.map(
-        (item: any): DataType => ({
-          key: item.id,
-          name: item.name,
-          ar: item.ar[0].name,
-          al: item.al.name,
-          dt: format.formatTime(item.dt, 'mm:ss')
-        })
-      )
+    const musicList = storage.get<DataType[]>('music_list')
 
-      setSongList(songs)
-    })
+    if (!musicList) {
+      getMusicList().then((res) => {
+        const songs: DataType[] = (res as any).playlist.tracks.map(
+          (item: any): DataType => ({
+            key: item.id,
+            name: item.name,
+            ar: item.ar[0].name,
+            al: item.al.name,
+            dt: format.formatTime(item.dt, 'mm:ss')
+          })
+        )
+        setSongList(songs)
+
+        storage.set('music_list', songs)
+      })
+    } else {
+      setSongList(musicList)
+    }
   }
 
   useEffect(getList, [])
@@ -160,11 +169,23 @@ function Play({
     }
   }, [currentTime])
 
+  // 刷新歌单
+  const refresh = () => {
+    storage.remove('music_list')
+    setSongList([])
+    getList()
+  }
+
   return (
     <PlayStyle isOpen={isOpen} bg={songDetail?.cover}>
       <main>
         <header>
           <div className="left">
+            <div className="refresh" onClick={refresh}>
+              <Tooltip title="点击我刷新歌单">
+                <SyncOutlined spin />
+              </Tooltip>
+            </div>
             <div className="title">歌曲列表</div>
             <div className="pattern">歌曲播放模式</div>
             <div className="search">

@@ -51,9 +51,16 @@ export const PlayStyle = styled.div<Props>`
 
       .left {
         display: flex;
+        font-size: 16px;
+        align-items: center;
 
         .pattern {
-          margin: 0 50px;
+          margin: 0 50px 0 20px;
+        }
+
+        .refresh {
+          cursor: pointer;
+          margin: 0 20px;
         }
       }
 

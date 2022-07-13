@@ -1,4 +1,4 @@
-type keys = 'login_info' | 'user_token' | 'user'
+type keys = 'login_info' | 'user_token' | 'user' | 'music_list'
 
 class Storage {
   set(key: keys, value: unknown) {

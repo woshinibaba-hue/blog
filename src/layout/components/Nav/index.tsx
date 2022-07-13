@@ -118,7 +118,7 @@ function Nav() {
         <Collapse.Panel
           header={
             <span>
-              <SettingOutlined /> 设置
+              <SettingOutlined spin /> 设置
             </span>
           }
           key="1"
@@ -194,7 +194,9 @@ function Nav() {
           key="1"
         >
           {tags.map((item) => (
-            <Tag key={item.id}>{item.name}</Tag>
+            <Tag key={item.id} color="geekblue">
+              {item.name}
+            </Tag>
           ))}
         </Collapse.Panel>
       </Collapse>
