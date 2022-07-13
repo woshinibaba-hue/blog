@@ -72,4 +72,8 @@ export const NavStyle = styled.div`
   p {
     margin-bottom: 5px;
   }
+
+  .ant-tag {
+    margin-bottom: 5px;
+  }
 `

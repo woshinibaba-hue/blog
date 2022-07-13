@@ -77,5 +77,14 @@ export const HeaderWrap = styled.div`
         }
       }
     }
+
+    .login {
+      cursor: pointer;
+      margin-left: 40px;
+
+      &:hover {
+        color: var(--hover-color);
+      }
+    }
   }
 `

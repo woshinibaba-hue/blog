@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { NavLink } from 'react-router-dom'
+import { Input } from 'antd'
 
 import { HeaderWrap } from './style'
 
@@ -23,6 +24,12 @@ function Header() {
           <NavLink to="/msg">留言</NavLink>
           <NavLink to="/about">关于</NavLink>
         </div>
+
+        <div className="search">
+          <Input.Search placeholder="输入搜索关键字" />
+        </div>
+
+        <div className="login">登录</div>
       </div>
     </HeaderWrap>
   )

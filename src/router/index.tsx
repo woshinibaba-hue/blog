@@ -13,6 +13,10 @@ const routers: IRoute[] = [
     component: lazy(() => import('@/layout')),
     children: [
       {
+        path: '',
+        component: lazy(() => import('@/view/Home'))
+      },
+      {
         path: '/about',
         component: lazy(() => import('@/view/About'))
       },

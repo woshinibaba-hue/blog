@@ -8,30 +8,36 @@ import {
   TagsOutlined,
   RocketOutlined
 } from '@ant-design/icons'
-import { Avatar, Collapse, Switch } from 'antd'
+import { Avatar, Collapse, Switch, Tag } from 'antd'
 
 import { useText } from '@/hooks'
 
 import { getvisitorinfo } from '@/api/sidebar'
+import { getTags } from '@/api/tag'
 
 import Music from '@/components/Music'
 
 import { NavStyle } from './styled'
 
 import { VisitorinfoType } from '@/api/sidebar/type'
+import { TagType } from '@/api/tag/type'
 
 function Nav() {
   const elRef = useRef<HTMLSpanElement>(null)
 
   useText(elRef, { strings: ['一名正在努力变强的菜鸡'] })
 
-  const [isShowMusic, setIsShowMusic] = useState(true)
+  const [isShowMusic, setIsShowMusic] = useState(false)
 
   const [visitorinfo, setVisitorinfo] = useState<VisitorinfoType>()
+  const [tags, setTags] = useState<TagType[]>([])
 
   useEffect(() => {
     getvisitorinfo().then((res) => {
       setVisitorinfo(res.data)
+    })
+    getTags({ limit: 10, offset: 0 }).then((res) => {
+      setTags(res.data)
     })
   }, [])
 
@@ -103,6 +109,7 @@ function Nav() {
           <span className="introduce" ref={elRef}></span>
         </div>
       </div>
+
       <Collapse
         className="social"
         expandIconPosition="end"
@@ -185,7 +192,11 @@ function Nav() {
             </span>
           }
           key="1"
-        ></Collapse.Panel>
+        >
+          {tags.map((item) => (
+            <Tag key={item.id}>{item.name}</Tag>
+          ))}
+        </Collapse.Panel>
       </Collapse>
 
       <Music isShowMusic={isShowMusic} />
