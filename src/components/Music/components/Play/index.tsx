@@ -212,6 +212,7 @@ function Play({
               rowClassName={(record) =>
                 record.key == songId ? 'highlight' : ''
               }
+              loading={songList?.length === 0}
             />
           </div>
           <div className="detail">

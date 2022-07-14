@@ -25,14 +25,14 @@ class WaterFall {
     this.layout()
   }
 
-  // 生成260 ~ 420之间的随机高度
+  // 生成300 ~ 470之间的随机高度
   private getRandomHeight(min = 2, max = 4) {
     let height = (Math.random() * (max - min + 1) + min) * 100
 
     if (height > 420) {
       height = 420
-    } else if (height < 250) {
-      height = 260
+    } else if (height < 290) {
+      height = 290
     }
 
     return height

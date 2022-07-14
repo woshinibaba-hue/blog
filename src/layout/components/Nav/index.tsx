@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
 
 import {
   EnvironmentOutlined,
@@ -40,6 +41,8 @@ function Nav() {
       setTags(res.data)
     })
   }, [])
+
+  const location = useLocation()
 
   return (
     <NavStyle>
@@ -110,11 +113,7 @@ function Nav() {
         </div>
       </div>
 
-      <Collapse
-        className="social"
-        expandIconPosition="end"
-        defaultActiveKey={1}
-      >
+      <Collapse className="social" expandIconPosition="end">
         <Collapse.Panel
           header={
             <span>
@@ -133,11 +132,7 @@ function Nav() {
           </div>
         </Collapse.Panel>
       </Collapse>
-      <Collapse
-        className="social"
-        expandIconPosition="end"
-        defaultActiveKey={1}
-      >
+      <Collapse className="social" expandIconPosition="end">
         <Collapse.Panel
           header={
             <span>
@@ -152,11 +147,7 @@ function Nav() {
           <p>您的浏览器: {visitorinfo?.browser}</p>
         </Collapse.Panel>
       </Collapse>
-      <Collapse
-        className="social"
-        expandIconPosition="end"
-        defaultActiveKey={1}
-      >
+      <Collapse className="social" expandIconPosition="end">
         <Collapse.Panel
           header={
             <span>
@@ -166,11 +157,7 @@ function Nav() {
           key="1"
         ></Collapse.Panel>
       </Collapse>
-      <Collapse
-        className="social"
-        expandIconPosition="end"
-        defaultActiveKey={1}
-      >
+      <Collapse className="social" expandIconPosition="end">
         <Collapse.Panel
           header={
             <span>
@@ -180,26 +167,30 @@ function Nav() {
           key="1"
         ></Collapse.Panel>
       </Collapse>
-      <Collapse
-        className="social"
-        expandIconPosition="end"
-        defaultActiveKey={1}
-      >
-        <Collapse.Panel
-          header={
-            <span>
-              <TagsOutlined /> 标签
-            </span>
-          }
-          key="1"
-        >
-          {tags.map((item) => (
-            <Tag key={item.id} color="geekblue">
-              {item.name}
+
+      {location.pathname === '/tags' ? (
+        ''
+      ) : (
+        <Collapse className="social" expandIconPosition="end">
+          <Collapse.Panel
+            header={
+              <span>
+                <TagsOutlined /> 标签
+              </span>
+            }
+            key="1"
+          >
+            {tags.map((item) => (
+              <Tag key={item.id} color="geekblue">
+                {item.name}
+              </Tag>
+            ))}
+            <Tag color="geekblue">
+              <NavLink to="/tags">更多</NavLink>
             </Tag>
-          ))}
-        </Collapse.Panel>
-      </Collapse>
+          </Collapse.Panel>
+        </Collapse>
+      )}
 
       <Music isShowMusic={isShowMusic} />
     </NavStyle>
