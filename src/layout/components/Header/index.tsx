@@ -21,7 +21,7 @@ function Header() {
           <NavLink to="/history">归档</NavLink>
           <NavLink to="/tags">标签</NavLink>
           <NavLink to="/link">友链</NavLink>
-          <NavLink to="/msg">留言</NavLink>
+          <NavLink to="/msg">闲言碎语</NavLink>
           <NavLink to="/about">关于</NavLink>
         </div>
 

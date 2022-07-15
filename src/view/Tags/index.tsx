@@ -37,7 +37,9 @@ function Tags() {
             onClick={() => setTagId(item.id)}
           >
             <img src={item.cover} alt={item.name} />
-            <p className="name ellipsis-1">{item.name}</p>
+            <p className="name ellipsis-1" style={{ color: item.color }}>
+              {item.name}
+            </p>
           </div>
         ))}
       </div>

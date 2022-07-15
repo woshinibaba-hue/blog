@@ -3,6 +3,7 @@ export type TagType = {
   name: string
   parent_id: number | null
   cover: string
+  color: string
 }
 
 export type GetTagParams = {

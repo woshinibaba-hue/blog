@@ -4,7 +4,7 @@ import { Table, Space, Input, Tooltip } from 'antd'
 
 import {
   PlayCircleOutlined,
-  PlusCircleOutlined,
+  // PlusCircleOutlined,
   PauseCircleOutlined,
   SyncOutlined
 } from '@ant-design/icons'
@@ -99,7 +99,7 @@ function Play({
             />
           )}
 
-          <PlusCircleOutlined />
+          {/* <PlusCircleOutlined /> */}
         </Space>
       )
     }
@@ -161,7 +161,7 @@ function Play({
     }
 
     if (currentIndex !== index - 1) {
-      setCurrentIndex(index - 1)
+      setCurrentIndex(index - 1 < 0 ? 0 : index - 1)
       lyricEl.current?.scrollTo({
         top: (index - 5) * 30,
         behavior: 'smooth'

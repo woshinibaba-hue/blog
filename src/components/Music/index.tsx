@@ -36,7 +36,7 @@ function Music({ isShowMusic }: { isShowMusic: boolean }) {
   }, [audioRef.current])
 
   // 当前音乐详情
-  const [id, setId] = useState('1930213637')
+  const [id, setId] = useState('469838125')
   const [detail, setDetail] = useState<DetailType>()
   const [lyrics, setLycics] = useState<{ time: number; lyric: string }[]>([])
 
@@ -54,6 +54,7 @@ function Music({ isShowMusic }: { isShowMusic: boolean }) {
 
     getSongLyric(id).then((res) => {
       const lyricArr = format.formatLyric((res as any).lrc.lyric)
+
       setLycics(lyricArr)
     })
   }
@@ -85,7 +86,7 @@ function Music({ isShowMusic }: { isShowMusic: boolean }) {
           </div>
         </div>
         <span className="lyric ellipsis-1" onClick={() => setIsOpen(true)}>
-          {lyrics[currentIndex]?.lyric}
+          <>{lyrics[currentIndex]?.lyric}</>
         </span>
         <div>
           <span ref={elRef} onClick={() => setIsOpen(true)}></span>

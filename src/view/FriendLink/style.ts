@@ -9,7 +9,6 @@ export const LinkStyled = styled.div`
     text-align: center;
     font-size: 25px;
     font-weight: 700;
-    margin-bottom: 40px;
   }
 
   .friend-box {
@@ -63,8 +62,19 @@ export const LinkStyled = styled.div`
   }
 
   .applyLike {
+    margin-bottom: 15px;
+    border-bottom: 2px dashed #f2f2f2;
+
     .title {
-      margin-top: 40px;
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .sub {
+      text-align: center;
+      font-size: 16px;
+      color: #888;
+      margin: 10px 0;
     }
 
     .format {
@@ -74,6 +84,7 @@ export const LinkStyled = styled.div`
         margin-bottom: 10px;
 
         &:first-child {
+          color: #333;
           font-size: 20px;
         }
       }

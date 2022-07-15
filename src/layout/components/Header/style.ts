@@ -42,14 +42,15 @@ export const HeaderWrap = styled.div`
         position: relative;
 
         font-size: 16px;
+        width: 100px;
         height: 40px;
         line-height: 40px;
-        padding: 0 3px 5px;
+        padding: 0 4px 5px;
         margin: 0 20px;
         color: var(--nav-color);
         transition: all 0.3s;
 
-        &:hover {
+        &:hover:not(.active) {
           color: var(--hover-color);
         }
 
@@ -60,7 +61,7 @@ export const HeaderWrap = styled.div`
           bottom: -5px;
           left: 0;
 
-          width: 38px;
+          width: 100%;
           height: 2px;
 
           transform: scaleX(0);
