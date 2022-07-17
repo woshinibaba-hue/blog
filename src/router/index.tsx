@@ -35,6 +35,10 @@ const routers: IRoute[] = [
       {
         path: '/tags',
         component: lazy(() => import('@/view/Tags'))
+      },
+      {
+        path: '/article/:id',
+        component: lazy(() => import('@/view/Article'))
       }
     ]
   },

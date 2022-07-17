@@ -34,13 +34,13 @@ export const NavStyle = styled.div<{ isShow: boolean }>`
       .name {
         font-size: 16px;
         font-weight: 700;
-        color: #4c9b7d;
+        color: #1890ff;
       }
 
       .typed-cursor,
       .introduce {
         font-size: 13px;
-        color: #4c9b7d;
+        color: #1890ff;
       }
     }
 

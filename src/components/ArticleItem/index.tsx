@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { useNavigate } from 'react-router-dom'
+
 import { Tag } from 'antd'
 import {
   MessageOutlined,
@@ -14,12 +16,20 @@ import { ArticleItemStyle } from './style'
 import { Props } from './type'
 
 function ArticleItem({ index, coverStyle, notImg, flexDirCol }: Props) {
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    navigate(`/article/${index}`)
+    document.documentElement.scroll({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <ArticleItemStyle
       coverStyle={coverStyle}
       notImg={notImg}
       flexDirCol={flexDirCol}
       className="articleItem"
+      onClick={() => handleClick()}
     >
       {index % 2 ? (
         <div className="cover">

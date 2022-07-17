@@ -65,3 +65,7 @@ ul {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.ant-comment-inner {
+  padding-bottom: 0;
+}

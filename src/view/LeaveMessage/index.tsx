@@ -31,10 +31,6 @@ function LeaveMessage() {
     console.log('点击了喜欢按钮', id)
   }
 
-  // const handlerMessage = (id: number) => {
-  //   console.log('点击了评论按钮', id)
-  // }
-
   useEffect(() => {
     const token = storage.get<string>('user_token')
     setIsLogion(!!token)

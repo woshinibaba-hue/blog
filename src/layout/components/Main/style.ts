@@ -6,7 +6,7 @@ export const MainStyle = styled.div<{ isShow: boolean }>`
   min-height: calc(100vh - 65px - 75px - 40px);
   margin: 15px auto;
   box-sizing: border-box;
-  overflow: hidden;
+  /* overflow: hidden; */
 
   .content,
   .nav {

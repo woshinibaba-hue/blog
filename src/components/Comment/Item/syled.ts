@@ -7,7 +7,7 @@ type Props = {
 export const CommentItemStyle = styled.div<Props>`
   display: flex;
   justify-content: space-between;
-  margin-bottom: ${({ mainMarginBottom }) => (mainMarginBottom ? 50 : 30)}px;
+  margin-bottom: ${({ mainMarginBottom }) => (mainMarginBottom ? 50 : 20)}px;
 
   .avatar {
     width: 48px;
@@ -60,6 +60,10 @@ export const CommentItemStyle = styled.div<Props>`
       border-radius: 8px;
       padding: 15px;
       margin-top: 15px;
+
+      & > div:last-child {
+        margin-bottom: 0;
+      }
     }
 
     .del {
