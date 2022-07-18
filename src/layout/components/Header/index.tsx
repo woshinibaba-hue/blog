@@ -3,11 +3,16 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { Input } from 'antd'
 
+import { useScroll } from '@/hooks'
+
 import { HeaderWrap } from './style'
 
 function Header() {
+  const isAffix = useScroll()
+
   return (
-    <HeaderWrap>
+    // <Affix offsetTop={0}>
+    <HeaderWrap isAffix={isAffix}>
       <div className="container">
         <div className="logo">
           <div className="img">
@@ -32,6 +37,7 @@ function Header() {
         <div className="login">登录</div>
       </div>
     </HeaderWrap>
+    // </Affix>
   )
 }
 

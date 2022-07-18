@@ -1,10 +1,14 @@
 import styled from 'styled-components'
 
-export const HeaderWrap = styled.div`
+export const HeaderWrap = styled.div<{ isAffix: boolean }>`
+  position: sticky;
+  top: ${({ isAffix }) => (isAffix ? 0 : '-60px')};
+  z-index: 9999;
   background-color: var(--header-footer);
   box-sizing: border-box;
   height: var(--header-height);
   border-bottom: 1px solid #eee;
+  transition: all 0.3s;
 
   .container {
     display: flex;
@@ -12,6 +16,7 @@ export const HeaderWrap = styled.div`
     width: var(--container);
     height: 100%;
     margin: 0 auto;
+    transition: all 0.3s;
 
     .logo {
       display: flex;

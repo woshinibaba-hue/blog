@@ -1,21 +1,19 @@
 import React from 'react'
 
-import { Badge, Tag } from 'antd'
-import { LikeFilled, MessageFilled } from '@ant-design/icons'
+import MdNav from 'markdown-navbar'
 
-import ParseMd from '@/components/ParseMd'
+import { useScroll } from '@/hooks'
 
-import { ArticleStyle } from './style'
+import { MarkdownNavbarStyle } from './style'
 
-const Article = () => {
-  const mdStr = `
+const mdStr = `
 ## 文章主题
 陌生人你好，我是一名菜鸡，一名正在努力的菜鸡。从名字就可以看出，我并不是什么大佬，只是一名普普通通的大学生。
 2020 年在疫情肆虐的年代，也是我接触前端的开始，在这年十月底，我面临着找工作带给我的压迫感，同学们都找到了自己满意的工作，而我却什么也不会，至此我走上了学习前端的漫长旅途。从上大学开始到那年，我从一个不学无术，成天沉迷于游戏的我，成功蜕变成了一个正在努力爱学习的 \`程序猿\`。
 
 > 6666 **8888**
 
-欢迎来到[yimiciji的主页](http://localhost:3000 "yimiciji的主页")
+
 
 类型 | 书籍
 :---: | :---:
@@ -86,47 +84,14 @@ Java | 《深入理解 Java 虚拟机》
 
 `
 
+function MarkdownNavbar() {
+  const isAffix = useScroll()
   return (
-    <ArticleStyle>
-      <div className="header">
-        <h1 className="title">我是标题</h1>
-        <div className="info">
-          <div className="left">
-            <img src="https://p26-passport.byteacctimg.com/img/user-avatar/ae82bf3bce57bbaa1782e18740868353~300x300.image" />
-          </div>
-          <div className="right">
-            <div className="name">我是姓名</div>
-            <div>2022年06月22日 05:20 · 阅读 9999</div>
-          </div>
-        </div>
-        <div className="cover">
-          <img
-            src="http://localhost:8888/upload/1657189319151-2019_end_year.jpg"
-            alt=""
-          />
-        </div>
-      </div>
-      <div className="options">
-        <Badge count={999} color="#c2c8d1">
-          <LikeFilled />
-        </Badge>
-        <Badge count={999} color="#c2c8d1">
-          <MessageFilled />
-        </Badge>
-      </div>
-      <ParseMd textConent={mdStr} />
-      <div className="tags">
-        标签：
-        <Tag>React</Tag>
-        <Tag>React</Tag>
-        <Tag>React</Tag>
-        <Tag>React</Tag>
-        <Tag>React</Tag>
-        <Tag>React</Tag>
-        <Tag>React</Tag>
-      </div>
-    </ArticleStyle>
+    <MarkdownNavbarStyle isAffix={isAffix}>
+      <div className="title">文章目录</div>
+      <MdNav source={mdStr} ordered={false} updateHashAuto={false} />
+    </MarkdownNavbarStyle>
   )
 }
 
-export default React.memo(Article)
+export default React.memo(MarkdownNavbar)

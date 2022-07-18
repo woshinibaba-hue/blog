@@ -15,15 +15,14 @@ import { useText } from '@/hooks'
 
 import { getvisitorinfo } from '@/api/sidebar'
 import { getTags } from '@/api/tag'
-
-import Music from '@/components/Music'
-
-import { NavStyle } from './styled'
-
 import { VisitorinfoType } from '@/api/sidebar/type'
 import { TagType } from '@/api/tag/type'
 
-function Nav({ isShow }: { isShow: boolean }) {
+import MarkdownNavbar from '@/components/ParseMd/components/MarkdownNavbar'
+import Music from '@/components/Music'
+import { NavStyle } from './styled'
+
+function Nav() {
   const elRef = useRef<HTMLSpanElement>(null)
 
   useText(elRef, { strings: ['一名正在努力变强的菜鸡'] })
@@ -50,100 +49,96 @@ function Nav({ isShow }: { isShow: boolean }) {
   }, [location.pathname])
 
   return (
-    <NavStyle isShow={isShow}>
-      {isArticle ? (
-        <span>啊哈哈哈</span>
-      ) : (
-        <div>
-          <div className="blog_Info">
-            <div className="avatar">
-              <Avatar
-                size={50}
-                src="http://localhost:8888/upload/1653534414437-Snipaste_2022-05-26_10-43-05.png"
-              />
-            </div>
-            <div className="info">
-              <div className="name">一名菜鸡</div>
-              <p>计算机科学与技术</p>
-              <p>2019 - 2023级</p>
-              <p>
-                <EnvironmentOutlined />
-                &nbsp;湖北 - 武汉
-              </p>
-              <a href="http://localhost:8080/" target="_blank" rel="noreferrer">
-                后台管理系统
-              </a>
-              <p>
-                前端:{' '}
-                <a
-                  href="https://v3.cn.vuejs.org/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Vue3
-                </a>{' '}
-                +{' '}
-                <a
-                  href="https://www.typescriptlang.org/zh/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  ts
-                </a>{' '}
-                +{' '}
-                <a
-                  href="https://element-plus.gitee.io/zh-CN/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Element-plus
-                </a>
-              </p>
-              <p>
-                后端:{' '}
-                <a href="http://nodejs.cn/" target="_blank" rel="noreferrer">
-                  Node.js
-                </a>{' '}
-                +{' '}
-                <a
-                  href="https://www.typescriptlang.org/zh/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  ts
-                </a>{' '}
-                +{' '}
-                <a
-                  href="https://www.mysql.com/cn/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  MySql
-                </a>
-              </p>
-              <p>邮箱: 2011358693@qq.com</p>
-              <span className="introduce" ref={elRef}></span>
-            </div>
-          </div>
-          <Collapse className="social" expandIconPosition="end">
-            <Collapse.Panel
-              header={
-                <span>
-                  <SettingOutlined spin /> 设置
-                </span>
-              }
-              key="1"
+    <NavStyle>
+      <div className="blog_Info">
+        <div className="avatar">
+          <Avatar
+            size={50}
+            src="http://localhost:8888/upload/1653534414437-Snipaste_2022-05-26_10-43-05.png"
+          />
+        </div>
+        <div className="info">
+          <div className="name">一名菜鸡</div>
+          <p>计算机科学与技术</p>
+          <p>2019 - 2023级</p>
+          <p>
+            <EnvironmentOutlined />
+            &nbsp;湖北 - 武汉
+          </p>
+          <a href="http://localhost:8080/" target="_blank" rel="noreferrer">
+            后台管理系统
+          </a>
+          <p>
+            前端:{' '}
+            <a href="https://v3.cn.vuejs.org/" target="_blank" rel="noreferrer">
+              Vue3
+            </a>{' '}
+            +{' '}
+            <a
+              href="https://www.typescriptlang.org/zh/"
+              target="_blank"
+              rel="noreferrer"
             >
-              <div className="item">
-                <span>音乐播放器</span>
-                <Switch
-                  size="small"
-                  defaultChecked={isShowMusic}
-                  onChange={(checked) => setIsShowMusic(checked)}
-                />
-              </div>
-            </Collapse.Panel>
-          </Collapse>
+              ts
+            </a>{' '}
+            +{' '}
+            <a
+              href="https://element-plus.gitee.io/zh-CN/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Element-plus
+            </a>
+          </p>
+          <p>
+            后端:{' '}
+            <a href="http://nodejs.cn/" target="_blank" rel="noreferrer">
+              Node.js
+            </a>{' '}
+            +{' '}
+            <a
+              href="https://www.typescriptlang.org/zh/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              ts
+            </a>{' '}
+            +{' '}
+            <a
+              href="https://www.mysql.com/cn/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              MySql
+            </a>
+          </p>
+          <p>邮箱: 2011358693@qq.com</p>
+          <span className="introduce" ref={elRef}></span>
+        </div>
+      </div>
+      <Collapse className="social" expandIconPosition="end">
+        <Collapse.Panel
+          header={
+            <span>
+              <SettingOutlined spin /> 设置
+            </span>
+          }
+          key="1"
+        >
+          <div className="item">
+            <span>音乐播放器</span>
+            <Switch
+              size="small"
+              defaultChecked={isShowMusic}
+              onChange={(checked) => setIsShowMusic(checked)}
+            />
+          </div>
+        </Collapse.Panel>
+      </Collapse>
+      {isArticle ? (
+        <MarkdownNavbar />
+      ) : (
+        <>
           <Collapse className="social" expandIconPosition="end">
             <Collapse.Panel
               header={
@@ -202,7 +197,7 @@ function Nav({ isShow }: { isShow: boolean }) {
               </Collapse.Panel>
             </Collapse>
           )}
-        </div>
+        </>
       )}
 
       <Music isShowMusic={isShowMusic} />

@@ -1,13 +1,8 @@
 import styled from 'styled-components'
 
-export const NavStyle = styled.div<{ isShow: boolean }>`
+export const NavStyle = styled.div`
   width: 260px;
-  height: 100%;
-
-  > div:first-child {
-    transition: all 0.2s;
-    transform: translateX(${({ isShow }) => (isShow ? '0%' : '100%')});
-  }
+  /* height: 100%; */
 
   .social,
   .blog_Info {
