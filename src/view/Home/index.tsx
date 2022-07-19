@@ -24,7 +24,7 @@ function Home() {
   }, [waterFallRef.current])
 
   const articleProp: StyleProps = {
-    coverStyle: { width: '260px', height: '60%' },
+    coverStyle: { width: '100%', height: '60%' },
     notImg: { height: '60%' },
     flexDirCol: true
   }

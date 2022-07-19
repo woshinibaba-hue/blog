@@ -152,8 +152,9 @@
 }
 
 .markdown-body code {
-  background-color: var(--code-bg) !important;
-  color: var(--code-color);
+  font-weight: 700;
+  background-color: var(--blockquote-bg-color) !important;
+  color: var(--strong-color);
 }
 
 .markdown-body figure {

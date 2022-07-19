@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 
 import storage from '@/utils/storage'
 
-// import bubble from '@/assets/img/bubble.gif'
-// import EditorInput from '@/components/Comment/EditorInput'
 import Comment from '@/components/Comment'
 
 import { LeaveMessageStyle } from './style'

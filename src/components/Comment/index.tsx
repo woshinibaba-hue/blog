@@ -32,13 +32,13 @@ const Comments: React.FC<CommentProps> = ({
           value={value}
           onChange={onChange}
           onSubmit={onSubmit}
-          mainText="留言"
+          mainText={mainText}
           submitting={submitting}
         />
       ) : (
         <div className="no-login">
           <img src={bubble} alt="" />
-          登录后方可评论哟~ 😜😜
+          登录后方可{mainText}哟~ 😜😜
         </div>
       )}
 

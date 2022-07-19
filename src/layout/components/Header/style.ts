@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const HeaderWrap = styled.div<{ isAffix: boolean }>`
   position: sticky;
   top: ${({ isAffix }) => (isAffix ? 0 : '-60px')};
-  z-index: 9999;
+  z-index: 99;
   background-color: var(--header-footer);
   box-sizing: border-box;
   height: var(--header-height);

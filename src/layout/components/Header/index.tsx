@@ -23,7 +23,7 @@ function Header() {
 
         <div className="nav">
           <NavLink to="/">首页</NavLink>
-          <NavLink to="/history">归档</NavLink>
+          <NavLink to="/history">时间旅途</NavLink>
           <NavLink to="/tags">标签</NavLink>
           <NavLink to="/link">友链</NavLink>
           <NavLink to="/msg">闲言碎语</NavLink>

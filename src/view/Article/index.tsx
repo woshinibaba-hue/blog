@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { Badge, Tag } from 'antd'
 import { LikeFilled, MessageFilled } from '@ant-design/icons'
 
+import storage from '@/utils/storage'
+
 import ParseMd from '@/components/ParseMd'
+import Comment from '@/components/Comment'
 
 import { ArticleStyle } from './style'
 
@@ -86,46 +89,127 @@ Java | 《深入理解 Java 虚拟机》
 
 `
 
+  const [msg, setMsg] = useState('')
+  const [isLogin, setIsLogion] = useState(false)
+
+  const onChange = (value: string) => {
+    setMsg(value)
+  }
+
+  // 留言提交
+  const onSubmit = () => {
+    console.log('留言')
+  }
+
+  // 回复评论事件
+  const handlerReply = (id: number, content: string) => {
+    console.log(content, id, '回复评论')
+  }
+
+  // 留言 / 评论 点击喜欢
+  const handlerLike = (id: number) => {
+    console.log('点击了喜欢按钮', id)
+  }
+
+  useEffect(() => {
+    const token = storage.get<string>('user_token')
+    setIsLogion(!!token)
+  }, [])
+
+  const data = Array.from({ length: 23 }).map((_, i) => ({
+    id: i,
+    user: {
+      username: `前端吴彦祖_${i * 10}`,
+      avatar:
+        'https://p3-passport.byteacctimg.com/img/user-avatar/f0b821163b109a64e2b8a5189d27de67~300x300.image'
+    },
+    content: '你是真的要我狗命，看完后我觉得自己啥都不是？？？？',
+    createtime: new Date(),
+    children: (function test() {
+      if (i % 2) {
+        return Array.from({ length: 2 }).map((item, id) => ({
+          id: (id + 1) * 10,
+          user: {
+            username: `前端吴彦祖_${(id + 1) * 100}`,
+            avatar:
+              'https://p3-passport.byteacctimg.com/img/user-avatar/f0b821163b109a64e2b8a5189d27de67~300x300.image'
+          },
+          content: '你是真的要我狗命，看完后我觉得自己啥都不是？？？？',
+          createtime: new Date()
+        }))
+      }
+
+      return undefined
+    })()
+  }))
+
   return (
-    <ArticleStyle>
-      <div className="header">
-        <h1 className="title">我是标题</h1>
-        <div className="info">
-          <div className="left">
-            <img src="https://p26-passport.byteacctimg.com/img/user-avatar/ae82bf3bce57bbaa1782e18740868353~300x300.image" />
+    <>
+      <ArticleStyle>
+        <div className="header">
+          <h1 className="title">我是标题</h1>
+          <div className="info">
+            <div className="left">
+              <img src="https://p26-passport.byteacctimg.com/img/user-avatar/ae82bf3bce57bbaa1782e18740868353~300x300.image" />
+            </div>
+            <div className="right">
+              <div className="name">我是姓名</div>
+              <div>2022年06月22日 05:20 · 阅读 9999</div>
+            </div>
           </div>
-          <div className="right">
-            <div className="name">我是姓名</div>
-            <div>2022年06月22日 05:20 · 阅读 9999</div>
+          <div className="cover">
+            <img
+              src="http://localhost:8888/upload/1657189319151-2019_end_year.jpg"
+              alt=""
+            />
           </div>
         </div>
-        <div className="cover">
-          <img
-            src="http://localhost:8888/upload/1657189319151-2019_end_year.jpg"
-            alt=""
-          />
+        <div className="options">
+          <Badge count={999} color="#c2c8d1">
+            <LikeFilled />
+          </Badge>
+          <a href="#comment">
+            <Badge count={999} color="#c2c8d1">
+              <MessageFilled />
+            </Badge>
+          </a>
         </div>
+        <ParseMd textConent={mdStr} />
+        <div className="tags">
+          标签：
+          <Tag>React</Tag>
+          <Tag>React</Tag>
+          <Tag>React</Tag>
+          <Tag>React</Tag>
+          <Tag>React</Tag>
+          <Tag>React</Tag>
+          <Tag>React</Tag>
+        </div>
+      </ArticleStyle>
+
+      <div
+        className="comment"
+        id="comment"
+        style={{
+          backgroundColor: '#fff',
+          padding: '40px',
+          borderRadius: '6px',
+          marginTop: '10px'
+        }}
+      >
+        <Comment
+          describe="欢迎各位大佬们前来吐槽 😁😁"
+          isLogin={isLogin}
+          onChange={onChange}
+          onSubmit={onSubmit}
+          value={msg}
+          mainText="评论"
+          list={data}
+          handlerLike={handlerLike}
+          reply={handlerReply}
+        />
       </div>
-      <div className="options">
-        <Badge count={999} color="#c2c8d1">
-          <LikeFilled />
-        </Badge>
-        <Badge count={999} color="#c2c8d1">
-          <MessageFilled />
-        </Badge>
-      </div>
-      <ParseMd textConent={mdStr} />
-      <div className="tags">
-        标签：
-        <Tag>React</Tag>
-        <Tag>React</Tag>
-        <Tag>React</Tag>
-        <Tag>React</Tag>
-        <Tag>React</Tag>
-        <Tag>React</Tag>
-        <Tag>React</Tag>
-      </div>
-    </ArticleStyle>
+    </>
   )
 }
 

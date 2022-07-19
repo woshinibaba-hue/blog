@@ -10,10 +10,16 @@ export const CommentStyled = styled.div`
     margin-bottom: 24px;
   }
 
+  .describe {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
   .no-login {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 60px 0;
 
     img {
       width: 30px;

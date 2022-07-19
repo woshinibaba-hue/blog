@@ -20,6 +20,8 @@ export const MarkdownNavbarStyle = styled.div<{ isAffix: boolean }>`
 
   .markdown-navigation {
     width: 100%;
+    /* height: 300px;
+    overflow-y: auto; */
 
     .title-anchor {
       padding: 10px 20px;
