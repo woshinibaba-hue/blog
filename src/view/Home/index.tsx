@@ -22,11 +22,9 @@ function Home() {
   }, [waterFallRef.current])
 
   return (
-    <HomeStyled>
+    <HomeStyled className="home">
       {new Array(20).fill(0).map((_, index) => (
-        <div key={index}>
-          <ArticleItem index={index} />
-        </div>
+        <ArticleItem index={index} key={index} />
       ))}
     </HomeStyled>
   )

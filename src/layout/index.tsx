@@ -8,7 +8,7 @@ import Main from './components/Main'
 import Footer from './components/Footer'
 
 function ZLayout() {
-  const backTopStyle: React.CSSProperties = {
+  const style: React.CSSProperties = {
     fontSize: '25px',
     textAlign: 'center',
     width: '40px',
@@ -16,12 +16,13 @@ function ZLayout() {
     backgroundColor: '#eee',
     borderRadius: '50%'
   }
+
   return (
     <>
       <Header />
       <Main />
       <Footer />
-      <BackTop style={backTopStyle}>
+      <BackTop style={style}>
         <RocketOutlined />
       </BackTop>
     </>

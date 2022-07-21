@@ -12,8 +12,11 @@ export const ArticleItemStyle = styled.div`
   background-color: #fff;
   transition: all 0.3s;
 
+  border-radius: 6px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.06);
+
   &:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
   }
 
   .cover {

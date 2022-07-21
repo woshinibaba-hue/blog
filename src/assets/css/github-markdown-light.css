@@ -375,6 +375,7 @@
   margin-top: 0;
   color: var(--blockquote-color);
   margin-bottom: 10px;
+  text-indent: 2em;
 }
 
 .markdown-body blockquote {

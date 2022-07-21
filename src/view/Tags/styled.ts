@@ -44,12 +44,19 @@ export const TagStyled = styled.div`
   }
 
   .articles {
-    margin-top: 20px;
-
-    .articleItem {
+    .articles-title {
+      text-align: center;
+      font-size: 18px;
+      border: 2px dashed #f8f8f8;
       border-radius: 6px;
-      margin-bottom: 15px;
-      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.06);
+      border-left: 0;
+      border-right: 0;
+      padding: 10px 0;
+      margin: 15px 0;
+
+      .sub-title {
+        font-size: 14px;
+      }
     }
   }
 `
