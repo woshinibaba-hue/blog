@@ -4,7 +4,7 @@ export const MarkdownNavbarStyle = styled.div<{ isAffix: boolean }>`
   position: sticky;
   top: ${({ isAffix }) => (isAffix ? '70px' : '10px')};
   background-color: #fff;
-  border-radius: 6px;
+  border-radius: var(--borderRadius);
   padding: 20px 0;
 
   transition: all 0.3s;
@@ -42,7 +42,7 @@ export const MarkdownNavbarStyle = styled.div<{ isAffix: boolean }>`
           width: 4px;
           height: 16px;
           background: #1e80ff;
-          border-radius: 0 4px 4px 0;
+          border-radius: 0 var(--borderRadius) var(--borderRadius) 0;
         }
       }
 

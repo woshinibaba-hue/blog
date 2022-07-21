@@ -9,7 +9,6 @@ import { TagType } from '@/api/tag/type'
 
 import Pagination from '@/components/Pagination'
 import Skeleton from '@/components/Skeleton'
-import { StyleProps } from '@/components/ArticleItem/type'
 
 import { TagStyled } from './styled'
 
@@ -53,25 +52,13 @@ function Tags() {
       />
     )
 
-  const styleProps: StyleProps = {
-    coverStyle: {
-      width: '300px',
-      height: '230px'
-    },
-    notImg: {
-      height: '150px'
-    }
-  }
-
   return (
-    <TagStyled>
-      <div className="title">全部标签</div>
+    <TagStyled className="layout-tags">
+      <div className="title">全部分类</div>
       {showTags()}
       <div className="articles">
         {new Array(20).fill(0).map((_, index) => (
-          <div className="item" key={index}>
-            <ArticleItem index={index + 1} {...styleProps} />
-          </div>
+          <ArticleItem index={index + 1} key={index} />
         ))}
       </div>
       <Pagination />

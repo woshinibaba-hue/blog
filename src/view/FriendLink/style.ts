@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 export const LinkStyled = styled.div`
   background-color: #fff;
-  border-radius: 6px;
-  padding: 40px;
+  border-radius: var(--borderRadius);
+  padding: var(--contentPadding);
 
   .title {
     text-align: center;
@@ -18,13 +18,14 @@ export const LinkStyled = styled.div`
     justify-content: center;
     max-height: 300px;
     overflow-y: auto;
+    margin-top: 15px;
 
     .item {
       cursor: pointer;
 
       display: flex;
       height: 80px;
-      border-radius: 6px;
+      border-radius: var(--borderRadius);
       padding: 10px;
       border: 1px solid #f2f2f2;
       transition: all 0.3s;
@@ -91,7 +92,8 @@ export const LinkStyled = styled.div`
     }
 
     .fillLike {
-      width: 450px;
+      /* width: 450px; */
+      width: 90%;
       margin: 0 auto;
     }
   }

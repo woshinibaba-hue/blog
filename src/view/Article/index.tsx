@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { Badge, Tag } from 'antd'
+import { Badge, Tag, Space } from 'antd'
 import { LikeFilled, MessageFilled } from '@ant-design/icons'
 
 import storage from '@/utils/storage'
@@ -143,6 +143,19 @@ Java | 《深入理解 Java 虚拟机》
     })()
   }))
 
+  const optionsEl = () => (
+    <>
+      <Badge count={999} color="#c2c8d1">
+        <LikeFilled />
+      </Badge>
+      <a href="#comment">
+        <Badge count={999} color="#c2c8d1">
+          <MessageFilled />
+        </Badge>
+      </a>
+    </>
+  )
+
   return (
     <>
       <ArticleStyle>
@@ -164,16 +177,6 @@ Java | 《深入理解 Java 虚拟机》
             />
           </div>
         </div>
-        <div className="options">
-          <Badge count={999} color="#c2c8d1">
-            <LikeFilled />
-          </Badge>
-          <a href="#comment">
-            <Badge count={999} color="#c2c8d1">
-              <MessageFilled />
-            </Badge>
-          </a>
-        </div>
         <ParseMd textConent={mdStr} />
         <div className="tags">
           标签：
@@ -185,6 +188,8 @@ Java | 《深入理解 Java 虚拟机》
           <Tag>React</Tag>
           <Tag>React</Tag>
         </div>
+        <div className="options">{optionsEl()}</div>
+        <div className="fiex-bottom-options">{optionsEl()}</div>
       </ArticleStyle>
 
       <div
@@ -192,7 +197,7 @@ Java | 《深入理解 Java 虚拟机》
         id="comment"
         style={{
           backgroundColor: '#fff',
-          padding: '40px',
+          padding: 'var(--contentPadding)',
           borderRadius: '6px',
           marginTop: '10px'
         }}

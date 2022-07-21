@@ -84,7 +84,7 @@ export const PlayStyle = styled.div<Props>`
             line-height: 38px;
             text-align: center;
             border: 1px solid #fff;
-            border-radius: 4px;
+            border-radius: var(--borderRadius);
             margin: 15px 0;
             font-size: 12px;
 

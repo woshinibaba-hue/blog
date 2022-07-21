@@ -62,7 +62,7 @@ function LeaveMessage() {
   }))
 
   return (
-    <LeaveMessageStyle>
+    <LeaveMessageStyle className="layout-leaveMessage">
       <div className="synopsis">
         <p>留言板</p>
         <p>欢迎各位大佬前来访问 😎😎</p>

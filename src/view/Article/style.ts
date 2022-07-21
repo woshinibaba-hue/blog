@@ -3,13 +3,13 @@ import styled from 'styled-components'
 export const ArticleStyle = styled.div`
   position: relative;
   background-color: #fff;
-  border-radius: 6px;
-  padding: 40px;
+  border-radius: var(--borderRadius);
+  padding: var(--contentPadding);
 
   img {
     width: 100%;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: var(--borderRadius);
   }
 
   .header {
@@ -46,11 +46,8 @@ export const ArticleStyle = styled.div`
     }
   }
 
-  .options {
-    position: fixed;
-    top: 260px;
-    left: 80px;
-
+  .options,
+  .fiex-bottom-options {
     .ant-badge {
       cursor: pointer;
       display: block;
@@ -67,6 +64,53 @@ export const ArticleStyle = styled.div`
       &.active {
         color: var(--hover-color);
       }
+    }
+  }
+
+  .options {
+    position: fixed;
+    top: 260px;
+    left: 80px;
+
+    transition: all 0.3s;
+  }
+
+  @media screen and (max-width: 1100px) {
+    .options {
+      left: 30px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .options {
+      display: none;
+    }
+
+    .fiex-bottom-options {
+      display: flex !important;
+    }
+  }
+
+  .fiex-bottom-options {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    align-items: center;
+    justify-content: space-around;
+
+    height: 60px;
+    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+
+    font-size: 18px;
+    color: #8a919f;
+
+    .ant-badge {
+      margin-bottom: 0;
     }
   }
 

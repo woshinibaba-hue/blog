@@ -27,6 +27,28 @@
   word-wrap: break-word;
 }
 
+/* @media screen and (max-width: 1240px) {
+  .markdown-body {
+    font-size: 0.1613rem;
+  }
+  .markdown-body p {
+    font-size: 0.129rem !important;
+  }
+
+  .markdown-body h2 {
+    padding-left: 0 !important;
+  }
+
+  .markdown-body h2::before {
+    top: -0.0484rem !important;
+  }
+
+  .markdown-body h2::after {
+    top: 3px !important;
+    left: 3px;
+  }
+} */
+
 .markdown-body .octicon {
   display: inline-block;
   fill: currentColor;

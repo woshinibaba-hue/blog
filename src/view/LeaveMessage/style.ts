@@ -4,7 +4,8 @@ import msgBg from '@/assets/img/msgBg.jpg'
 
 export const LeaveMessageStyle = styled.div`
   overflow-x: hidden;
-  padding: 40px;
+  border-radius: var(--borderRadius);
+  padding: var(--contentPadding);
   background-color: #fff;
 
   .synopsis {

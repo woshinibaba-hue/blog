@@ -1,3 +1,7 @@
 import styled from 'styled-components'
 
-export const ListStyled = styled.div``
+export const ListStyled = styled.div`
+  .ant-list-pagination {
+    text-align: center;
+  }
+`

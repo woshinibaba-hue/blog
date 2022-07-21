@@ -1,98 +1,102 @@
-// 实现瀑布流
-type Options = {
+// 手写瀑布流
+
+import { debounce } from '@/utils/debounce'
+
+type OptionsType = {
   gap?: number
+  colNum?: number
 }
 
 class WaterFall {
   private containerEl: HTMLElement
   private gap: number
-  private childrens: HTMLCollection
   private heightArr: number[]
+  private items: HTMLCollection
 
-  constructor(containerEl: HTMLElement, options?: Options) {
-    this.containerEl = containerEl // 容器
-    this.gap = options?.gap ?? 0 // 每个子元素之间的间距
-    this.childrens = containerEl.children // 容器内的子元素
-    this.heightArr = [] // 瀑布流列高度
+  constructor(containerEl: HTMLElement, options?: OptionsType) {
+    this.containerEl = containerEl // 瀑布流容器盒子
+    this.gap = options?.gap ?? 10 // 子元素之间的间距
+    this.heightArr = [] // 保存列的高度信息
+    this.items = containerEl.children // 容器当中的所有子节点
 
-    // 给每个子元素随机设置 260 ~ 420之间的高度
-    for (let i = 0; i < this.childrens.length; i++) {
-      ;(this.childrens[i] as HTMLElement).style.height =
+    // 给子元素设置宽高
+    for (let i = 0; i < this.items.length; i++) {
+      ;(this.items[i] as HTMLElement).style.height =
         this.getRandomHeight() + 'px'
     }
 
-    // 摆放瀑布流元素
     this.layout()
+
+    window.addEventListener(
+      'resize',
+      debounce(() => {
+        this.layout()
+      })
+    )
   }
 
-  // 生成300 ~ 470之间的随机高度
-  private getRandomHeight(min = 2, max = 4) {
-    let height = (Math.random() * (max - min + 1) + min) * 100
-
-    if (height > 420) {
-      height = 420
-    } else if (height < 290) {
-      height = 290
+  // 获取最短列的索引
+  private getMinHeightIndex(heightArr: number[]): number {
+    let minHeight = heightArr[0]
+    let minHeightIndex = 0
+    for (let i = 0; i < heightArr.length; i++) {
+      if (heightArr[i] < minHeight) {
+        minHeight = heightArr[i]
+        minHeightIndex = i
+      }
     }
-
-    return height
+    return minHeightIndex
   }
 
-  // 正确摆放瀑布流子元素
-  // 瀑布流摆放要求：每一列高度最低的，再下一列会优先填充, 瀑布流子元素宽度相等，高度不一致
+  // 随机生成一个高度(260 ~ 410)
+  private getRandomHeight(min = 260, max = 410): number {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
+
+  // 对瀑布流进行布局
   private layout() {
-    // 是否存在子元素
-    if (!this.childrens.length) return
+    this.heightArr = []
+    // 没有子元素就不需要布局了
+    if (this.items.length === 0) return
+    // 获取容器宽度
+    const containerWidth = this.containerEl.offsetWidth
+    // 获取子元素宽度
+    const itemWidth = (this.items[0] as HTMLElement)?.offsetWidth
+    // 计算列数 = 容器宽度 / (子元素宽度 + 间距)
+    const colNum = parseInt(containerWidth / (itemWidth + this.gap) + '')
 
-    // 获取一列能摆放多少个子元素(计算列数)
-    const width = this.containerEl.offsetWidth
-    const itemWidth = (this.childrens[0] as HTMLElement).offsetWidth // 获取子元素的宽度
-    const columns = Math.floor(width / (itemWidth + this.gap))
+    console.log(containerWidth)
 
-    let top = 0,
-      left = 0
+    // 开始布局
+    for (let i = 0; i < this.items.length; i++) {
+      let top, left
 
-    for (let i = 0; i < this.childrens.length; i++) {
-      if (i < columns) {
-        // 为什么是第一列：当每一列为3，那么 0 ~ 2 是三个元素，则是第一列
-        // 第一列，top为0， left为当前子元素的宽度 + 边距 * 当前索引值
+      if (i < colNum) {
+        // 为什么现在是第一列，如果有4列，那么 colNum 为 4， 当 i < 4 时，则是第一列
+        // 第一列元素，top为0，left (itemWidth + gap) * i
         top = 0
-        left = itemWidth * i + this.gap * i
-
-        // 保存当前列子元素的高度
-        this.heightArr.push((this.childrens[i] as HTMLElement).offsetHeight)
+        left = (itemWidth + this.gap) * i
+        // 保存每一列的高度
+        this.heightArr.push((this.items[i] as HTMLElement)?.offsetHeight)
       } else {
-        // 剩下的子元素排列
-        // 首先：需要找出上一列的最小高度
-        const { minIndex, minHeight } = this.getMinHeight(this.heightArr)
-        top = minHeight + this.gap
-        left = (this.childrens[minIndex] as HTMLElement).offsetLeft
+        // 当第一列已经插入完毕之后，需要获取上一列最小高度的索引值
+        const minIndex = this.getMinHeightIndex(this.heightArr)
+        // 获取最小的高度
+        top = this.heightArr[minIndex] + this.gap
+        // 获取最小的高度元素的offsetLeft值，作为下一个元素的left值，这样就可以保证下一个元素是插入到上一列最小高度的下方
+        left = (this.items[minIndex] as HTMLElement)?.offsetLeft
 
-        // 更新列高度列表
+        // 将最小高度 加上 当前元素的高度
         this.heightArr[minIndex] +=
-          (this.childrens[i] as HTMLElement).offsetHeight + this.gap
+          (this.items[i] as HTMLElement).offsetHeight + this.gap
       }
 
-      ;(this.childrens[i] as HTMLElement).style.top = top + 'px'
-      ;(this.childrens[i] as HTMLElement).style.left = left + 'px'
+      ;(this.items[i] as HTMLElement).style.top = top + 'px'
+      ;(this.items[i] as HTMLElement).style.left = left + 'px'
 
-      // 将每列的最大高度给容器盒子，这样可以保证瀑布流下方元素布局不会出问题
+      // 优化1：获取当列最大高度，将它设置为当前容器的高度，这样就可以保证瀑布流下方的元素能够正常布局了
       this.containerEl.style.height = Math.max(...this.heightArr) + 'px'
     }
-  }
-
-  // 获取最小高度 返回最小高度索引值
-  private getMinHeight(heightArr: number[]) {
-    let minIndex = 0
-    let minHeight = heightArr[minIndex]
-    heightArr.forEach((item, i) => {
-      if (item < minHeight) {
-        minHeight = item
-        minIndex = i
-      }
-    })
-
-    return { minIndex, minHeight }
   }
 }
 

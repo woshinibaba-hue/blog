@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+
+import { useLocation } from 'react-router-dom'
 
 import { HeartFilled } from '@ant-design/icons'
 
 import { FooterWrap } from './style'
 
 function Footer() {
+  const [isBottom, setIsBottom] = useState(false)
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    setIsBottom(pathname.includes('article'))
+  }, [pathname])
+
   return (
-    <FooterWrap>
+    <FooterWrap className="layout-footer" isBottom={isBottom}>
       <div className="copyright">
         Copyright © 2022
         <HeartFilled className="like" />

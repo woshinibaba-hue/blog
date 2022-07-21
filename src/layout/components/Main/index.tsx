@@ -8,7 +8,7 @@ import { MainStyle } from './style'
 
 function Main() {
   return (
-    <MainStyle>
+    <MainStyle className="layout-main">
       <div className="content">
         <Outlet />
       </div>

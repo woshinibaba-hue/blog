@@ -49,7 +49,7 @@ function Nav() {
   }, [location.pathname])
 
   return (
-    <NavStyle>
+    <NavStyle className="layout-sidebar">
       <div className="blog_Info">
         <div className="avatar">
           <Avatar
@@ -199,7 +199,6 @@ function Nav() {
           )}
         </>
       )}
-
       <Music isShowMusic={isShowMusic} />
     </NavStyle>
   )

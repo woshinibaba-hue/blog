@@ -7,15 +7,13 @@ import WaterFall from '@/utils/waterFall'
 import '@/assets/css/waterFall.css'
 import { HomeStyled } from './styled'
 
-import { StyleProps } from '@/components/ArticleItem/type'
-
 function Home() {
   const waterFallRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     let waterFall: WaterFall
     if (waterFallRef.current) {
-      waterFall = new WaterFall(waterFallRef.current, { gap: 15 })
+      waterFall = new WaterFall(waterFallRef.current)
     }
 
     return () => {
@@ -23,21 +21,13 @@ function Home() {
     }
   }, [waterFallRef.current])
 
-  const articleProp: StyleProps = {
-    coverStyle: { width: '100%', height: '60%' },
-    notImg: { height: '60%' },
-    flexDirCol: true
-  }
-
   return (
     <HomeStyled>
-      <div className="waterFall" ref={waterFallRef}>
-        {new Array(20).fill(0).map((_, index) => (
-          <div className="waterFall-item" key={index}>
-            <ArticleItem index={index} {...articleProp} />
-          </div>
-        ))}
-      </div>
+      {new Array(20).fill(0).map((_, index) => (
+        <div key={index}>
+          <ArticleItem index={index} />
+        </div>
+      ))}
     </HomeStyled>
   )
 }

@@ -14,16 +14,33 @@ export const HeaderWrap = styled.div<{ isAffix: boolean }>`
     display: flex;
     align-items: center;
     width: var(--container);
+    background-color: #fff;
     height: 100%;
     margin: 0 auto;
     transition: all 0.3s;
+
+    .sidebar {
+      display: none;
+      font-size: 20px;
+    }
+
+    .lable-right {
+      display: flex;
+      align-items: center;
+    }
+
+    @media screen and (max-width: 1120px) {
+      .lable-search {
+        margin-right: 15px;
+      }
+    }
 
     .logo {
       display: flex;
       justify-content: center;
       align-items: center;
 
-      width: 150px;
+      /* width: 150px; */
       height: 100%;
       text-align: center;
 
@@ -39,9 +56,9 @@ export const HeaderWrap = styled.div<{ isAffix: boolean }>`
       }
     }
 
-    .nav {
+    .lable-nav {
       flex: 1;
-      margin: 0 80px;
+      margin: 0 70px;
 
       a {
         position: relative;
@@ -82,6 +99,10 @@ export const HeaderWrap = styled.div<{ isAffix: boolean }>`
           transform: scaleX(1);
         }
       }
+    }
+
+    .lable-dro-nav {
+      display: none;
     }
 
     .login {

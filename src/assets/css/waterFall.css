@@ -4,11 +4,9 @@
 
 .waterFall .waterFall-item {
   position: absolute;
-
-  width: 270px;
-  border-radius: 7px;
+  width: 240px;
+  border-radius: var(--borderRadius);
   background: #fff;
-
   overflow: hidden;
   transition: all 0.2s;
 }

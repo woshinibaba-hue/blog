@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 export const TagStyled = styled.div`
-  padding: 20px;
-  border-radius: 6px;
+  padding: var(--contentPadding);
+  border-radius: var(--borderRadius);
   background-color: #fff;
 
   .title {
@@ -46,36 +46,10 @@ export const TagStyled = styled.div`
   .articles {
     margin-top: 20px;
 
-    .item {
-      width: 100%;
-      padding: 20px;
+    .articleItem {
       border-radius: 6px;
       margin-bottom: 15px;
       box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.06);
-
-      .articleItem {
-        .title {
-          font-size: 25px;
-          margin: 30px 0;
-        }
-
-        .article-tags {
-          margin: 15px 0;
-        }
-
-        .cover,
-        .notImg {
-          margin-right: 15px;
-        }
-
-        .article-info {
-          width: calc(100% - 300px - 20px - 15px);
-        }
-
-        .options {
-          justify-content: space-around;
-        }
-      }
     }
   }
 `

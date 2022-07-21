@@ -1,0 +1,129 @@
+@media screen and (max-width: 1400px) {
+  :root {
+    --contentPadding: 28px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .layout-main .content .layout-tags .tags {
+    grid-template-columns: repeat(auto-fill, 70px);
+    grid-template-rows: repeat(auto-fill, 70px);
+  }
+
+  .layout-main .content .layout-tags .tags .item img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 1210px) {
+  .layout-main .content .layout-tags .tags {
+    grid-template-columns: repeat(auto-fill, 60px);
+    grid-template-rows: repeat(auto-fill, 60px);
+  }
+
+  .layout-main .content .layout-tags .tags .item img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media screen and (max-width: 1120px) {
+  :root {
+    --container: 100%;
+    --contentPadding: 20px;
+  }
+
+  .layout-header .container .lable-nav {
+    display: none;
+  }
+
+  .layout-header .container .lable-dro-nav {
+    display: block !important;
+  }
+
+  .layout-main .layout-sidebar {
+    display: none;
+  }
+
+  .layout-main .content {
+    width: 100% !important;
+    margin-right: 0;
+  }
+
+  .layout-header .container .login {
+    display: none;
+  }
+
+  .layout-header .container .logo .img {
+    display: none;
+  }
+
+  .layout-header .container {
+    justify-content: space-between;
+    padding: 0 25px;
+  }
+
+  .layout-header .container .sidebar {
+    display: block !important;
+  }
+
+  .layout-main .content .layout-tags .tags {
+    grid-template-columns: repeat(auto-fill, 80px);
+    grid-template-rows: repeat(auto-fill, 80px);
+  }
+
+  .layout-main .content .layout-tags .tags .item img {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --borderRadius: 0;
+    --contentPadding: 15px;
+  }
+
+  .layout-header .container .lable-search {
+    display: none;
+  }
+
+  .layout-main .content .pigeonhole {
+    padding: 20px !important;
+  }
+
+  .layout-main .content .layout-tags {
+    padding: 10px;
+  }
+
+  .layout-main .content .layout-friendLink .friend-box {
+    grid-template-columns: repeat(auto-fill, 100%);
+  }
+
+  .layout-main .content .layout-leaveMessage {
+    padding: 10px;
+  }
+
+  .ant-back-top {
+    bottom: 70px;
+  }
+
+  .layout-main .content {
+    margin: 8px 0 !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .layout-main .content .layout-tags .tags {
+    display: unset;
+  }
+
+  .layout-main .content .layout-tags .tags .item {
+    display: inline-block;
+    padding: 3px 10px;
+  }
+  .layout-main .content .layout-tags .tags .item img {
+    display: none;
+  }
+}

@@ -1,43 +1,114 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-import { NavLink } from 'react-router-dom'
-import { Input } from 'antd'
+import { NavLink, useLocation } from 'react-router-dom'
+
+import { Input, Dropdown, Menu, Typography, Drawer } from 'antd'
+import {
+  DownOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined
+} from '@ant-design/icons'
 
 import { useScroll } from '@/hooks'
 
 import { HeaderWrap } from './style'
 
+// nav 导航
+const navName = [
+  {
+    name: '首页',
+    path: '/'
+  },
+  {
+    name: '时间旅途',
+    path: '/history'
+  },
+  {
+    name: '分类',
+    path: '/tags'
+  },
+  {
+    name: '友链',
+    path: '/link'
+  },
+  {
+    name: '闲言碎语',
+    path: '/msg'
+  },
+  {
+    name: '关于我',
+    path: '/about'
+  }
+]
+
 function Header() {
   const isAffix = useScroll()
 
+  const [selectKey, setSelectKey] = useState(navName[0])
+
+  const menu = (
+    <Menu
+      selectable
+      defaultSelectedKeys={[selectKey.path]}
+      items={navName.map((item) => ({
+        key: item.path,
+        label: (
+          <NavLink to={item.path} key={item.path}>
+            {item.name}
+          </NavLink>
+        )
+      }))}
+    />
+  )
+
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    const selectKey = navName.find((item) => item.path === pathname)
+    if (selectKey) setSelectKey(selectKey)
+  }, [pathname])
+
+  const [isShowSidebar, setIsShowSidebar] = useState(false)
+
   return (
-    // <Affix offsetTop={0}>
-    <HeaderWrap isAffix={isAffix}>
+    <HeaderWrap isAffix={isAffix} className="layout-header">
       <div className="container">
-        <div className="logo">
+        <div
+          className="sidebar"
+          onClick={() => setIsShowSidebar(!isShowSidebar)}
+        >
+          {!isShowSidebar ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}
+        </div>
+        <NavLink to="/" className="logo">
           <div className="img">
             <img src="http://localhost:8888/upload/1657255015650-logo.gif" />
           </div>
           <div className="title">一名菜鸡</div>
+        </NavLink>
+        <div className="lable-nav">
+          {navName.map(({ name, path }) => (
+            <NavLink key={path} to={path}>
+              {name}
+            </NavLink>
+          ))}
         </div>
-
-        <div className="nav">
-          <NavLink to="/">首页</NavLink>
-          <NavLink to="/history">时间旅途</NavLink>
-          <NavLink to="/tags">标签</NavLink>
-          <NavLink to="/link">友链</NavLink>
-          <NavLink to="/msg">闲言碎语</NavLink>
-          <NavLink to="/about">关于</NavLink>
+        <div className="lable-right">
+          <div className="lable-search">
+            <Input.Search placeholder="输入搜索关键字" />
+          </div>
+          <Dropdown
+            className="lable-dro-nav"
+            overlay={menu}
+            trigger={['click']}
+          >
+            <Typography.Link>
+              {selectKey.name} <DownOutlined />
+            </Typography.Link>
+          </Dropdown>
         </div>
-
-        <div className="search">
-          <Input.Search placeholder="输入搜索关键字" />
-        </div>
-
         <div className="login">登录</div>
       </div>
     </HeaderWrap>
-    // </Affix>
   )
 }
 

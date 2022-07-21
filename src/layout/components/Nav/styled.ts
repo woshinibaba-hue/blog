@@ -2,13 +2,12 @@ import styled from 'styled-components'
 
 export const NavStyle = styled.div`
   width: 260px;
-  /* height: 100%; */
 
   .social,
   .blog_Info {
     cursor: pointer;
     padding: 10px;
-    border-radius: 6px;
+    border-radius: var(--borderRadius);
     margin-bottom: 10px;
     background-color: var(--main-bg);
   }

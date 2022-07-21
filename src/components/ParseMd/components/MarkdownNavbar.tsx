@@ -86,6 +86,7 @@ Java | 《深入理解 Java 虚拟机》
 
 function MarkdownNavbar() {
   const isAffix = useScroll()
+
   return (
     <MarkdownNavbarStyle isAffix={isAffix}>
       <div className="title">文章目录</div>

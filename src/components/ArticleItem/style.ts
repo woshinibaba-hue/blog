@@ -1,91 +1,74 @@
 import styled from 'styled-components'
 
-import { StyleProps } from './type'
-
-export const ArticleItemStyle = styled.div<StyleProps>`
+export const ArticleItemStyle = styled.div`
   cursor: pointer;
 
   display: flex;
-  ${({ flexDirCol }) => (flexDirCol ? 'flex-direction: column;' : '')}
-  width: 100%;
-  height: 100%;
+
+  height: 200px;
+  margin-bottom: 15px;
+  border-radius: var(--borderRadius);
   overflow: hidden;
+  background-color: #fff;
+  transition: all 0.3s;
 
-  .cover,
-  .notImg {
-    width: ${({ coverStyle }) => coverStyle.width};
-    height: ${({ coverStyle }) => coverStyle.height};
+  &:hover {
+    transform: scale(1.03);
+  }
 
+  .cover {
+    width: 30%;
     /* flex-shrink: 0; 解决，flex 布局中 ，如果另外的盒子超过父盒子的宽度，如果不设置该属性，会自动压缩该元素宽度 */
     flex-shrink: 0;
-    border-radius: 6px;
-    overflow: hidden;
-  }
 
-  .notImg {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    height: ${({ notImg }) => notImg.height};
-
-    font-size: 26px;
-    font-weight: 700;
-  }
-
-  .cover img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .notImg,
-  .cover img {
-    transition: all 0.3s;
-
-    &:hover {
-      transform: scale(1.1);
-      transform-origin: center;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
 
+  & .cover + .article-info {
+    width: 70% !important;
+  }
+
   .article-info {
-    flex: 1;
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    padding: 10px 20px;
+    width: 100%;
+    font-size: 13px;
 
     .title {
-      font-size: 16px;
+      text-align: center;
+      font-size: 25px;
       font-weight: 700;
     }
 
     .info {
       display: flex;
-      justify-content: space-between;
-      color: #4e5969;
-      font-size: 12px;
+      justify-content: center;
+      color: #86909c;
 
-      .user {
+      .user,
+      .options {
         display: flex;
         align-items: center;
+      }
+
+      .user {
+        margin-right: 10px;
 
         img {
-          width: 25px;
-          height: 25px;
+          width: 30px;
+          height: 30px;
           object-fit: cover;
-          border: 1px solid #eee;
-          border-radius: 50%;
           margin-right: 5px;
         }
       }
 
       .options {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 40%;
       }
     }
   }

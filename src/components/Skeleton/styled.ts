@@ -29,7 +29,7 @@ export const SkeletonStyle = styled.div<SkeletonProps>`
   box-sizing: border-box;
   width: ${({ width }) => (typeof width === 'number' ? `${width}px` : width)};
   padding: 20px;
-  border-radius: 4px;
+  border-radius: var(--borderRadius);
   background-color: #fff;
 
   .ant-skeleton-paragraph {

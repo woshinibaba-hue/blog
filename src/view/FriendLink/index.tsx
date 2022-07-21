@@ -6,7 +6,7 @@ import { LinkStyled } from './style'
 
 function FriendLink() {
   return (
-    <LinkStyled>
+    <LinkStyled className="layout-friendLink">
       <div className="applyLike">
         <div className="title">申请交换友链</div>
         <div className="sub">欢迎各位大佬来交换友链 🙌🙌</div>

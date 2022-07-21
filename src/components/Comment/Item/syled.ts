@@ -57,12 +57,18 @@ export const CommentItemStyle = styled.div<Props>`
 
     .reply-message {
       background-color: rgba(247, 248, 250, 0.7);
-      border-radius: 8px;
+      border-radius: 6px;
       padding: 15px;
       margin-top: 15px;
 
       & > div:last-child {
         margin-bottom: 0;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .reply-message {
+        padding: 8px;
       }
     }
 

@@ -12,6 +12,8 @@
   --nav-color: #8f8f8f;
   --song-color: rgba(255, 255, 255, 0.75);
   --lyric: #26ce8a;
+  --borderRadius: 6px;
+  --contentPadding: 40px;
 }
 
 body,
@@ -66,6 +68,19 @@ ul {
   text-overflow: ellipsis;
 }
 
+.ellipsis-3 {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
 .ant-comment-inner {
   padding-bottom: 0;
+}
+
+a {
+  color: #1171ee;
 }
