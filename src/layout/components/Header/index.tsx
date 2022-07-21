@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react'
 
 import { NavLink, useLocation } from 'react-router-dom'
 
-import { Input, Dropdown, Menu, Typography, Drawer } from 'antd'
+import { useSelector, shallowEqual, useDispatch } from 'react-redux'
+
+import { Input, Dropdown, Menu, Typography } from 'antd'
 import {
   DownOutlined,
   MenuFoldOutlined,
@@ -12,6 +14,10 @@ import {
 import { useScroll } from '@/hooks'
 
 import { HeaderWrap } from './style'
+
+import { RootStateType } from '@/store/types'
+
+import { setIsShowSidebarAction } from '@/layout/store/actioncreatore'
 
 // nav 导航
 const navName = [
@@ -68,14 +74,24 @@ function Header() {
     if (selectKey) setSelectKey(selectKey)
   }, [pathname])
 
-  const [isShowSidebar, setIsShowSidebar] = useState(false)
+  const dispatch = useDispatch()
+
+  const { isShowSidebar } = useSelector<
+    RootStateType,
+    { isShowSidebar: boolean }
+  >(
+    (state) => ({
+      isShowSidebar: state.layoutStore.isShowSidebar
+    }),
+    shallowEqual
+  )
 
   return (
     <HeaderWrap isAffix={isAffix} className="layout-header">
       <div className="container">
         <div
           className="sidebar"
-          onClick={() => setIsShowSidebar(!isShowSidebar)}
+          onClick={() => dispatch(setIsShowSidebarAction())}
         >
           {!isShowSidebar ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}
         </div>
