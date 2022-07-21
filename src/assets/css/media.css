@@ -28,7 +28,7 @@
   }
 }
 
-@media screen and (max-width: 1120px) {
+@media screen and (max-width: 1140px) {
   :root {
     --container: 100%;
     --contentPadding: 20px;
