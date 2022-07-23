@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { Badge, Tag, Space } from 'antd'
+import { Badge, Tag } from 'antd'
 import { LikeFilled, MessageFilled } from '@ant-design/icons'
 
 import storage from '@/utils/storage'

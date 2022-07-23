@@ -3,6 +3,7 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 
 import Nav from '../Nav'
+import Sidebar from '../Sidebar'
 
 import { MainStyle } from './style'
 
@@ -13,6 +14,7 @@ function Main() {
         <Outlet />
       </div>
       <Nav />
+      <Sidebar />
     </MainStyle>
   )
 }

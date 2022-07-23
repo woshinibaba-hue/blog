@@ -29,7 +29,7 @@ export const HeaderWrap = styled.div<{ isAffix: boolean }>`
       align-items: center;
     }
 
-    @media screen and (max-width: 1120px) {
+    @media screen and (max-width: 1140px) {
       .lable-search {
         margin-right: 15px;
       }

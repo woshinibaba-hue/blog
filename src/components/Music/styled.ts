@@ -44,8 +44,11 @@ export const MusicWrap = styled.div<{ isShowMusic: boolean }>`
   .mask {
     display: none;
     position: absolute;
-    top: 11px;
-    left: 0;
+    width: 100px;
+    height: 100px;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
     line-height: 100px;
 
     text-align: center;

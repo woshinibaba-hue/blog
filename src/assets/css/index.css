@@ -84,3 +84,7 @@ ul {
 a {
   color: #1171ee;
 }
+
+.ant-drawer-content-wrapper {
+  width: 70% !important;
+}

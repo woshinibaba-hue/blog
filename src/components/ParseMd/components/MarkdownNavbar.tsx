@@ -88,7 +88,7 @@ function MarkdownNavbar() {
   const isAffix = useScroll()
 
   return (
-    <MarkdownNavbarStyle isAffix={isAffix}>
+    <MarkdownNavbarStyle isAffix={isAffix} className="markdown-Navbar">
       <div className="title">文章目录</div>
       <MdNav source={mdStr} ordered={false} updateHashAuto={false} />
     </MarkdownNavbarStyle>

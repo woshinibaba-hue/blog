@@ -17,6 +17,8 @@ import { HeaderWrap } from './style'
 
 import { RootStateType } from '@/store/types'
 
+import logo from '@/assets/img/1657255015650-logo.gif'
+
 import { setIsShowSidebarAction } from '@/layout/store/actioncreatore'
 
 // nav 导航
@@ -97,7 +99,7 @@ function Header() {
         </div>
         <NavLink to="/" className="logo">
           <div className="img">
-            <img src="http://localhost:8888/upload/1657255015650-logo.gif" />
+            <img src={logo} />
           </div>
           <div className="title">一名菜鸡</div>
         </NavLink>
