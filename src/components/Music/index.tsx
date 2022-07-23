@@ -8,8 +8,7 @@ import { useText } from '@/hooks'
 import Play from '@/utils/play'
 import format from '@/utils/format'
 
-import { DetailType } from './types'
-
+import { SongDetailType } from '@/api/music/type'
 import PlayPage from './components/Play'
 import { MusicWrap } from './styled'
 
@@ -37,24 +36,17 @@ function Music({ isShowMusic }: { isShowMusic: boolean }) {
 
   // 当前音乐详情
   const [id, setId] = useState('469838125')
-  const [detail, setDetail] = useState<DetailType>()
+  const [detail, setDetail] = useState<SongDetailType>()
   const [lyrics, setLycics] = useState<{ time: number; lyric: string }[]>([])
 
   const getDetail = () => {
     getSongDetail(id).then((res) => {
-      const songDetail = (res as any).songs[0]
-      setDetail({
-        name: songDetail.name,
-        cover: songDetail.al.picUrl,
-        al: songDetail.al.name,
-        dt: songDetail.dt,
-        ar: songDetail.ar[0].name
-      })
+      const songDetail = res
+      setDetail(songDetail.data)
     })
 
     getSongLyric(id).then((res) => {
-      const lyricArr = format.formatLyric((res as any).lrc.lyric)
-
+      const lyricArr = format.formatLyric(res.data)
       setLycics(lyricArr)
     })
   }

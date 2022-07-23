@@ -13,19 +13,15 @@ import type { ColumnsType } from 'antd/lib/table'
 
 import { PlayStyle } from './style'
 
-import { PropsType } from './types'
-import { SongDefault } from '../../types'
-
 import format from '@/utils/format'
 import storage from '@/utils/storage'
 
 import { getMusicList, searchSong } from '@/api/music'
 
-import wave from '@/assets/img/wave.gif'
+import { PropsType } from './types'
+import { SongItmeType } from '@/api/music/type'
 
-interface DataType extends SongDefault {
-  key: string
-}
+import wave from '@/assets/img/wave.gif'
 
 function Play({
   isOpen,
@@ -40,10 +36,14 @@ function Play({
   setCurrentIndex,
   player
 }: PropsType) {
-  const [songList, setSongList] = useState<DataType[]>()
+  const [isLoading, setIsLoading] = useState(true)
+  const [songList, setSongList] = useState<{
+    songs?: SongItmeType[]
+    songCount?: number
+  }>()
   const lyricEl = useRef<HTMLUListElement>(null)
 
-  const columns: ColumnsType<DataType> = [
+  const columns: ColumnsType<SongItmeType> = [
     {
       title: '序号',
       width: 80,
@@ -76,7 +76,8 @@ function Play({
     {
       title: '时长',
       dataIndex: 'dt',
-      key: 'dt'
+      key: 'dt',
+      render: (_, { dt }) => format.formatTime(dt, 'mm:ss')
     },
     {
       title: '',
@@ -105,47 +106,36 @@ function Play({
     }
   ]
 
-  const search = (value: string) => {
-    if (value.trim()) {
-      searchSong(value).then((res) => {
-        const songs: DataType[] = (res as any).result.songs.map(
-          (item: any) => ({
-            key: item.id,
-            name: item.name,
-            ar: item.artists[0].name,
-            al: item.album.name,
-            dt: format.formatTime(item.duration, 'mm:ss')
-          })
-        )
+  const [searchKey, setSearchKey] = useState('')
 
-        setSongList(songs)
+  const search = (value: string, limit = 10, offset = 0) => {
+    setIsLoading(true)
+    if (value.trim()) {
+      setSearchKey(value)
+      searchSong(value, limit, offset).then((res) => {
+        setIsLoading(false)
+        setSongList(res.data)
       })
     } else {
+      setSearchKey('')
       getList()
     }
   }
 
   const getList = () => {
-    const musicList = storage.get<DataType[]>('music_list')
+    const musicList = storage.get<SongItmeType[]>('music_list')
+    setSearchKey('')
+    setIsLoading(true)
 
     if (!musicList) {
       getMusicList().then((res) => {
-        const songs: DataType[] = (res as any).playlist.tracks.map(
-          (item: any): DataType => ({
-            key: item.id,
-            name: item.name,
-            ar: item.ar[0].name,
-            al: item.al.name,
-            dt: format.formatTime(item.dt, 'mm:ss')
-          })
-        )
-        setSongList(songs)
-
-        storage.set('music_list', songs)
+        setSongList({ songs: res.data, songCount: res.data.length })
+        storage.set('music_list', res.data)
       })
     } else {
-      setSongList(musicList)
+      setSongList({ songs: musicList, songCount: musicList.length })
     }
+    setIsLoading(false)
   }
 
   useEffect(getList, [])
@@ -172,7 +162,7 @@ function Play({
   // 刷新歌单
   const refresh = () => {
     storage.remove('music_list')
-    setSongList([])
+    setSongList({ songs: [], songCount: 0 })
     getList()
   }
 
@@ -192,7 +182,7 @@ function Play({
               <Input.Search
                 placeholder="输入关键字"
                 style={{ width: 300 }}
-                onSearch={search}
+                onSearch={(val) => search(val)}
               />
             </div>
           </div>
@@ -203,16 +193,22 @@ function Play({
         <div className="main">
           <div className="song">
             <Table
-              dataSource={songList}
+              dataSource={songList?.songs}
               columns={columns}
               scroll={{ y: 500 }}
               pagination={{
-                showSizeChanger: false
+                showSizeChanger: false,
+                total: songList?.songCount,
+                onChange: (page, pageSize) => {
+                  if (searchKey.trim()) {
+                    search(searchKey, pageSize, pageSize * (page - 1))
+                  }
+                }
               }}
               rowClassName={(record) =>
                 record.key == songId ? 'highlight' : ''
               }
-              loading={songList?.length === 0}
+              loading={isLoading}
             />
           </div>
           <div className="detail">

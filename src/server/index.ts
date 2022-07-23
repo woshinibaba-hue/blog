@@ -24,10 +24,4 @@ const request = new Request({
   withCredentials: true
 })
 
-const requestMusic = new Request({
-  baseURL: process.env.REACT_APP_MUSIC_URL
-})
-
-export { requestMusic }
-
 export default request

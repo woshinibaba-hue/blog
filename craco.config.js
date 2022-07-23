@@ -13,17 +13,10 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        target: 'http://122.112.240.26:8888/api',
+        target: 'http://localhost:8888/api',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
-        }
-      },
-      '/music': {
-        target: 'https://netease-cloud-music-api-weld-ten.vercel.app/',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/music': ''
         }
       }
     }
