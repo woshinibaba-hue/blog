@@ -2,7 +2,9 @@
 import { combineReducers } from 'redux'
 
 import layoutReducer from '@/layout/store'
+import homeReducer from '@/view/Home/store'
 
 export default combineReducers({
-  layoutStore: layoutReducer
+  layoutStore: layoutReducer,
+  homeStore: homeReducer
 })

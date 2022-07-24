@@ -1,78 +1,61 @@
 import styled from 'styled-components'
 
 export const ArticleItemStyle = styled.div`
-  cursor: pointer;
-
-  display: flex;
-
-  height: 200px;
+  padding: 15px;
   margin-bottom: 15px;
   border-radius: var(--borderRadius);
-  overflow: hidden;
   background-color: #fff;
-  transition: all 0.3s;
 
-  border-radius: 6px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.06);
+  .ant-space-item {
+    margin-right: 0 !important;
+  }
 
-  &:hover {
-    transform: scale(1.02);
+  .title {
+    cursor: pointer;
+    font-size: 25px;
+    color: var(--hover-color);
+  }
+
+  .meta {
+    width: 100%;
+
+    .tags {
+      .icon {
+        margin: 0 10px 0 5px;
+      }
+    }
   }
 
   .cover {
-    width: 30%;
-    /* flex-shrink: 0; 解决，flex 布局中 ，如果另外的盒子超过父盒子的宽度，如果不设置该属性，会自动压缩该元素宽度 */
-    flex-shrink: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    line-height: 180px;
 
     img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      margin: 10px 0;
+      object-fit: contain;
     }
-  }
 
-  & .cover + .article-info {
-    width: 70% !important;
-  }
-
-  .article-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 10px 20px;
-    width: 100%;
-    font-size: 13px;
-
-    .title {
+    .not-cover {
       text-align: center;
-      font-size: 25px;
-      font-weight: 700;
+      font-size: 23px;
     }
 
-    .info {
-      display: flex;
-      justify-content: center;
-      color: #86909c;
+    img,
+    .not-cover {
+      transition: all 0.3s;
 
-      .user,
-      .options {
-        display: flex;
-        align-items: center;
-      }
-
-      .user {
-        margin-right: 10px;
-
-        img {
-          width: 30px;
-          height: 30px;
-          object-fit: cover;
-          margin-right: 5px;
-        }
-      }
-
-      .options {
+      &:hover {
+        transform: scale(1.1);
       }
     }
+  }
+
+  .description {
+    font-size: 15px;
   }
 `

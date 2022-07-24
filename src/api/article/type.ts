@@ -25,6 +25,7 @@ export type ArticleType = {
   content: string
   like_count: number
   cover?: string
+  description: string
   user: {
     id: number
     avatar?: string
@@ -36,6 +37,7 @@ export type ArticleType = {
     id: number
     name: string
     cover?: string
+    color: string
   }[]
   createtime: string
 }

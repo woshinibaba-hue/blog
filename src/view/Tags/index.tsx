@@ -69,9 +69,9 @@ function Tags() {
             <span style={{ color: currentTag?.color }}>99</span> 篇文章
           </div>
         </div>
-        {new Array(20).fill(0).map((_, index) => (
+        {/* {new Array(20).fill(0).map((_, index) => (
           <ArticleItem index={index + 1} key={index} />
-        ))}
+        ))} */}
       </div>
       <Pagination />
     </TagStyled>

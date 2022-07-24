@@ -1,30 +1,42 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 
+// redux
+import { useDispatch, useSelector } from 'react-redux'
+import { setArticleAction } from './store/actionCreatore'
+import { RootStateType } from '@/store/types'
+
+// components
 import ArticleItem from '@/components/ArticleItem'
 
-import WaterFall from '@/utils/waterFall'
+// api
+import { getArticleList } from '@/api/article'
+import { ArticleType } from '@/api/article/type'
 
-import '@/assets/css/waterFall.css'
+// styled
 import { HomeStyled } from './styled'
 
 function Home() {
-  const waterFallRef = useRef<HTMLDivElement>(null)
+  const [articleList, setArticleList] = useState<ArticleType[]>([])
+
+  const dispatch = useDispatch()
+
+  // 从redux中获取文章列表
+  const articles = useSelector<RootStateType, ArticleType[]>(
+    (state) => state.homeStore.articleList
+  )
 
   useEffect(() => {
-    let waterFall: WaterFall
-    if (waterFallRef.current) {
-      waterFall = new WaterFall(waterFallRef.current)
-    }
-
-    return () => {
-      console.log(waterFall)
-    }
-  }, [waterFallRef.current])
-
+    // 判断是否有文章列表，如果有，则不再请求文章列表
+    if (articles.length) return setArticleList(articles)
+    getArticleList().then((res) => {
+      dispatch(setArticleAction(res.data))
+      setArticleList(res.data)
+    })
+  }, [])
   return (
     <HomeStyled className="home">
-      {new Array(20).fill(0).map((_, index) => (
-        <ArticleItem index={index} key={index} />
+      {articleList.map((item) => (
+        <ArticleItem article={item} key={item.id} />
       ))}
     </HomeStyled>
   )

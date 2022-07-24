@@ -151,4 +151,12 @@
   .layout-main .content .layout-tags .tags .item img {
     display: none;
   }
+
+  .meta .ant-space-item-split {
+    display: none;
+  }
+
+  .meta .tags {
+    display: none;
+  }
 }

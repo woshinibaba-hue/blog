@@ -2,97 +2,56 @@ import React from 'react'
 
 import { useNavigate } from 'react-router-dom'
 
-import { Tag, Space } from 'antd'
-import {
-  MessageOutlined,
-  HeartOutlined,
-  // HeartFilled,
-  EyeOutlined,
-  FieldTimeOutlined
-} from '@ant-design/icons'
+import { Tag, Space, Divider } from 'antd'
+import { TagsOutlined, CommentOutlined, LikeOutlined } from '@ant-design/icons'
+
+import { ArticleType } from '@/api/article/type'
+
+import format from '@/utils/format'
 
 import { ArticleItemStyle } from './style'
 
-function ArticleItem({ index }: { index: number }) {
+function ArticleItem({ article }: { article: ArticleType }) {
   const navigate = useNavigate()
 
   return (
     <ArticleItemStyle
       className="articleItem"
-      onClick={() => navigate(`/article/${index}`)}
+      onClick={() => navigate(`/article/${article.id}`)}
     >
-      {index % 2 ? (
-        <div className="cover">
-          <img
-            src="https://resource.hsslive.cn/1654432089443maomao.jpeg"
-            alt=""
-          />
-        </div>
-      ) : (
-        ''
-      )}
-      <div className="article-info">
-        <div className="title ellipsis-1">我是标题我是标题我是标题</div>
-        <div className="info">
-          <Space>
-            <div className="user">
-              <img src="http://localhost:8888/upload/6666.jpg" alt="" />
-
-              <div className="issue">
-                <FieldTimeOutlined /> 一天前
-              </div>
-            </div>
+      <h3 className="title ellipsis-1">{article.title}</h3>
+      <Space split={<Divider type="vertical" />} className="meta ellipsis-1">
+        <Space>
+          <Tag color="geekblue">{article.user.username}</Tag>
+          <Tag color="blue">{format.formatTime(article.createtime)}</Tag>
+        </Space>
+        <Space>
+          <Tag color="green">
+            <CommentOutlined /> 9999+
+          </Tag>
+          <Tag color="red">
+            <LikeOutlined /> 9999+
+          </Tag>
+        </Space>
+        {article.tags?.length && (
+          <Space className="tags">
+            <TagsOutlined className="icon" />
+            {article.tags?.map((tag) => (
+              <Tag key={tag.id} color={tag.color} className="tag">
+                {tag.name}
+              </Tag>
+            ))}
           </Space>
-
-          <div className="options">
-            <Space>
-              <div className="browse">
-                <EyeOutlined /> 0
-              </div>
-              <div className="mgs">
-                <MessageOutlined /> 0
-              </div>
-              <div className="like">
-                {/* <HeartFilled style={{ color: '#1171ee' }} /> */}
-                <HeartOutlined /> 0
-              </div>
-            </Space>
-          </div>
-        </div>
-        <div className="synopsis ellipsis-3">
-          我是简要内容 我是简要内容 我是简要内容 我是简要内容 我是简要内容
-          我是简要内容 我是简要内容 我是简要内容 我是简要内容 我是简要内容
-          我是简要内容 我是简要内容 我是简要内容 我是简要内容 我是简要内容
-          我是简要内容 我是简要内容 我是简要内容 我是简要内容 我是简要内容
-          我是简要内容 我是简要内容 我是简要内容 我是简要内容 我是简要内容
-          我是简要内容 我是简要内容 我是简要内容 我是简要内容
-          我是简要内容是简要内容 我是简要内容 我是简要内容 我是简要内容
-          我是简要内容 我是简要内容 我是简要内容 我是简要内容 我是简要内容
-          我是简要内容 我是简要内容是简要内容 我是简要内容 我是简要内容
-          我是简要内容 我是简要内容 我是简要内容 我是简要内容 我是简要内容
-          我是简要内容 我是简要内容 我是简要内容是简要内容 我是简要内容
-          我是简要内容 我是简要内容 我是简要内容 我是简要内容 我是简要内容
-          我是简要内容 我是简要内容 我是简要内容 我是简要内容是简要内容
-          我是简要内容 我是简要内容 我是简要内容 我是简要内容 我是简要内容
-          我是简要内容 我是简要内容 我是简要内容 我是简要内容 我是简要内容
-        </div>
-        <div className="article-tags ellipsis-1">
-          <Tag color="blue">React</Tag>
-          <Tag color="blue">React</Tag>
-          <Tag color="blue">React</Tag>
-          <Tag color="blue">React</Tag>
-          <Tag color="blue">React</Tag>
-          <Tag color="blue">React</Tag>
-          <Tag color="blue">React</Tag>
-          <Tag color="blue">React</Tag>
-          <Tag color="blue">React</Tag>
-          <Tag color="blue">React</Tag>
-          <Tag color="blue">React</Tag>
-          <Tag color="blue">React</Tag>
-          <Tag color="blue">React</Tag>
-          <Tag color="blue">React</Tag>
-        </div>
+        )}
+      </Space>
+      <div className="cover">
+        {article.cover ? (
+          <img src={article.cover} alt={article.title} />
+        ) : (
+          <div className="not-cover">暂无封面</div>
+        )}
       </div>
+      <div className="description ellipsis-3">{article.description}</div>
     </ArticleItemStyle>
   )
 }
