@@ -8,3 +8,10 @@ export const setArticleAction: (
   type: 'setArticleList',
   payload: articleList
 })
+
+export const setArticleDetailAction: (
+  articleDetail: ArticleType
+) => Action<ActionType, ArticleType> = (articleDetail) => ({
+  type: 'setArticleDetail',
+  payload: articleDetail
+})

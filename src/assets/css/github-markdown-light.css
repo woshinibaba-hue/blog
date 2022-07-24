@@ -903,6 +903,9 @@
 
 .markdown-body pre code {
   font-size: 100%;
+  font-weight: 500;
+  background-color: transparent !important;
+  color: unset !important;
 }
 
 .markdown-body pre > code {
@@ -927,7 +930,7 @@
 .markdown-body pre {
   padding: 16px;
   overflow: auto;
-  font-size: 85%;
+  font-size: 108%;
   line-height: 1.45;
   background-color: #f6f8fa;
   border-radius: 6px;

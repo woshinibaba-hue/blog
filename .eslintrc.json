@@ -27,6 +27,7 @@
     "@typescript-eslint/no-explicit-any": 0,
     "@typescript-eslint/no-extra-semi": 0,
     "react/no-children-prop": 0,
-    "react/display-name": 0
+    "react/display-name": 0,
+    "@typescript-eslint/no-non-null-assertion": 0
   }
 }

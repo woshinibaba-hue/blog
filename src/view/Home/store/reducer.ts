@@ -2,7 +2,8 @@ import { Action } from '@/store/types'
 import { ActionType, HomeStoreType } from './types'
 
 const initState: HomeStoreType = {
-  articleList: []
+  articleList: [],
+  articleDetail: null
 }
 
 export default (state: HomeStoreType, action: Action<ActionType>) => {
@@ -11,6 +12,12 @@ export default (state: HomeStoreType, action: Action<ActionType>) => {
       return {
         ...state,
         articleList: action.payload
+      }
+
+    case 'setArticleDetail':
+      return {
+        ...state,
+        articleDetail: action.payload
       }
 
     default:

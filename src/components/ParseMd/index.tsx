@@ -3,11 +3,11 @@ import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { vs } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import '@/assets/css/github-markdown-light.css'
 
-const ParseMd = ({ textConent }: { textConent: string }) => {
-  return (
+const ParseMd = ({ textConent }: { textConent?: string }) => {
+  return textConent ? (
     <ReactMarkdown
       className="markdown-body"
       children={textConent}
@@ -18,7 +18,7 @@ const ParseMd = ({ textConent }: { textConent: string }) => {
           return !inline && match ? (
             <SyntaxHighlighter
               children={String(children).replace(/\n$/, '')}
-              style={materialDark}
+              style={vs}
               language={match[1]}
               PreTag="div"
               {...props}
@@ -31,6 +31,8 @@ const ParseMd = ({ textConent }: { textConent: string }) => {
         }
       }}
     />
+  ) : (
+    <h1>暂无文章内容</h1>
   )
 }
 

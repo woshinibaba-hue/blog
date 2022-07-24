@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-export const ArticleStyle = styled.div`
+import copyright from '@/assets/img/copyright.png'
+
+export const ContentStyle = styled.div`
   position: relative;
   background-color: #fff;
   border-radius: var(--borderRadius);
@@ -10,6 +12,11 @@ export const ArticleStyle = styled.div`
     width: 100%;
     object-fit: cover;
     border-radius: var(--borderRadius);
+  }
+
+  .divider {
+    margin: 25px 0;
+    color: var(--hover-color);
   }
 
   .header {
@@ -42,6 +49,17 @@ export const ArticleStyle = styled.div`
           color: #515767;
           font-size: 16px;
         }
+      }
+    }
+
+    .cover {
+      width: 100%;
+      height: 150px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
     }
   }
@@ -118,5 +136,26 @@ export const ArticleStyle = styled.div`
     margin-top: 30px;
     font-size: 15px;
     color: #515767;
+  }
+
+  .copyright {
+    font-size: 15px;
+    margin-top: 20px;
+    border-radius: 6px;
+    padding-left: 10px;
+    overflow: hidden;
+
+    background: #f5f5f5 url(${copyright}) no-repeat right center;
+    background-size: 150px;
+
+    transition: all 0.3s;
+
+    p {
+      margin: 8px 0;
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+    }
   }
 `

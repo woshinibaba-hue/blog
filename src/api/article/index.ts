@@ -9,3 +9,13 @@ export const getArticleList = (params?: ArticleParamsType) => {
     params: params ?? {}
   })
 }
+
+// 请求文章详情
+export const getArticleDetail = (id: string) => {
+  return request.get<ArticleType[]>({
+    url: '/article',
+    params: {
+      id
+    }
+  })
+}
