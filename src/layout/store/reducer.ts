@@ -6,7 +6,7 @@ const initState: LayoutState = {
   isShowSidebar: false
 }
 
-export default (state: LayoutState, action: Action<ActionType>) => {
+export default (state: LayoutState = initState, action: Action<ActionType>) => {
   switch (action.type) {
     case 'isShowSidebar':
       return {
@@ -15,6 +15,6 @@ export default (state: LayoutState, action: Action<ActionType>) => {
       }
 
     default:
-      return initState
+      return state
   }
 }

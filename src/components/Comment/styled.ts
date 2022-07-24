@@ -4,14 +4,13 @@ export const CommentStyled = styled.div`
   .header {
     font-size: 18px;
     line-height: 30px;
-    font-weight: 600;
-    color: #252933;
-
+    color: var(--hover-color);
     margin-bottom: 24px;
   }
 
   .describe {
     font-size: 16px;
+    color: var(--hover-color);
     margin-bottom: 15px;
   }
 

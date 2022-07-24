@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { Divider } from 'antd'
+
 import List from './List'
 import Editor from './Editor'
 
@@ -26,7 +28,7 @@ const Comments: React.FC<CommentProps> = ({
   return (
     <CommentStyled>
       {/* 评论/留言 框 */}
-      {describe ? <p className="describe">{describe}</p> : ''}
+      {describe ? <Divider className="describe">{describe}</Divider> : ''}
       {isLogin ? (
         <Editor
           value={value}

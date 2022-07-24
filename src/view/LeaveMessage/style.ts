@@ -52,11 +52,6 @@ export const LeaveMessageStyle = styled.div`
   }
 
   .message-box {
-    margin-top: 30px;
-
-    .describe {
-      padding: 30px 0;
-      border-top: 2px dashed #f2f2f2;
-    }
+    margin: 60px 0 20px;
   }
 `

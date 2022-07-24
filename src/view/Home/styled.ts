@@ -10,4 +10,15 @@ export const HomeStyled = styled.div`
       }
     }
   }
+
+  .loading,
+  .more {
+    padding: 10px;
+    background-color: #fff;
+    border-radius: var(--borderRadius);
+  }
+
+  .more {
+    padding: 30px;
+  }
 `

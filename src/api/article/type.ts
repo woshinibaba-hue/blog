@@ -16,7 +16,7 @@ export type ArticleParamsType = {
   id?: string
   key?: string
   limit?: number
-  offset?: number
+  page?: number
 }
 
 export type ArticleType = {
@@ -40,4 +40,9 @@ export type ArticleType = {
     color: string
   }[]
   createtime: string
+}
+
+export type ArticleListType = {
+  articles: ArticleType[]
+  page: number
 }

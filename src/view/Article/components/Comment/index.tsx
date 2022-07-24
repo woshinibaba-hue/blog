@@ -4,7 +4,7 @@ import storage from '@/utils/storage'
 
 import ZComment from '@/components/Comment'
 
-function Comment() {
+function Comment({ comments = [] }: { comments: any[] }) {
   const [isLogin, setIsLogion] = useState(false)
   // 用户输入内容
   const [msg, setMsg] = useState('')
@@ -34,32 +34,32 @@ function Comment() {
   }
 
   // 测试数据
-  const data = Array.from({ length: 23 }).map((_, i) => ({
-    id: i,
-    user: {
-      username: `前端吴彦祖_${i * 10}`,
-      avatar:
-        'https://p3-passport.byteacctimg.com/img/user-avatar/f0b821163b109a64e2b8a5189d27de67~300x300.image'
-    },
-    content: '你是真的要我狗命，看完后我觉得自己啥都不是？？？？',
-    createtime: new Date(),
-    children: (function test() {
-      if (i % 2) {
-        return Array.from({ length: 2 }).map((item, id) => ({
-          id: (id + 1) * 10,
-          user: {
-            username: `前端吴彦祖_${(id + 1) * 100}`,
-            avatar:
-              'https://p3-passport.byteacctimg.com/img/user-avatar/f0b821163b109a64e2b8a5189d27de67~300x300.image'
-          },
-          content: '你是真的要我狗命，看完后我觉得自己啥都不是？？？？',
-          createtime: new Date()
-        }))
-      }
+  // const data = Array.from({ length: 23 }).map((_, i) => ({
+  //   id: i,
+  //   user: {
+  //     username: `前端吴彦祖_${i * 10}`,
+  //     avatar:
+  //       'https://p3-passport.byteacctimg.com/img/user-avatar/f0b821163b109a64e2b8a5189d27de67~300x300.image'
+  //   },
+  //   content: '你是真的要我狗命，看完后我觉得自己啥都不是？？？？',
+  //   createtime: new Date(),
+  //   children: (function test() {
+  //     if (i % 2) {
+  //       return Array.from({ length: 2 }).map((item, id) => ({
+  //         id: (id + 1) * 10,
+  //         user: {
+  //           username: `前端吴彦祖_${(id + 1) * 100}`,
+  //           avatar:
+  //             'https://p3-passport.byteacctimg.com/img/user-avatar/f0b821163b109a64e2b8a5189d27de67~300x300.image'
+  //         },
+  //         content: '你是真的要我狗命，看完后我觉得自己啥都不是？？？？',
+  //         createtime: new Date()
+  //       }))
+  //     }
 
-      return undefined
-    })()
-  }))
+  //     return undefined
+  //   })()
+  // }))
 
   return (
     <div
@@ -79,7 +79,7 @@ function Comment() {
         onSubmit={onSubmit}
         value={msg}
         mainText="评论"
-        list={data}
+        list={comments}
         handlerLike={handlerLike}
         reply={handlerReply}
       />

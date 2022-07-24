@@ -22,14 +22,14 @@ const Article = () => {
 
   useEffect(() => {
     getArticleDetail(id!).then((res) => {
-      dispatch(setArticleDetailAction(res.data[0]))
+      dispatch(setArticleDetailAction(res.data.articles[0]))
     })
   }, [])
 
   return (
     <>
       <Content articleDetail={articleDetail} />
-      <Comment />
+      <Comment comments={articleDetail?.comments ?? []} />
     </>
   )
 }

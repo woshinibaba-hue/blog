@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 
-import { List } from 'antd'
+import { List, Divider, Empty } from 'antd'
 
 import CommentItem from '../Item'
 
@@ -20,7 +20,7 @@ const CommentList: React.FC<CommentListProps> = ({
 }) => {
   return (
     <ListStyled>
-      {titleText && <div className="header">{titleText}列表</div>}
+      {titleText && <Divider className="header">{titleText}列表</Divider>}
       <List
         itemLayout="vertical"
         size="large"
@@ -29,34 +29,33 @@ const CommentList: React.FC<CommentListProps> = ({
           hideOnSinglePage: isPagination,
           total: comments.length
         }}
+        locale={{ emptyText: <Empty description={`暂无${titleText}~ 😢😢`} /> }}
         dataSource={comments}
-        renderItem={(item) => {
-          return (
-            <CommentItem
-              comment={item}
-              handlerLike={handlerLike}
-              // handlerMessage={handlerMessage}
-              mainText={titleText ?? '未知'}
-              reply={reply}
-              isLogin={isLogin}
-            >
-              {item.children &&
-                item.children.map((child) => {
-                  return (
-                    <CommentItem
-                      key={child.id}
-                      comment={child}
-                      mainText={titleText ?? '未知'}
-                      handlerLike={handlerLike}
-                      // handlerMessage={handlerMessage}
-                      reply={reply}
-                      isLogin={isLogin}
-                    />
-                  )
-                })}
-            </CommentItem>
-          )
-        }}
+        renderItem={(item) => (
+          <CommentItem
+            comment={item}
+            handlerLike={handlerLike}
+            // handlerMessage={handlerMessage}
+            mainText={titleText ?? '未知'}
+            reply={reply}
+            isLogin={isLogin}
+          >
+            {item.children &&
+              item.children.map((child) => {
+                return (
+                  <CommentItem
+                    key={child.id}
+                    comment={child}
+                    mainText={titleText ?? '未知'}
+                    handlerLike={handlerLike}
+                    // handlerMessage={handlerMessage}
+                    reply={reply}
+                    isLogin={isLogin}
+                  />
+                )
+              })}
+          </CommentItem>
+        )}
       />
     </ListStyled>
   )

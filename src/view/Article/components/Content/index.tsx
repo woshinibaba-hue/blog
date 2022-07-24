@@ -3,6 +3,8 @@ import React from 'react'
 import { Badge, Divider, Tag } from 'antd'
 import { LikeFilled, MessageFilled } from '@ant-design/icons'
 
+import format from '@/utils/format'
+
 import ParseMd from '@/components/ParseMd'
 
 import { ArticleType } from '@/api/article/type'
@@ -14,11 +16,21 @@ function Content({ articleDetail }: { articleDetail: ArticleType }) {
 
   const optionsEl = () => (
     <>
-      <Badge count={999} color="#c2c8d1">
+      <Badge
+        count={articleDetail?.like_count ?? 0}
+        color="#c2c8d1"
+        showZero
+        offset={[-8, 8]}
+      >
         <LikeFilled />
       </Badge>
       <a href="#comment">
-        <Badge count={999} color="#c2c8d1">
+        <Badge
+          count={articleDetail?.comments?.length ?? 0}
+          color="#c2c8d1"
+          showZero
+          offset={[-8, 8]}
+        >
           <MessageFilled />
         </Badge>
       </a>
@@ -35,7 +47,13 @@ function Content({ articleDetail }: { articleDetail: ArticleType }) {
           </div>
           <div className="right">
             <div className="name">{articleDetail?.user.username}</div>
-            <div>{articleDetail?.createtime} · 阅读 9999</div>
+            <div>
+              {format.formatTime(
+                articleDetail?.createtime,
+                'YYYY-MM-DD HH:mm:ss'
+              )}{' '}
+              · 阅读 9999
+            </div>
           </div>
         </div>
         {articleDetail?.cover && (

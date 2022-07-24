@@ -6,7 +6,10 @@ const initState: HomeStoreType = {
   articleDetail: null
 }
 
-export default (state: HomeStoreType, action: Action<ActionType>) => {
+export default (
+  state: HomeStoreType = initState,
+  action: Action<ActionType>
+) => {
   switch (action.type) {
     case 'setArticleList':
       return {
@@ -21,6 +24,6 @@ export default (state: HomeStoreType, action: Action<ActionType>) => {
       }
 
     default:
-      return initState
+      return state
   }
 }
