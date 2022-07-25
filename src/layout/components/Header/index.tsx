@@ -3,6 +3,10 @@ import React, { useState, useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 
 import { useSelector, shallowEqual, useDispatch } from 'react-redux'
+import {
+  setIsShowSidebarAction,
+  setIsShowLoginAction
+} from '@/layout/store/actioncreatore'
 
 import { Input, Dropdown, Menu, Typography } from 'antd'
 import {
@@ -18,8 +22,6 @@ import { HeaderWrap } from './style'
 import { RootStateType } from '@/store/types'
 
 import logo from '@/assets/img/1657255015650-logo.gif'
-
-import { setIsShowSidebarAction } from '@/layout/store/actioncreatore'
 
 // nav 导航
 const navName = [
@@ -124,7 +126,9 @@ function Header() {
             </Typography.Link>
           </Dropdown>
         </div>
-        <div className="login">登录</div>
+        <div className="login" onClick={() => dispatch(setIsShowLoginAction())}>
+          登录
+        </div>
       </div>
     </HeaderWrap>
   )

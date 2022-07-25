@@ -4,7 +4,10 @@ import { useLocation } from 'react-router-dom'
 import { Drawer, Button } from 'antd'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { setIsShowSidebarAction } from '@/layout/store/actioncreatore'
+import {
+  setIsShowSidebarAction,
+  setIsShowLoginAction
+} from '@/layout/store/actioncreatore'
 
 import MarkdownNavbar from '@/components/ParseMd/components/MarkdownNavbar'
 
@@ -39,7 +42,11 @@ function Sidebar() {
       >
         <BaseNav />
         {isArticle && <MarkdownNavbar />}
-        <Button type="primary" className="login-btn">
+        <Button
+          type="primary"
+          className="login-btn"
+          onClick={() => dispatch(setIsShowLoginAction())}
+        >
           登录
         </Button>
       </Drawer>

@@ -3,7 +3,8 @@ import { LayoutState, ActionType } from './types'
 
 // 定义初始化数据
 const initState: LayoutState = {
-  isShowSidebar: false
+  isShowSidebar: false,
+  isShowLogin: false
 }
 
 export default (state: LayoutState = initState, action: Action<ActionType>) => {
@@ -12,6 +13,11 @@ export default (state: LayoutState = initState, action: Action<ActionType>) => {
       return {
         ...state,
         isShowSidebar: !state.isShowSidebar
+      }
+    case 'isShowLogin':
+      return {
+        ...state,
+        isShowLogin: !state.isShowLogin
       }
 
     default:

@@ -6,6 +6,7 @@ import { RocketOutlined } from '@ant-design/icons'
 import Header from './components/Header'
 import Main from './components/Main'
 import Footer from './components/Footer'
+import LoginModal from './components/LoginModal'
 
 function ZLayout() {
   const style: React.CSSProperties = {
@@ -22,6 +23,7 @@ function ZLayout() {
       <Header />
       <Main />
       <Footer />
+      <LoginModal />
       <BackTop style={style}>
         <RocketOutlined />
       </BackTop>
