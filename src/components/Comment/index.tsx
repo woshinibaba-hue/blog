@@ -5,6 +5,8 @@ import { Divider } from 'antd'
 import List from './List'
 import Editor from './Editor'
 
+import { useUser } from '@/layout/hooks'
+
 import bubble from '@/assets/img/bubble.gif'
 
 import { CommentStyled } from './styled'
@@ -22,14 +24,16 @@ const Comments: React.FC<CommentProps> = ({
   handlerLike, // 评论点击喜欢按钮
   // handlerMessage, //
   reply, // 点击了回复评论按钮
-  isLogin, // 是否登录
+  // isLogin, // 是否登录
   describe // 评论(留言)框上方描述文字
 }) => {
+  const { user } = useUser()
+
   return (
     <CommentStyled>
       {/* 评论/留言 框 */}
       {describe ? <Divider className="describe">{describe}</Divider> : ''}
-      {isLogin ? (
+      {user?.token ? (
         <Editor
           value={value}
           onChange={onChange}
@@ -52,7 +56,7 @@ const Comments: React.FC<CommentProps> = ({
         pageSize={pageSize}
         handlerLike={handlerLike}
         // handlerMessage={handlerMessage}
-        isLogin={isLogin}
+        isLogin={!!user}
       />
     </CommentStyled>
   )

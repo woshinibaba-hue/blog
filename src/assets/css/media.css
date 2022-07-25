@@ -63,6 +63,10 @@
     display: none;
   }
 
+  .blog_Info {
+    margin-bottom: 0 !important;
+  }
+
   .layout-header .container {
     justify-content: space-between;
   }
@@ -93,6 +97,8 @@
   .markdown-Navbar {
     position: unset !important;
     padding: 0 0 10px !important;
+
+    margin-bottom: 50px;
   }
 
   .ant-drawer-body {
@@ -100,7 +106,12 @@
   }
 
   .login-btn {
-    margin-bottom: 70px;
+    margin-bottom: 10px;
+  }
+
+  .login-succeed,
+  .login-succeed p {
+    margin-bottom: 10px;
   }
 }
 

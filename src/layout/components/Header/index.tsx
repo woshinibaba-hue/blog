@@ -2,24 +2,34 @@ import React, { useState, useEffect } from 'react'
 
 import { NavLink, useLocation } from 'react-router-dom'
 
-import { useSelector, shallowEqual, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import {
   setIsShowSidebarAction,
-  setIsShowLoginAction
+  setIsShowLoginAction,
+  logoutAction
 } from '@/layout/store/actioncreatore'
 
-import { Input, Dropdown, Menu, Typography } from 'antd'
+import {
+  Input,
+  Dropdown,
+  Menu,
+  Typography,
+  Space,
+  Avatar,
+  Tooltip,
+  Divider
+} from 'antd'
+
 import {
   DownOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined
 } from '@ant-design/icons'
 
-import { useScroll } from '@/hooks'
+import { useScroll, useTip } from '@/hooks'
+import { useUser } from '../../hooks'
 
 import { HeaderWrap } from './style'
-
-import { RootStateType } from '@/store/types'
 
 import logo from '@/assets/img/1657255015650-logo.gif'
 
@@ -56,6 +66,8 @@ function Header() {
 
   const [selectKey, setSelectKey] = useState(navName[0])
 
+  const { isShowSidebar, user } = useUser()
+
   const menu = (
     <Menu
       selectable
@@ -71,6 +83,14 @@ function Header() {
     />
   )
 
+  const userMneu = (
+    <Menu
+      items={[
+        { key: 1, label: '退出登录', onClick: () => dispatch(logoutAction()) }
+      ]}
+    />
+  )
+
   const { pathname } = useLocation()
 
   useEffect(() => {
@@ -80,15 +100,8 @@ function Header() {
 
   const dispatch = useDispatch()
 
-  const { isShowSidebar } = useSelector<
-    RootStateType,
-    { isShowSidebar: boolean }
-  >(
-    (state) => ({
-      isShowSidebar: state.layoutStore.isShowSidebar
-    }),
-    shallowEqual
-  )
+  // 提示信息
+  const tip = useTip()
 
   return (
     <HeaderWrap isAffix={isAffix} className="layout-header">
@@ -126,9 +139,27 @@ function Header() {
             </Typography.Link>
           </Dropdown>
         </div>
-        <div className="login" onClick={() => dispatch(setIsShowLoginAction())}>
-          登录
-        </div>
+        {user ? (
+          <Tooltip overlay={tip} className="login" placement="left">
+            <Dropdown
+              children={
+                <Space split={<Divider type="vertical" />}>
+                  <Avatar src={user.avatar} alt="" />
+                  <span> {user.username}</span>
+                </Space>
+              }
+              overlay={userMneu}
+              arrow
+            />
+          </Tooltip>
+        ) : (
+          <div
+            className="login"
+            onClick={() => dispatch(setIsShowLoginAction())}
+          >
+            登录
+          </div>
+        )}
       </div>
     </HeaderWrap>
   )

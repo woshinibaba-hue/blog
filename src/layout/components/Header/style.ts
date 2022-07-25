@@ -58,7 +58,7 @@ export const HeaderWrap = styled.div<{ isAffix: boolean }>`
 
     .lable-nav {
       flex: 1;
-      margin: 0 70px;
+      margin: 0 50px;
 
       a {
         position: relative;
@@ -107,7 +107,7 @@ export const HeaderWrap = styled.div<{ isAffix: boolean }>`
 
     .login {
       cursor: pointer;
-      margin-left: 40px;
+      margin-left: 20px;
 
       &:hover {
         color: var(--hover-color);

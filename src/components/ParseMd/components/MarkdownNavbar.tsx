@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { Divider } from 'antd'
+
 import { useSelector } from 'react-redux'
 
 import MdNav from 'markdown-navbar'
@@ -20,7 +22,9 @@ function MarkdownNavbar() {
 
   return (
     <MarkdownNavbarStyle isAffix={isAffix} className="markdown-Navbar">
-      <div className="title">文章目录</div>
+      <Divider dashed className="title">
+        文章目录
+      </Divider>
       <MdNav
         source={articleDetail?.content}
         ordered={false}

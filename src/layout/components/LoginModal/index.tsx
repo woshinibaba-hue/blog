@@ -24,13 +24,14 @@ function LoginModal() {
     <Modal
       visible={isLoginModalVisible}
       closable
-      onCancel={handleClose}
-      zIndex={99999}
+      onCancel={() => handleClose()}
+      zIndex={1000}
       footer={null}
+      destroyOnClose
     >
       <Tabs defaultActiveKey="1">
         <Tabs.TabPane tab="用户登录" key="1">
-          <LoginForm />
+          <LoginForm handleClose={handleClose} />
         </Tabs.TabPane>
         <Tabs.TabPane tab="用户注册" key="2">
           <RegisterForm />

@@ -1,5 +1,7 @@
 import request from '@/server'
 
+import { LoginBase, ILoginRes } from './types'
+
 // 获取验证码
 export const getLoginCode = () => {
   return request.get<string>({
@@ -14,5 +16,13 @@ export const checkLoginCode = (captcha: string) => {
     data: {
       captcha
     }
+  })
+}
+
+// 登录
+export const login = (data: LoginBase) => {
+  return request.post<ILoginRes>({
+    url: '/login',
+    data
   })
 }

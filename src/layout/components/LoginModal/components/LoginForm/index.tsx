@@ -1,16 +1,35 @@
 import React from 'react'
 
-import { Form, Input, Button, Checkbox } from 'antd'
+import { useDispatch } from 'react-redux'
+import { setUserAction } from '@/layout/store/actioncreatore'
+
+import { Form, Input, Button, Checkbox, message } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 
-function Login() {
+import storage from '@/utils/storage'
+
+import { login } from '@/api/login'
+import { ILogin } from '@/api/login/types'
+
+function Login({ handleClose }: { handleClose: () => void }) {
+  const dispatch = useDispatch()
+
+  // 登录
+  const onFinish = (values: ILogin) => {
+    login(values).then((res) => {
+      dispatch(setUserAction(res.data))
+      storage.set('user', res.data)
+      message.success(res.message)
+      handleClose()
+    })
+  }
+
   return (
     <Form
-      name="normal_login"
-      className="login-form"
       initialValues={{
         remember: true
       }}
+      onFinish={onFinish}
     >
       <Form.Item
         name="email"
