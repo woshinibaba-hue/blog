@@ -16,11 +16,16 @@ const CommentList: React.FC<CommentListProps> = ({
   handlerLike,
   // handlerMessage,
   reply,
-  isLogin
+  isLogin,
+  count
 }) => {
   return (
     <ListStyled>
-      {titleText && <Divider className="header">{titleText}列表</Divider>}
+      {titleText && (
+        <Divider className="header">
+          {titleText}列表 共 ({count}) 条
+        </Divider>
+      )}
       <List
         itemLayout="vertical"
         size="large"

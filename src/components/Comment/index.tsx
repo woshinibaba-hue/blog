@@ -25,7 +25,8 @@ const Comments: React.FC<CommentProps> = ({
   // handlerMessage, //
   reply, // 点击了回复评论按钮
   // isLogin, // 是否登录
-  describe // 评论(留言)框上方描述文字
+  describe, // 评论(留言)框上方描述文字
+  count = 0 // 评论(留言)数量
 }) => {
   const { user } = useUser()
 
@@ -57,6 +58,7 @@ const Comments: React.FC<CommentProps> = ({
         handlerLike={handlerLike}
         // handlerMessage={handlerMessage}
         isLogin={!!user}
+        count={count}
       />
     </CommentStyled>
   )

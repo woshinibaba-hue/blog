@@ -9,4 +9,5 @@ export type CommentListProps = {
   isPagination?: boolean
   reply: (id: number, content: string) => void
   isLogin: boolean
+  count?: number
 }

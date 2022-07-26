@@ -32,7 +32,6 @@ export type ArticleType = {
     username: string
     referral?: string
   }
-  comments?: CommentType[]
   tags?: {
     id: number
     name: string

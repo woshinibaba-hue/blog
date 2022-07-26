@@ -12,7 +12,13 @@ import { ArticleType } from '@/api/article/type'
 
 import { ContentStyle } from './style'
 
-function Content({ articleDetail }: { articleDetail: ArticleType }) {
+function Content({
+  articleDetail,
+  commentCount
+}: {
+  articleDetail: ArticleType | null
+  commentCount: number
+}) {
   const currentLocation = window.location
 
   const navigator = useNavigate()
@@ -31,12 +37,7 @@ function Content({ articleDetail }: { articleDetail: ArticleType }) {
       </Tooltip>
       <a href="#comment">
         <Tooltip overlay="评论一下~">
-          <Badge
-            count={articleDetail?.comments?.length ?? 0}
-            color="#c2c8d1"
-            showZero
-            offset={[-8, 8]}
-          >
+          <Badge count={commentCount} color="#c2c8d1" showZero offset={[-8, 8]}>
             <MessageFilled />
           </Badge>
         </Tooltip>

@@ -7,7 +7,7 @@ type Props = {
 export const CommentItemStyle = styled.div<Props>`
   display: flex;
   justify-content: space-between;
-  margin-bottom: ${({ mainMarginBottom }) => (mainMarginBottom ? 50 : 20)}px;
+  margin-bottom: ${({ mainMarginBottom }) => (mainMarginBottom ? 50 : 30)}px;
 
   .avatar {
     width: 48px;

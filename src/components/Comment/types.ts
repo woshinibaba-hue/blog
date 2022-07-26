@@ -10,4 +10,5 @@ export interface CommentProps extends EditorProps {
   reply: (id: number, content: string) => void
   isLogin: boolean
   describe?: string
+  count?: number
 }
