@@ -32,3 +32,30 @@ export const getArticleComment = (id: string) => {
     }
   })
 }
+
+// 发表文章评论
+export const postArticleComment = (blog_id: string, content: string) => {
+  return request.post({
+    url: '/article/comment',
+    data: {
+      blog_id,
+      content
+    }
+  })
+}
+
+// 回复文章评论
+export const replyArticleComment = (
+  blogId: string,
+  content: string,
+  commentId: number
+) => {
+  return request.post({
+    url: '/article/reply',
+    data: {
+      blogId,
+      content,
+      commentId
+    }
+  })
+}

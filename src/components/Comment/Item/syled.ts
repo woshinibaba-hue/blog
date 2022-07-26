@@ -36,6 +36,35 @@ export const CommentItemStyle = styled.div<Props>`
       .time {
         color: #8a919f;
       }
+
+      .name {
+        font-weight: 600;
+        font-size: 15px;
+        color: #252933;
+
+        .reply {
+          font-size: 16px;
+
+          span {
+            &:first-child {
+              font-weight: 400;
+              font-size: 13px;
+              margin: 0 8px;
+              color: #8a919f;
+            }
+          }
+        }
+      }
+    }
+
+    .reply-content {
+      font-size: 13px;
+      color: #8a919f;
+      border-radius: 6px;
+      padding: 8px;
+      background-color: #f2f3f5;
+      border: 1px solid #e4e6eb;
+      margin-bottom: 6px;
     }
 
     .comment {

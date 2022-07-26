@@ -7,7 +7,11 @@ export interface ICommentItemProps {
   mainText: string
   handlerLike?: (id: number) => void
   // handlerMessage?: (id: number) => void
-  reply: (id: number, content: string) => void
+  reply: (
+    id: number,
+    content: string,
+    setMessage: (mes: string) => void
+  ) => void
   children?: React.ReactNode
   isLogin: boolean
 }

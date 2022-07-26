@@ -5,6 +5,10 @@ export type CommentType = {
   content: string
   createtime: dayjs.ConfigType
   like_count?: number
+  parent_comment?: {
+    content: string
+    username: string
+  }
   user: {
     avatar: string
     username: string
@@ -23,6 +27,7 @@ export type ArticleType = {
   id: number
   title: string
   content: string
+  comment_count: number
   like_count: number
   cover?: string
   description: string

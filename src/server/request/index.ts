@@ -1,9 +1,12 @@
 import axios, { AxiosError, AxiosInstance } from 'axios'
 
+import store from '@/store'
+import { logoutAction } from '@/layout/store/actioncreatore'
 import storage from '@/utils/storage'
 
 import { message } from 'antd'
 
+import { ILoginRes } from '@/api/login/types'
 import { IRequestConfig, IDataResult } from './type'
 
 class Request {
@@ -26,6 +29,11 @@ class Request {
     // 给所有的axios实例添加拦截器
     this.instance.interceptors.request.use(
       (config) => {
+        // 如果有token，则添加到请求头
+        const user = storage.get<ILoginRes>('user')
+        if (user) {
+          config.headers!.Authorization = `Bearer ${user.token}`
+        }
         return config
       },
       (err) => {
@@ -48,8 +56,8 @@ class Request {
 
         // token 过期，删除当前用户信息
         if (err.response?.data.code === -1) {
-          storage.remove('login_info')
-          storage.remove('user_token')
+          store.dispatch(logoutAction() as any)
+          storage.remove('user')
           message.error('token已失效，请重新登录')
         }
 

@@ -1,21 +1,30 @@
 import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+
+import { message } from 'antd'
 
 import storage from '@/utils/storage'
 
+import * as request from '@/api/article'
 import { CommentType } from '@/api/article/type'
 
 import ZComment from '@/components/Comment'
 
 function Comment({
-  comments = [],
-  count
+  setCommentCount
 }: {
-  comments: CommentType[]
-  count: number
+  setCommentCount: (count: number) => void
 }) {
+  const { id } = useParams()
   const [isLogin, setIsLogion] = useState(false)
   // 用户输入内容
   const [msg, setMsg] = useState('')
+
+  // 评论列表
+  const [commentList, setCommentList] = useState<{
+    comments: CommentType[]
+    count: number
+  }>()
 
   useEffect(() => {
     const token = storage.get<string>('user_token')
@@ -26,9 +35,12 @@ function Comment({
     setMsg(value)
   }
 
-  // 留言提交
-  const onSubmit = () => {
-    console.log('留言')
+  // 评论
+  const onSubmit = async () => {
+    await request.postArticleComment(id!, msg)
+    message.success('评论成功~')
+    setMsg('')
+    gitComment()
   }
 
   // 留言 / 评论 点击喜欢
@@ -36,10 +48,28 @@ function Comment({
     console.log('点击了喜欢按钮', id)
   }
 
-  // 回复评论事件
-  const handlerReply = (id: number, content: string) => {
-    console.log(content, id, '回复评论')
+  // 回复评论
+  const handlerReply = async (
+    commentId: number,
+    content: string,
+    setMessage: (str: string) => void
+  ) => {
+    await request.replyArticleComment(id!, content, commentId)
+    message.success('回复成功~')
+    setMessage('')
+    gitComment()
   }
+
+  const gitComment = () => {
+    request.getArticleComment(id!).then((res) => {
+      setCommentList(res.data)
+      setCommentCount(res.data.count)
+    })
+  }
+
+  useEffect(() => {
+    gitComment()
+  }, [])
 
   return (
     <div
@@ -59,10 +89,10 @@ function Comment({
         onSubmit={onSubmit}
         value={msg}
         mainText="评论"
-        list={comments}
+        list={commentList?.comments ?? []}
         handlerLike={handlerLike}
         reply={handlerReply}
-        count={count}
+        count={commentList?.count}
       />
     </div>
   )

@@ -50,7 +50,7 @@ const CommitItem: React.FC<ICommentItemProps> = ({
 
   const handlerSubmit = () => {
     if (reply) {
-      reply(comment.id, message)
+      reply(comment.id, message, setMessage)
     }
   }
 
@@ -65,10 +65,21 @@ const CommitItem: React.FC<ICommentItemProps> = ({
       </div>
       <div className="content">
         <div className="content-header">
-          <span className="name">{comment.user.username}</span>
+          <p className="name">
+            {comment.user.username}
+            {comment.parent_comment && (
+              <span className="reply">
+                <span>回复</span>
+                <span>{comment.parent_comment?.username}</span>
+              </span>
+            )}
+          </p>
           <span className="time">{format.formatTime(comment.createtime)}</span>
         </div>
         <div className="comment">{comment.content}</div>
+        {comment.parent_comment && (
+          <div className="reply-content">{`" ${comment.parent_comment?.content} "`}</div>
+        )}
         <div className="handler">
           <Space split={<Divider type="vertical" />}>
             <Space
@@ -85,7 +96,7 @@ const CommitItem: React.FC<ICommentItemProps> = ({
               {!isReplyMessage ? (
                 <>
                   <MessageOutlined />
-                  <span className="count">99</span>
+                  <span className="count">回复</span>
                 </>
               ) : (
                 <>

@@ -14,10 +14,10 @@ import { ContentStyle } from './style'
 
 function Content({
   articleDetail,
-  commentCount
+  count
 }: {
   articleDetail: ArticleType | null
-  commentCount: number
+  count: number
 }) {
   const currentLocation = window.location
 
@@ -37,7 +37,7 @@ function Content({
       </Tooltip>
       <a href="#comment">
         <Tooltip overlay="评论一下~">
-          <Badge count={commentCount} color="#c2c8d1" showZero offset={[-8, 8]}>
+          <Badge count={count} color="#c2c8d1" showZero offset={[-8, 8]}>
             <MessageFilled />
           </Badge>
         </Tooltip>

@@ -26,7 +26,7 @@ function ArticleItem({ article }: { article: ArticleType }) {
         </Space>
         <Space>
           <Tag color="green">
-            <CommentOutlined /> 9999+
+            <CommentOutlined /> {article.comment_count}
           </Tag>
           <Tag color="red">
             <LikeOutlined /> 9999+

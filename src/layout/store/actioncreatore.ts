@@ -21,7 +21,6 @@ export const setUserAction: (
 
 export const logoutAction = () => {
   storage.remove('user')
-
   return {
     type: 'logout',
     payload: null
