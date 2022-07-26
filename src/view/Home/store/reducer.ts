@@ -3,7 +3,8 @@ import { ActionType, HomeStoreType } from './types'
 
 const initState: HomeStoreType = {
   articleList: [],
-  articleDetail: null
+  articleDetail: null,
+  isMore: true
 }
 
 export default (
@@ -21,6 +22,12 @@ export default (
       return {
         ...state,
         articleDetail: action.payload
+      }
+
+    case 'setIsMore':
+      return {
+        ...state,
+        isMore: action.payload
       }
 
     default:

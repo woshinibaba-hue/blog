@@ -2,14 +2,22 @@ import React from 'react'
 
 import { Pagination } from 'antd'
 
-function Paging() {
+type Props = {
+  total?: number
+  pageSize?: number
+  onChange?: (page: number, pageSize: number) => void
+}
+
+function Paging({ total = 20, pageSize = 10, onChange }: Props) {
   return (
     <Pagination
       simple
       defaultCurrent={1}
-      total={100}
+      total={total}
       showSizeChanger={false}
       style={{ textAlign: 'center' }}
+      defaultPageSize={pageSize}
+      onChange={onChange}
     />
   )
 }

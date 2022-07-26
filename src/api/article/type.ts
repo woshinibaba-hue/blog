@@ -45,4 +45,5 @@ export type ArticleType = {
 export type ArticleListType = {
   articles: ArticleType[]
   page: number
+  total: number
 }

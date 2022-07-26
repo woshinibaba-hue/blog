@@ -15,3 +15,10 @@ export const setArticleDetailAction: (
   type: 'setArticleDetail',
   payload: articleDetail
 })
+
+export const setIsMoreAction: (
+  isMore: boolean
+) => Action<ActionType, boolean> = (isMore) => ({
+  type: 'setIsMore',
+  payload: isMore
+})

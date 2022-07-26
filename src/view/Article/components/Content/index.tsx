@@ -1,7 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { Badge, Divider, Tag } from 'antd'
-import { LikeFilled, MessageFilled } from '@ant-design/icons'
+import { Badge, Divider, Tag, Tooltip } from 'antd'
+import { LikeFilled, MessageFilled, LeftCircleFilled } from '@ant-design/icons'
 
 import format from '@/utils/format'
 
@@ -14,26 +15,37 @@ import { ContentStyle } from './style'
 function Content({ articleDetail }: { articleDetail: ArticleType }) {
   const currentLocation = window.location
 
+  const navigator = useNavigate()
+
   const optionsEl = () => (
     <>
-      <Badge
-        count={articleDetail?.like_count ?? 0}
-        color="#c2c8d1"
-        showZero
-        offset={[-8, 8]}
-      >
-        <LikeFilled />
-      </Badge>
-      <a href="#comment">
+      <Tooltip overlay="赞一下~">
         <Badge
-          count={articleDetail?.comments?.length ?? 0}
+          count={articleDetail?.like_count ?? 0}
           color="#c2c8d1"
           showZero
           offset={[-8, 8]}
         >
-          <MessageFilled />
+          <LikeFilled />
         </Badge>
+      </Tooltip>
+      <a href="#comment">
+        <Tooltip overlay="评论一下~">
+          <Badge
+            count={articleDetail?.comments?.length ?? 0}
+            color="#c2c8d1"
+            showZero
+            offset={[-8, 8]}
+          >
+            <MessageFilled />
+          </Badge>
+        </Tooltip>
       </a>
+      <Tooltip overlay="返回上一级">
+        <Badge>
+          <LeftCircleFilled onClick={() => navigator(-1)} />
+        </Badge>
+      </Tooltip>
     </>
   )
 

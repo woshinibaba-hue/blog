@@ -5,9 +5,23 @@ export const PigeonholeStyled = styled.div`
     background-color: #fff;
     border-radius: var(--borderRadius);
     padding: var(--contentPadding);
+  }
 
-    .ant-timeline-item-last > .ant-timeline-item-content {
-      min-height: unset;
+  .ant-timeline-item {
+    padding-bottom: 40px;
+    font-size: 18px;
+
+    .ant-timeline-item-content {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &:first-child {
+      .ant-timeline-item-content {
+        font-size: 20px;
+        top: -14px;
+      }
     }
   }
 `

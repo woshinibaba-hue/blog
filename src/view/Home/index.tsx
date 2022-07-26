@@ -5,7 +5,7 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 
 // redux
 import { useDispatch, useSelector } from 'react-redux'
-import { setArticleAction } from './store/actionCreatore'
+import { setArticleAction, setIsMoreAction } from './store/actionCreatore'
 import { RootStateType } from '@/store/types'
 
 // components
@@ -22,7 +22,6 @@ import { HomeStyled } from './styled'
 let currentPage = 1
 function Home() {
   const [articleList, setArticleList] = useState<ArticleType[]>([])
-  const [isMore, setIsMore] = useState(true)
 
   const dispatch = useDispatch()
 
@@ -30,14 +29,19 @@ function Home() {
   const articles = useSelector<RootStateType, ArticleType[]>(
     (state) => state.homeStore.articleList
   )
+  const isMore = useSelector<RootStateType, boolean>(
+    (state) => state.homeStore.isMore
+  )
 
   const getArticles = async () => {
+    if (!isMore) return
     getArticleList({ limit: 5, page: currentPage }).then((res) => {
       const { page, articles } = res.data
 
       currentPage = page
-      setIsMore(!!articles.length)
-      if (!articles.length) return
+      if (!articles.length) {
+        return dispatch(setIsMoreAction(false))
+      }
       dispatch(setArticleAction(articleList.concat(articles)))
       setArticleList(articleList.concat(articles))
     })
