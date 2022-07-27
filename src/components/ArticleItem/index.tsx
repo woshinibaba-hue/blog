@@ -29,7 +29,7 @@ function ArticleItem({ article }: { article: ArticleType }) {
             <CommentOutlined /> {article.comment_count}
           </Tag>
           <Tag color="red">
-            <LikeOutlined /> 9999+
+            <LikeOutlined /> {article.like_user.length}
           </Tag>
         </Space>
         {article.tags?.length && (

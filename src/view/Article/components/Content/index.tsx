@@ -1,52 +1,79 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 
-import { Badge, Divider, Tag, Tooltip } from 'antd'
+import { useDispatch } from 'react-redux'
+import { setArticleDetailAction } from '@/view/Home/store/actionCreatore'
+
+import classNames from 'classnames'
+
+import { Badge, Divider, Tag, message } from 'antd'
 import { LikeFilled, MessageFilled, LeftCircleFilled } from '@ant-design/icons'
 
 import format from '@/utils/format'
 
 import ParseMd from '@/components/ParseMd'
 
+import { likeArticle, getArticleDetail } from '@/api/article'
 import { ArticleType } from '@/api/article/type'
 
 import { ContentStyle } from './style'
 
-function Content({
-  articleDetail,
-  count
-}: {
-  articleDetail: ArticleType | null
-  count: number
-}) {
+function Content({ count, userId }: { count: number; userId: number }) {
+  const { id } = useParams()
   const currentLocation = window.location
 
   const navigator = useNavigate()
+  const dispatch = useDispatch()
+
+  const [articleDetail, setArticleDetail] = useState<ArticleType>()
+
+  const findDetail = () => {
+    getArticleDetail(id!).then((res) => {
+      dispatch(setArticleDetailAction(res.data.articles[0]))
+      setArticleDetail(res.data.articles[0])
+    })
+  }
+
+  const like = async () => {
+    const res = await likeArticle(articleDetail!.id)
+    message.success(res.message)
+    findDetail()
+  }
+
+  useEffect(() => {
+    findDetail()
+  }, [])
 
   const optionsEl = () => (
     <>
-      <Tooltip overlay="赞一下~">
+      <div onClick={() => like()}>
         <Badge
-          count={articleDetail?.like_count ?? 0}
+          count={articleDetail?.like_user.length ?? 0}
           color="#c2c8d1"
           showZero
           offset={[-8, 8]}
+          overflowCount={99}
+          className={classNames({
+            active: articleDetail?.like_user.includes(userId)
+          })}
         >
           <LikeFilled />
         </Badge>
-      </Tooltip>
+      </div>
       <a href="#comment">
-        <Tooltip overlay="评论一下~">
-          <Badge count={count} color="#c2c8d1" showZero offset={[-8, 8]}>
-            <MessageFilled />
-          </Badge>
-        </Tooltip>
-      </a>
-      <Tooltip overlay="返回上一级">
-        <Badge>
-          <LeftCircleFilled onClick={() => navigator(-1)} />
+        <Badge
+          count={count}
+          color="#c2c8d1"
+          showZero
+          offset={[-8, 8]}
+          overflowCount={99}
+        >
+          <MessageFilled />
         </Badge>
-      </Tooltip>
+      </a>
+      <Badge title="返回上一级">
+        <LeftCircleFilled onClick={() => navigator(-1)} />
+      </Badge>
     </>
   )
 

@@ -1,36 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useState } from 'react'
 
-import { useDispatch, useSelector } from 'react-redux'
-import { setArticleDetailAction } from '../Home/store/actionCreatore'
+import { useSelector } from 'react-redux'
 import { RootStateType } from '@/store/types'
-
-import { getArticleDetail } from '@/api/article'
-import { ArticleType } from '@/api/article/type'
 
 import Content from './components/Content'
 import Comment from './components/Comment'
 
 const Article = () => {
-  const { id } = useParams()
-
   const [commentCount, setCommentCount] = useState(0)
 
-  const dispatch = useDispatch()
-
-  const articleDetail = useSelector<RootStateType, ArticleType | null>(
-    (state) => state.homeStore.articleDetail
+  const userId = useSelector<RootStateType, number>(
+    (state) => state.layoutStore.user?.id ?? -1
   )
-
-  useEffect(() => {
-    getArticleDetail(id!).then((res) => {
-      dispatch(setArticleDetailAction(res.data.articles[0]))
-    })
-  }, [])
 
   return (
     <>
-      <Content articleDetail={articleDetail} count={commentCount} />
+      <Content count={commentCount} userId={userId} />
       <Comment setCommentCount={setCommentCount} />
     </>
   )

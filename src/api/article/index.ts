@@ -59,3 +59,10 @@ export const replyArticleComment = (
     }
   })
 }
+
+// 点赞、取消点赞 文章
+export const likeArticle = (id: number) => {
+  return request.get({
+    url: `/article/${id}/like`
+  })
+}

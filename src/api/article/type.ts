@@ -27,6 +27,7 @@ export type ArticleType = {
   id: number
   title: string
   content: string
+  like_user: number[]
   comment_count: number
   like_count: number
   cover?: string
