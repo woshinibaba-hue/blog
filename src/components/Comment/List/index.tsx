@@ -1,5 +1,7 @@
 import React, { memo } from 'react'
 
+import classNames from 'classnames'
+
 import { List, Divider, Empty } from 'antd'
 
 import CommentItem from '../Item'
@@ -11,13 +13,14 @@ import { CommentListProps } from './types'
 const CommentList: React.FC<CommentListProps> = ({
   comments,
   titleText,
-  pageSize = 5,
-  isPagination = true,
+  pageSize = 10,
   handlerLike,
+  isPagination = true,
   // handlerMessage,
   reply,
   isLogin,
-  count
+  count,
+  onChange
 }) => {
   return (
     <ListStyled>
@@ -29,18 +32,13 @@ const CommentList: React.FC<CommentListProps> = ({
       <List
         itemLayout="vertical"
         size="large"
-        pagination={{
-          pageSize,
-          hideOnSinglePage: isPagination,
-          total: comments.length
-        }}
+        className={classNames({ 'is-pagination': isPagination })}
         locale={{ emptyText: <Empty description={`暂无${titleText}~ 😢😢`} /> }}
         dataSource={comments}
         renderItem={(item) => (
           <CommentItem
             comment={item}
             handlerLike={handlerLike}
-            // handlerMessage={handlerMessage}
             mainText={titleText ?? '未知'}
             reply={reply}
             isLogin={isLogin}
@@ -53,7 +51,6 @@ const CommentList: React.FC<CommentListProps> = ({
                     comment={child}
                     mainText={titleText ?? '未知'}
                     handlerLike={handlerLike}
-                    // handlerMessage={handlerMessage}
                     reply={reply}
                     isLogin={isLogin}
                   />

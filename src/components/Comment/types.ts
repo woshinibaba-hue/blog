@@ -15,4 +15,5 @@ export interface CommentProps extends EditorProps {
   isLogin: boolean
   describe?: string
   count?: number
+  onPageChange: (page: number, pageSize: number) => void
 }

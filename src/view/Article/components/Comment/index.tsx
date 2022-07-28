@@ -60,6 +60,11 @@ function Comment({
     gitComment()
   }
 
+  // 当页码发生改变时
+  const onPageChange = (page: number) => {
+    console.log(page)
+  }
+
   const gitComment = () => {
     request.getArticleComment(id!).then((res) => {
       setCommentList(res.data)
@@ -86,6 +91,7 @@ function Comment({
         describe="欢迎各位大佬们前来吐槽 😁😁"
         isLogin={isLogin}
         onChange={onChange}
+        onPageChange={onPageChange}
         onSubmit={onSubmit}
         value={msg}
         mainText="评论"

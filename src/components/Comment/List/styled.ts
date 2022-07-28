@@ -8,4 +8,10 @@ export const ListStyled = styled.div`
   .ant-list-empty-text {
     color: rgba(0, 0, 0, 0.75);
   }
+
+  .is-pagination {
+    .ant-list-pagination {
+      display: none;
+    }
+  }
 `
