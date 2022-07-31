@@ -21,9 +21,8 @@ export const LinkStyled = styled.div`
     margin-top: 15px;
 
     .item {
-      cursor: pointer;
-
       display: flex;
+      align-items: center;
       height: 80px;
       border-radius: var(--borderRadius);
       padding: 10px;
@@ -35,11 +34,15 @@ export const LinkStyled = styled.div`
       }
 
       .cover {
-        width: 100px;
+        width: 40%;
+        height: 85%;
         flex-shrink: 0;
+        margin-right: 8px;
 
         img {
           width: 100%;
+          height: 100%;
+          object-fit: contain;
         }
       }
 
@@ -48,15 +51,17 @@ export const LinkStyled = styled.div`
         justify-content: space-around;
         flex-direction: column;
 
-        width: calc(100% - 100px - 10px);
+        width: 60%;
         font-size: 12px;
 
         .name {
           font-size: 14px;
-
           padding-bottom: 5px;
-
           border-bottom: 2px dashed #f2f2f2;
+        }
+
+        .synopsis {
+          padding-top: 5px;
         }
       }
     }
@@ -92,7 +97,6 @@ export const LinkStyled = styled.div`
     }
 
     .fillLike {
-      /* width: 450px; */
       width: 90%;
       margin: 0 auto;
     }

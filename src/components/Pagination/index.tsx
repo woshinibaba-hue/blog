@@ -18,6 +18,7 @@ function Paging({ total = 10, pageSize = 10, onChange }: Props) {
       style={{ textAlign: 'center' }}
       defaultPageSize={pageSize}
       onChange={onChange}
+      hideOnSinglePage={true}
     />
   )
 }

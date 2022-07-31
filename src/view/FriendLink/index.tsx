@@ -1,10 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 
-import { Form, Input, Button } from 'antd'
+import { Form, Input, Button, message, FormInstance } from 'antd'
+
+import { getFriendLinkList, applyFriendLink } from '@/api/friendLink'
+import { FriendLinkType } from '@/api/friendLink/type'
 
 import { LinkStyled } from './style'
 
 function FriendLink() {
+  const [friendLink, setFriendLink] = useState<FriendLinkType[]>([])
+
+  const formRef = useRef<FormInstance>(null)
+
+  useEffect(() => {
+    getFriendLinkList().then((res) => {
+      setFriendLink(res.data.data)
+    })
+  }, [])
+
+  const onFinish = (values: any) => {
+    applyFriendLink(values).then((res) => {
+      message.success(res.message)
+      formRef.current?.resetFields()
+    })
+  }
   return (
     <LinkStyled className="layout-friendLink">
       <div className="applyLike">
@@ -18,31 +37,31 @@ function FriendLink() {
           <p>友链地址: http://xxxx.cn</p>
         </div>
         <div className="fillLike">
-          <Form>
+          <Form onFinish={onFinish} ref={formRef}>
             <Form.Item
               label="友链名称"
-              name="likeName"
+              name="name"
               rules={[{ required: true, message: '友链名称不能为空' }]}
             >
               <Input />
             </Form.Item>
             <Form.Item
               label="友链介绍"
-              name="likeReferral"
+              name="referral"
               rules={[{ required: true, message: '友链介绍不能为空' }]}
             >
               <Input />
             </Form.Item>
             <Form.Item
               label="友链封面"
-              name="likeCover"
+              name="cover"
               rules={[{ required: true, message: '友链封面不能为空' }]}
             >
               <Input />
             </Form.Item>
             <Form.Item
               label="友链地址"
-              name="like"
+              name="link"
               rules={[{ required: true, message: '友链地址不能为空' }]}
             >
               <Input />
@@ -58,132 +77,17 @@ function FriendLink() {
 
       <div className="title">友链</div>
       <div className="friend-box">
-        <div className="item">
-          <div className="cover">
-            <img src="http://localhost:8888/upload/1657255015650-logo.gif" />
-          </div>
-          <div className="info">
-            <div className="name ellipsis-1">
-              我是名称我是名称我是名称我是名称我是名称我是名称 我是名称 我是名称
-              我是名称
+        {friendLink.map((item) => (
+          <a href={item.link} target="_block" className="item" key={item.id}>
+            <div className="cover">
+              <img src={item.cover} />
             </div>
-            <div className="synopsis ellipsis-1">
-              我是介绍我是介绍我是介绍我是介绍我是介绍 我是介绍 我是介绍
+            <div className="info">
+              <div className="name ellipsis-1">{item.name}</div>
+              <div className="synopsis ellipsis-1">{item.referral}</div>
             </div>
-          </div>
-        </div>
-        <div className="item">
-          <div className="cover">
-            <img src="http://localhost:8888/upload/1657255015650-logo.gif" />
-          </div>
-          <div className="info">
-            <div className="name ellipsis-1">
-              我是名称我是名称我是名称我是名称我是名称我是名称 我是名称 我是名称
-              我是名称
-            </div>
-            <div className="synopsis ellipsis-1">
-              我是介绍我是介绍我是介绍我是介绍我是介绍 我是介绍 我是介绍
-            </div>
-          </div>
-        </div>
-        <div className="item">
-          <div className="cover">
-            <img src="http://localhost:8888/upload/1657255015650-logo.gif" />
-          </div>
-          <div className="info">
-            <div className="name ellipsis-1">
-              我是名称我是名称我是名称我是名称我是名称我是名称 我是名称 我是名称
-              我是名称
-            </div>
-            <div className="synopsis ellipsis-1">
-              我是介绍我是介绍我是介绍我是介绍我是介绍 我是介绍 我是介绍
-            </div>
-          </div>
-        </div>
-        <div className="item">
-          <div className="cover">
-            <img src="http://localhost:8888/upload/1657255015650-logo.gif" />
-          </div>
-          <div className="info">
-            <div className="name ellipsis-1">
-              我是名称我是名称我是名称我是名称我是名称我是名称 我是名称 我是名称
-              我是名称
-            </div>
-            <div className="synopsis ellipsis-1">
-              我是介绍我是介绍我是介绍我是介绍我是介绍 我是介绍 我是介绍
-            </div>
-          </div>
-        </div>
-        <div className="item">
-          <div className="cover">
-            <img src="http://localhost:8888/upload/1657255015650-logo.gif" />
-          </div>
-          <div className="info">
-            <div className="name ellipsis-1">
-              我是名称我是名称我是名称我是名称我是名称我是名称 我是名称 我是名称
-              我是名称
-            </div>
-            <div className="synopsis ellipsis-1">
-              我是介绍我是介绍我是介绍我是介绍我是介绍 我是介绍 我是介绍
-            </div>
-          </div>
-        </div>
-        <div className="item">
-          <div className="cover">
-            <img src="http://localhost:8888/upload/1657255015650-logo.gif" />
-          </div>
-          <div className="info">
-            <div className="name ellipsis-1">
-              我是名称我是名称我是名称我是名称我是名称我是名称 我是名称 我是名称
-              我是名称
-            </div>
-            <div className="synopsis ellipsis-1">
-              我是介绍我是介绍我是介绍我是介绍我是介绍 我是介绍 我是介绍
-            </div>
-          </div>
-        </div>
-        <div className="item">
-          <div className="cover">
-            <img src="http://localhost:8888/upload/1657255015650-logo.gif" />
-          </div>
-          <div className="info">
-            <div className="name ellipsis-1">
-              我是名称我是名称我是名称我是名称我是名称我是名称 我是名称 我是名称
-              我是名称
-            </div>
-            <div className="synopsis ellipsis-1">
-              我是介绍我是介绍我是介绍我是介绍我是介绍 我是介绍 我是介绍
-            </div>
-          </div>
-        </div>
-        <div className="item">
-          <div className="cover">
-            <img src="http://localhost:8888/upload/1657255015650-logo.gif" />
-          </div>
-          <div className="info">
-            <div className="name ellipsis-1">
-              我是名称我是名称我是名称我是名称我是名称我是名称 我是名称 我是名称
-              我是名称
-            </div>
-            <div className="synopsis ellipsis-1">
-              我是介绍我是介绍我是介绍我是介绍我是介绍 我是介绍 我是介绍
-            </div>
-          </div>
-        </div>
-        <div className="item">
-          <div className="cover">
-            <img src="http://localhost:8888/upload/1657255015650-logo.gif" />
-          </div>
-          <div className="info">
-            <div className="name ellipsis-1">
-              我是名称我是名称我是名称我是名称我是名称我是名称 我是名称 我是名称
-              我是名称
-            </div>
-            <div className="synopsis ellipsis-1">
-              我是介绍我是介绍我是介绍我是介绍我是介绍 我是介绍 我是介绍
-            </div>
-          </div>
-        </div>
+          </a>
+        ))}
       </div>
     </LinkStyled>
   )
