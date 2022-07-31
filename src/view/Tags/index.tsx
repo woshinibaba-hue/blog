@@ -4,6 +4,8 @@ import classNames from 'classnames'
 
 import ArticleItem from '@/components/ArticleItem'
 
+import { getArticleList } from '@/api/article'
+import { ArticleListType } from '@/api/article/type'
 import { getTags } from '@/api/tag'
 import { TagType } from '@/api/tag/type'
 
@@ -15,6 +17,8 @@ import { TagStyled } from './styled'
 function Tags() {
   const [tags, setTags] = useState<TagType[]>([])
   const [currentTag, setCurrentTag] = useState<TagType>()
+  const [articleList, setArticleList] = useState<ArticleListType>()
+  const [pagination, setPagination] = useState({ limit: 10, page: 1 })
 
   useEffect(() => {
     getTags().then((res) => {
@@ -23,9 +27,20 @@ function Tags() {
     })
   }, [])
 
+  const findArticles = () => {
+    getArticleList({ tag_id: currentTag?.id, ...pagination }).then((res) => {
+      setArticleList(res.data)
+    })
+  }
+
   useEffect(() => {
-    console.log(currentTag?.id)
-  }, [currentTag])
+    if (!currentTag) return
+    findArticles()
+  }, [currentTag?.id])
+
+  useEffect(() => {
+    findArticles()
+  }, [pagination])
 
   const showTags = () =>
     tags.length ? (
@@ -66,14 +81,20 @@ function Tags() {
           {<span style={{ color: currentTag?.color }}>{currentTag?.name}</span>}
           <div className="sub-title">
             当前分类共：
-            <span style={{ color: currentTag?.color }}>99</span> 篇文章
+            <span style={{ color: currentTag?.color }}>
+              {articleList?.tagTotal}
+            </span>{' '}
+            篇文章
           </div>
         </div>
-        {/* {new Array(20).fill(0).map((_, index) => (
-          <ArticleItem index={index + 1} key={index} />
-        ))} */}
+        {articleList?.articles.map((item) => (
+          <ArticleItem article={item} key={item.id} />
+        ))}
       </div>
-      <Pagination />
+      <Pagination
+        total={articleList?.tagTotal}
+        onChange={(page, pageSize) => setPagination({ limit: pageSize, page })}
+      />
     </TagStyled>
   )
 }

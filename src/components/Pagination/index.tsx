@@ -8,7 +8,7 @@ type Props = {
   onChange?: (page: number, pageSize: number) => void
 }
 
-function Paging({ total = 20, pageSize = 10, onChange }: Props) {
+function Paging({ total = 10, pageSize = 10, onChange }: Props) {
   return (
     <Pagination
       simple

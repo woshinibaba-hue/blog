@@ -64,6 +64,7 @@ function Home() {
       <InfiniteScroll
         dataLength={articleList.length}
         next={getArticles}
+        key={1}
         hasMore={isMore}
         loader={loading()}
         endMessage={

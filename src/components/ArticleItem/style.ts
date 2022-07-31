@@ -10,7 +10,7 @@ export const ArticleItemStyle = styled.div`
     margin-right: 0 !important;
   }
 
-  .title {
+  .articleItem-title {
     cursor: pointer;
     font-size: 25px;
     color: var(--hover-color);
@@ -19,7 +19,7 @@ export const ArticleItemStyle = styled.div`
   .meta {
     width: 100%;
 
-    .tags {
+    .articleItem_tags {
       .icon {
         margin: 0 10px 0 5px;
       }

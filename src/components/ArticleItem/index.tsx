@@ -18,7 +18,7 @@ function ArticleItem({ article }: { article: ArticleType }) {
       className="articleItem"
       onClick={() => navigate(`/article/${article.id}`)}
     >
-      <h3 className="title ellipsis-1">{article.title}</h3>
+      <h3 className="articleItem-title ellipsis-1">{article.title}</h3>
       <Space split={<Divider type="vertical" />} className="meta ellipsis-1">
         <Space>
           <Tag color="geekblue">{article.user.username}</Tag>
@@ -33,10 +33,10 @@ function ArticleItem({ article }: { article: ArticleType }) {
           </Tag>
         </Space>
         {article.tags?.length && (
-          <Space className="tags">
+          <Space className="articleItem_tags">
             <TagsOutlined className="icon" />
             {article.tags?.map((tag) => (
-              <Tag key={tag.id} color={tag.color} className="tag">
+              <Tag key={tag.name} color={tag.color} className="tag">
                 {tag.name}
               </Tag>
             ))}

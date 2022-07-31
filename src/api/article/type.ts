@@ -21,6 +21,7 @@ export type ArticleParamsType = {
   key?: string
   limit?: number
   page?: number
+  tag_id?: number
 }
 
 export type ArticleType = {
@@ -51,4 +52,5 @@ export type ArticleListType = {
   articles: ArticleType[]
   page: number
   total: number
+  tagTotal: number
 }
