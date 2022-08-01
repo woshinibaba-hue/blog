@@ -86,13 +86,14 @@ function Content({ count, userId }: { count: number; userId: number }) {
             <img src={articleDetail?.user.avatar} />
           </div>
           <div className="right">
-            <div className="name">{articleDetail?.user.username}</div>
+            <div className="name">文章作者：{articleDetail?.user.username}</div>
             <div>
+              文章发表于：
               {format.formatTime(
                 articleDetail?.createtime,
                 'YYYY-MM-DD HH:mm:ss'
               )}{' '}
-              · 阅读 9999
+              {/* · 阅读 9999 */}
             </div>
           </div>
         </div>

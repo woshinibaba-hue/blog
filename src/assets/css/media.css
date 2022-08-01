@@ -4,29 +4,7 @@
   }
 }
 
-@media screen and (max-width: 1300px) {
-  .layout-main .content .layout-tags .tags {
-    grid-template-columns: repeat(auto-fill, 70px);
-    grid-template-rows: repeat(auto-fill, 70px);
-  }
-
-  .layout-main .content .layout-tags .tags .item img {
-    width: 40px;
-    height: 40px;
-  }
-}
-
 @media screen and (max-width: 1210px) {
-  .layout-main .content .layout-tags .tags {
-    grid-template-columns: repeat(auto-fill, 60px);
-    grid-template-rows: repeat(auto-fill, 60px);
-  }
-
-  .layout-main .content .layout-tags .tags .item img {
-    width: 30px;
-    height: 30px;
-  }
-
   .layout-header .container {
     padding: 0 25px;
   }
@@ -75,16 +53,6 @@
     display: block !important;
   }
 
-  .layout-main .content .layout-tags .tags {
-    grid-template-columns: repeat(auto-fill, 80px);
-    grid-template-rows: repeat(auto-fill, 80px);
-  }
-
-  .layout-main .content .layout-tags .tags .item img {
-    width: 45px;
-    height: 45px;
-  }
-
   .markdown-navigation .active {
     font-size: 18px !important;
   }
@@ -129,10 +97,6 @@
     padding: 20px !important;
   }
 
-  .layout-main .content .layout-tags {
-    padding: 10px;
-  }
-
   .layout-main .content .layout-friendLink .friend-box {
     grid-template-columns: repeat(auto-fill, 100%);
   }
@@ -153,11 +117,6 @@
 @media screen and (max-width: 576px) {
   .layout-main .content .layout-tags .tags {
     display: unset;
-  }
-
-  .layout-main .content .layout-tags .tags .item {
-    display: inline-block;
-    padding: 3px 10px;
   }
   .layout-main .content .layout-tags .tags .item img {
     display: none;

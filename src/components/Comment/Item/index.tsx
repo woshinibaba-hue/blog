@@ -5,8 +5,8 @@ import { Space, Divider, message as Message } from 'antd'
 import classNames from 'classnames'
 
 import {
-  LikeFilled,
-  LikeOutlined,
+  // LikeFilled,
+  // LikeOutlined,
   MessageFilled,
   MessageOutlined
   // DeleteOutlined
@@ -21,14 +21,14 @@ import { ICommentItemProps } from './types'
 
 const CommitItem: React.FC<ICommentItemProps> = ({
   comment,
-  handlerLike,
+  // handlerLike,
   // handlerMessage,
   reply,
   // mainText,
   children,
   isLogin
 }) => {
-  const [like, setLike] = useState(true)
+  // const [like, setLike] = useState(true)
   const [isReplyMessage, setIsReplyMessage] = useState(false)
   const [message, setMessage] = useState('')
 
@@ -40,13 +40,13 @@ const CommitItem: React.FC<ICommentItemProps> = ({
     // }
   }
 
-  const likeClick = () => {
-    if (handlerLike) {
-      if (!isLogin) return Message.warn('登录后才能进行点赞~')
-      handlerLike(comment.id)
-      setLike(!like)
-    }
-  }
+  // const likeClick = () => {
+  //   if (handlerLike) {
+  //     if (!isLogin) return Message.warn('登录后才能进行点赞~')
+  //     handlerLike(comment.id)
+  //     setLike(!like)
+  //   }
+  // }
 
   const handlerSubmit = () => {
     if (reply) {
@@ -82,13 +82,13 @@ const CommitItem: React.FC<ICommentItemProps> = ({
         )}
         <div className="handler">
           <Space split={<Divider type="vertical" />}>
-            <Space
+            {/* <Space
               className={classNames([{ active: like }])}
               onClick={likeClick}
             >
               {like ? <LikeFilled /> : <LikeOutlined />}
               <span className="count">66</span>
-            </Space>
+            </Space> */}
             <Space
               onClick={messageClikc}
               className={classNames([{ active: isReplyMessage }])}

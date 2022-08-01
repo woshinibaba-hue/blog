@@ -13,28 +13,14 @@ export const TagStyled = styled.div`
   }
 
   .tags {
-    display: grid;
-
-    grid-template-columns: repeat(auto-fill, 80px);
-    grid-template-rows: repeat(auto-fill, 80px);
-    grid-gap: 15px 15px;
-    justify-content: center;
-
-    height: 300px;
+    max-height: 300px;
     overflow-y: auto;
 
     .item {
-      box-sizing: content-box;
+      display: inline-block;
+      padding: 3px 10px;
       cursor: pointer;
-      text-align: center;
       border-radius: 5px;
-
-      img {
-        width: 50px;
-        height: 50px;
-        object-fit: contain;
-        margin: 5px 0;
-      }
 
       &.active {
         color: #666;

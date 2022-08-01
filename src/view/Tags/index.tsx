@@ -48,16 +48,13 @@ function Tags() {
         {tags.map((item) => (
           <div
             className={classNames([
-              'item',
+              'item ellipsis-1',
               { active: currentTag?.id === item.id }
             ])}
             key={item.id}
             onClick={() => setCurrentTag(item)}
           >
-            <img src={item.cover} alt={item.name} />
-            <p className="name ellipsis-1" style={{ color: item.color }}>
-              {item.name}
-            </p>
+            <span style={{ color: item.color }}>{item.name}</span>
           </div>
         ))}
       </div>

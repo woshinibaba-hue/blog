@@ -154,8 +154,8 @@ export const ContentStyle = styled.div`
       margin: 8px 0;
     }
 
-    &:hover {
+    /* &:hover {
       transform: translateY(-3px);
-    }
+    } */
   }
 `
