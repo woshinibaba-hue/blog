@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
 
-import { Form, Input, Button, Upload, message } from 'antd'
-import type { RcFile } from 'antd/es/upload/interface'
+// Upload, message
+import { Form, Input, Button, message } from 'antd'
+// import type { RcFile } from 'antd/es/upload/interface'
 
 import {
   UserOutlined,
   LockOutlined,
   MobileOutlined,
-  LoadingOutlined,
-  PlusOutlined,
+  // LoadingOutlined,
+  // PlusOutlined,
   KeyOutlined,
   createFromIconfontCN
 } from '@ant-design/icons'
@@ -23,18 +24,18 @@ const IconFont = createFromIconfontCN({
 })
 
 function Register() {
-  const url = process.env.REACT_APP_BASE_URL
-  const baseUrl = url === 'api' ? 'http://localhost:8888/api' : url
-  const [loading, setLoading] = useState(false)
-  const [imageUrl, setImageUrl] = useState<string>()
+  // const url = process.env.REACT_APP_BASE_URL
+  // const baseUrl = url === 'api' ? 'http://localhost:8888/api' : url
+  // const [loading, setLoading] = useState(false)
+  // const [imageUrl, setImageUrl] = useState<string>()
   const [code, setCode] = useState<string>('')
 
-  const uploadButton = (
-    <div>
-      {loading ? <LoadingOutlined /> : <PlusOutlined />}
-      <div style={{ marginTop: 8 }}>上传头像</div>
-    </div>
-  )
+  // const uploadButton = (
+  //   <div>
+  //     {loading ? <LoadingOutlined /> : <PlusOutlined />}
+  //     <div style={{ marginTop: 8 }}>上传头像</div>
+  //   </div>
+  // )
 
   // 获取验证码
   async function getCode() {
@@ -55,28 +56,34 @@ function Register() {
   })
 
   // 上传头像前触发的钩子
-  const beforeUpload = (file: RcFile) => {
-    // 验证文件类型
-    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png'
-    if (!isJpgOrPng) {
-      message.error('文件类型错误!')
-    }
-    // 验证文件大小
-    const isLt2M = file.size / 1024 / 1024 < 2
-    if (!isLt2M) {
-      message.error('图片大小不能大于2m!')
-    }
-    return isJpgOrPng && isLt2M
-  }
+  // const beforeUpload = (file: RcFile) => {
+  //   // 验证文件类型
+  //   const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png'
+  //   if (!isJpgOrPng) {
+  //     message.error('文件类型错误!')
+  //   }
+  //   // 验证文件大小
+  //   const isLt2M = file.size / 1024 / 1024 < 2
+  //   if (!isLt2M) {
+  //     message.error('图片大小不能大于2m!')
+  //   }
+  //   return isJpgOrPng && isLt2M
+  // }
 
   useEffect(() => {
     getCode()
   }, [])
 
+  const register = async (value: any) => {
+    const res = await loginReq.register(value)
+    message.success(res.message)
+  }
+
   return (
     <Form
       name="normal_login"
       className="login-form"
+      onFinish={register}
       initialValues={{ remember: true }}
     >
       <Form.Item
@@ -159,12 +166,13 @@ function Register() {
       >
         <Input prefix={<KeyOutlined />} placeholder="验证码" key={1} />
       </Form.Item>
-      <Upload
+      {/* <Upload
         name="image"
         listType="picture-card"
         className="avatar-uploader"
         showUploadList={false}
         beforeUpload={beforeUpload}
+        onChange={onChange}
         action={`${baseUrl}/upload/img`}
       >
         {imageUrl ? (
@@ -181,7 +189,7 @@ function Register() {
         ) : (
           uploadButton
         )}
-      </Upload>
+      </Upload> */}
       <Form.Item>
         <Button type="primary" htmlType="submit" className="login-form-button">
           注册

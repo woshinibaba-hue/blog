@@ -26,3 +26,11 @@ export const login = (data: LoginBase) => {
     data
   })
 }
+
+// 注册用户
+export const register = (data: any) => {
+  return request.post<ILoginRes>({
+    url: '/user',
+    data
+  })
+}
