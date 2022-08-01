@@ -3,10 +3,10 @@ import { NavLink, useLocation } from 'react-router-dom'
 
 import {
   SettingOutlined,
-  LineChartOutlined,
+  // LineChartOutlined,
   // SendOutlined,
-  TagsOutlined,
-  RocketOutlined
+  TagsOutlined
+  // RocketOutlined
 } from '@ant-design/icons'
 import { Collapse, Switch, Tag } from 'antd'
 
@@ -83,7 +83,7 @@ function Nav() {
               <p>您的浏览器: {visitorinfo?.browser}</p>
             </Collapse.Panel>
           </Collapse> */}
-          <Collapse className="social" expandIconPosition="end">
+          {/* <Collapse className="social" expandIconPosition="end">
             <Collapse.Panel
               header={
                 <span>
@@ -92,8 +92,8 @@ function Nav() {
               }
               key="1"
             ></Collapse.Panel>
-          </Collapse>
-          <Collapse className="social" expandIconPosition="end">
+          </Collapse> */}
+          {/* <Collapse className="social" expandIconPosition="end">
             <Collapse.Panel
               header={
                 <span>
@@ -102,7 +102,7 @@ function Nav() {
               }
               key="1"
             ></Collapse.Panel>
-          </Collapse>
+          </Collapse> */}
           {location.pathname === '/tags' ? (
             ''
           ) : (

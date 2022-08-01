@@ -36,5 +36,11 @@ export const BaseNavStyle = styled.div`
         margin: 0;
       }
     }
+
+    .relation {
+      display: flex;
+      justify-content: space-evenly;
+      font-size: 30px;
+    }
   }
 `

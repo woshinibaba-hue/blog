@@ -1,20 +1,4 @@
 .markdown-body {
-  --strong-color: #2196f3;
-  --title-color: #005bb7;
-  --blockquote-color: #8c8c8c;
-  --blockquote-left-color: #2196f3;
-  --blockquote-bg-color: #f0fdff;
-  --content-color: #353535;
-  --table-thead-bg: #dff0ff;
-  --table-tbody-bg: #f7fbff;
-  --table-border-color: #c3e0fd;
-  --table-tr-hover: #e0edf7;
-  --a-link-color: #007fff;
-  --code-bg: #fff5f5;
-  --code-color: #ff502c;
-}
-
-.markdown-body {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   margin: 0;

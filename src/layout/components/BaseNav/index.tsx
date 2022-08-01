@@ -1,13 +1,18 @@
 import React, { useRef } from 'react'
 
-import { Avatar } from 'antd'
-import { EnvironmentOutlined } from '@ant-design/icons'
+import { Avatar, Divider } from 'antd'
+import {
+  EnvironmentOutlined,
+  QqOutlined,
+  WechatOutlined
+} from '@ant-design/icons'
 
 import { useText } from '@/hooks'
 
 import { BaseNavStyle } from './style'
 
 import avatar from '@/assets/img/avatar.jpg'
+import wx from '@/assets/img/wx.png'
 
 function BaseNav() {
   const elRef = useRef<HTMLSpanElement>(null)
@@ -77,6 +82,20 @@ function BaseNav() {
           </p>
           <p>邮箱: 2011358693@qq.com</p>
           <span className="introduce" ref={elRef}></span>
+
+          <Divider style={{ color: 'var(--hover-color)' }}>社交账号</Divider>
+          <p className="relation">
+            <a
+              target="_blank"
+              href="http://wpa.qq.com/msgrd?v=3&uin=2011358693&site=qq&menu=yes"
+              rel="noreferrer"
+            >
+              <QqOutlined />
+            </a>
+            <a href={wx} target="_blank" rel="noreferrer">
+              <WechatOutlined />
+            </a>
+          </p>
         </div>
       </div>
     </BaseNavStyle>

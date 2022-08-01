@@ -24,7 +24,7 @@ function Sidebar() {
 
   const { isShowSidebar, user } = useUser()
 
-  const tip = useTip()
+  const { tip } = useTip()
 
   const [isArticle, steIsArticle] = useState(false)
   useEffect(() => {

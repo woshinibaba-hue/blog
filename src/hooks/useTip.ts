@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react'
 
+import format from '@/utils/format'
+
 export function useTip() {
   // 提示信息
   const [tip, setTip] = useState('')
+  const [date, setDate] = useState(
+    format.formatTime(new Date(), 'YYYY-MM-DD HH:mm:ss')
+  )
+
   useEffect(() => {
     const h = new Date().getHours()
     if (h >= 0 && h < 7) setTip('夜猫子，要注意身体哟！ 😘😘')
@@ -11,7 +17,17 @@ export function useTip() {
     if (h >= 14 && h < 18) setTip('祝您下午工作愉快！ 😘😘')
     if (h >= 18 && h <= 22) setTip('您又来了，可别和MM聊太久哟！😘😘')
     if (h >= 22 && h < 24) setTip('您应该休息辣！😘😘')
-  }, [new Date().getHours()])
 
-  return tip
+    let timer: number
+    timer = window.setInterval(() => {
+      setDate(format.formatTime(new Date(), 'YYYY-MM-DD HH:mm:ss'))
+    }, 1000)
+
+    // 卸载时清除定时器
+    return () => {
+      window.clearInterval(timer)
+    }
+  }, [])
+
+  return { tip, date }
 }

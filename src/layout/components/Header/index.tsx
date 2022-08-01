@@ -56,7 +56,7 @@ const navName = [
     path: '/msg'
   },
   {
-    name: '关于我',
+    name: '关于',
     path: '/about'
   }
 ]
@@ -101,7 +101,7 @@ function Header() {
   const dispatch = useDispatch()
 
   // 提示信息
-  const tip = useTip()
+  const { tip } = useTip()
 
   return (
     <HeaderWrap isAffix={isAffix} className="layout-header">
