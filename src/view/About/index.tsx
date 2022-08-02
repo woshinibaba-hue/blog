@@ -8,8 +8,8 @@ import wx from '@/assets/img/wx.png'
 
 import { AboutContainer } from './styled'
 
-import bg from '@/assets/img/aboutbg.jpg'
-import avatar from '@/assets/img/avatar.jpg'
+import bg from '@/assets/img/aboutbg.webp'
+import avatar from '@/assets/img/avatar.webp'
 
 function About() {
   const { tip, date } = useTip()

@@ -11,7 +11,7 @@ import { useText } from '@/hooks'
 
 import { BaseNavStyle } from './style'
 
-import avatar from '@/assets/img/avatar.jpg'
+import avatar from '@/assets/img/avatar.webp'
 import wx from '@/assets/img/wx.png'
 
 function BaseNav() {
