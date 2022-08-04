@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-import msgBg from '@/assets/img/msgBg.jpg'
-
 export const LeaveMessageStyle = styled.div`
   overflow-x: hidden;
   border-radius: var(--borderRadius);
@@ -20,7 +18,8 @@ export const LeaveMessageStyle = styled.div`
     color: #fff;
     border-radius: 6px;
     overflow: hidden;
-    background: url(${msgBg}) no-repeat center bottom;
+    background: url(http://rfz86pha6.hn-bkt.clouddn.com/FsI_5yXsHOYwA-WlYD73F1T9pGe5)
+      no-repeat center bottom;
     background-size: cover;
 
     &::after {

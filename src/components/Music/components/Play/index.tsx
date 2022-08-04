@@ -21,8 +21,6 @@ import { getMusicList, searchSong } from '@/api/music'
 import { PropsType } from './types'
 import { SongItmeType } from '@/api/music/type'
 
-import wave from '@/assets/img/wave.gif'
-
 function Play({
   isOpen,
   setIsOpen,
@@ -51,7 +49,11 @@ function Play({
       render: (_, { key }, index) => (
         <>
           {isPlay && key == songId ? (
-            <img className="mave" src={wave} alt="" />
+            <img
+              className="mave"
+              src="http://rfz86pha6.hn-bkt.clouddn.com/wave.gif"
+              alt=""
+            />
           ) : (
             <span>{index + 1}</span>
           )}

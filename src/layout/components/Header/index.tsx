@@ -31,8 +31,6 @@ import { useUser } from '../../hooks'
 
 import { HeaderWrap } from './style'
 
-import logo from '@/assets/img/1657255015650-logo.gif'
-
 // nav 导航
 const navName = [
   {
@@ -114,7 +112,7 @@ function Header() {
         </div>
         <NavLink to="/" className="logo">
           <div className="img">
-            <img src={logo} />
+            <img src="http://rfz86pha6.hn-bkt.clouddn.com/1657255015650-logo.gif" />
           </div>
           <div className="title">一名菜鸡</div>
         </NavLink>

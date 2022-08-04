@@ -13,9 +13,6 @@ import { useText } from '@/hooks'
 
 import { BaseNavStyle } from './style'
 
-import avatar from '@/assets/img/avatar.webp'
-import wx from '@/assets/img/wx.png'
-
 function BaseNav() {
   const elRef = useRef<HTMLSpanElement>(null)
 
@@ -25,7 +22,10 @@ function BaseNav() {
     <BaseNavStyle>
       <div className="blog_Info">
         <div className="avatar">
-          <Avatar size={50} src={avatar} />
+          <Avatar
+            size={50}
+            src="http://rfz86pha6.hn-bkt.clouddn.com/FhJqrWCZNnbVJmZug8Sx6Xgnmbr2"
+          />
         </div>
         <div className="info">
           <div className="name">一名菜鸡</div>
@@ -98,7 +98,11 @@ function BaseNav() {
             >
               <QqOutlined />
             </a>
-            <a href={wx} target="_blank" rel="noreferrer">
+            <a
+              href="http://rfz86pha6.hn-bkt.clouddn.com/Fj7qRg43aPojTYW0CxKLqTS27Jov"
+              target="_blank"
+              rel="noreferrer"
+            >
               <WechatOutlined />
             </a>
             <a

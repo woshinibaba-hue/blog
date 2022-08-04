@@ -4,24 +4,25 @@ import { Space, Divider } from 'antd'
 
 import { useTip } from '@/hooks'
 
-import wx from '@/assets/img/wx.png'
-
 import { AboutContainer } from './styled'
-
-import bg from '@/assets/img/aboutbg.webp'
-import avatar from '@/assets/img/avatar.webp'
 
 function About() {
   const { tip, date } = useTip()
   return (
     <AboutContainer>
       <div className="bg">
-        <img src={bg} alt="" />
+        <img
+          src="http://rfz86pha6.hn-bkt.clouddn.com/FmRQoFqh7d7rswPVxWNvFht_4wqp"
+          alt=""
+        />
       </div>
       <div className="container">
         <header>
           <div className="left">
-            <img src={avatar} alt="" />
+            <img
+              src="http://rfz86pha6.hn-bkt.clouddn.com/FhJqrWCZNnbVJmZug8Sx6Xgnmbr2"
+              alt=""
+            />
           </div>
           <div className="right">
             <div className="name">
@@ -65,7 +66,11 @@ function About() {
             </li>
             <li>
               WX :{' '}
-              <a href={wx} target="_blank" rel="noreferrer">
+              <a
+                href="http://rfz86pha6.hn-bkt.clouddn.com/Fj7qRg43aPojTYW0CxKLqTS27Jov"
+                target="_blank"
+                rel="noreferrer"
+              >
                 2011358693
               </a>
             </li>

@@ -7,8 +7,6 @@ import Editor from './Editor'
 
 import { useUser } from '@/layout/hooks'
 
-import bubble from '@/assets/img/bubble.gif'
-
 import { CommentStyled } from './styled'
 
 import { CommentProps } from './types'
@@ -45,7 +43,7 @@ const Comments: React.FC<CommentProps> = ({
         />
       ) : (
         <div className="no-login">
-          <img src={bubble} alt="" />
+          <img src="http://rfz86pha6.hn-bkt.clouddn.com/bubble.gif" alt="" />
           登录后方可{mainText}哟~ 😜😜
         </div>
       )}

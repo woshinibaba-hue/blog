@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-import copyright from '@/assets/img/copyright.png'
-
 export const ContentStyle = styled.div`
   position: relative;
   background-color: #fff;
@@ -142,7 +140,9 @@ export const ContentStyle = styled.div`
     padding-left: 10px;
     overflow: hidden;
 
-    background: #f5f5f5 url(${copyright}) no-repeat right center;
+    background: #f5f5f5
+      url(http://rfz86pha6.hn-bkt.clouddn.com/Fi9bwm8_Rr-Bt4-EEfy2V-kDHuz-)
+      no-repeat right center;
     background-size: 150px;
 
     transition: all 0.3s;

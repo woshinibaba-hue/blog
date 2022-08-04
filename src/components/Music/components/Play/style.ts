@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-import cover from '@/assets/img/list_pan.e0442c05.png'
-
 type Props = {
   isOpen: boolean
   bg?: string
@@ -172,7 +170,8 @@ export const PlayStyle = styled.div<Props>`
             left: 36px;
             width: 210px;
             height: 200px;
-            background: url(${cover}) no-repeat;
+            background: url(http://rfz86pha6.hn-bkt.clouddn.com/FvfgZfknEh4vZ0CdhYgPPbDIviIH})
+              no-repeat;
           }
         }
 
