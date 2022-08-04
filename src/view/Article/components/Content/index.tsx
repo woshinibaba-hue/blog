@@ -6,7 +6,7 @@ import { setArticleDetailAction } from '@/view/Home/store/actionCreatore'
 
 import classNames from 'classnames'
 
-import { Badge, Divider, Tag, message } from 'antd'
+import { Badge, Divider, Tag, message, Space } from 'antd'
 import { LikeFilled, MessageFilled, LeftCircleFilled } from '@ant-design/icons'
 
 import format from '@/utils/format'
@@ -87,14 +87,22 @@ function Content({ count, userId }: { count: number; userId: number }) {
           </div>
           <div className="right">
             <div className="name">文章作者：{articleDetail?.user.username}</div>
-            <div>
-              文章发表于：
-              {format.formatTime(
-                articleDetail?.createtime,
-                'YYYY-MM-DD HH:mm:ss'
-              )}{' '}
-              {/* · 阅读 9999 */}
-            </div>
+            <Space split={<Divider type="vertical" />}>
+              <span>
+                文章发表于：
+                {format.formatTime(
+                  articleDetail?.createtime,
+                  'YYYY-MM-DD HH:mm:ss'
+                )}
+              </span>
+              <span>
+                文章更新于：
+                {format.formatTime(
+                  articleDetail?.updatetime,
+                  'YYYY-MM-DD HH:mm:ss'
+                )}
+              </span>
+            </Space>
           </div>
         </div>
         {articleDetail?.cover && (

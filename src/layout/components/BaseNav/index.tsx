@@ -4,7 +4,9 @@ import { Avatar, Divider } from 'antd'
 import {
   EnvironmentOutlined,
   QqOutlined,
-  WechatOutlined
+  WechatOutlined,
+  GithubOutlined,
+  GoogleOutlined
 } from '@ant-design/icons'
 
 import { useText } from '@/hooks'
@@ -33,7 +35,11 @@ function BaseNav() {
             <EnvironmentOutlined />
             &nbsp;湖北 - 武汉
           </p>
-          <a href="http://localhost:8080/" target="_blank" rel="noreferrer">
+          <a
+            href="http://122.112.240.26:9999/"
+            target="_blank"
+            rel="noreferrer"
+          >
             后台管理系统
           </a>
           <p>
@@ -94,6 +100,20 @@ function BaseNav() {
             </a>
             <a href={wx} target="_blank" rel="noreferrer">
               <WechatOutlined />
+            </a>
+            <a
+              href="https://github.com/woshinibaba-hue"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <GithubOutlined />
+            </a>
+            <a
+              href="https://gitee.com/saihdow"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <GoogleOutlined />
             </a>
           </p>
         </div>

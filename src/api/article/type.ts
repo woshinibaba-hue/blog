@@ -22,6 +22,9 @@ export type ArticleParamsType = {
   limit?: number
   page?: number
   tag_id?: number
+  // 查找类型
+  // updated 最近更新  hot 最热
+  orderName?: 'updated' | 'hot'
 }
 
 export type ArticleType = {
@@ -46,6 +49,7 @@ export type ArticleType = {
     color: string
   }[]
   createtime: string
+  updatetime: string
 }
 
 export type ArticleListType = {

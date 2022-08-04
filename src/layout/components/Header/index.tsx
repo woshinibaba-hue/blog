@@ -10,7 +10,6 @@ import {
 } from '@/layout/store/actioncreatore'
 
 import {
-  Input,
   Dropdown,
   Menu,
   Typography,
@@ -23,7 +22,8 @@ import {
 import {
   DownOutlined,
   MenuFoldOutlined,
-  MenuUnfoldOutlined
+  MenuUnfoldOutlined,
+  SearchOutlined
 } from '@ant-design/icons'
 
 import { useScroll, useTip } from '@/hooks'
@@ -126,9 +126,9 @@ function Header() {
           ))}
         </div>
         <div className="lable-right">
-          <div className="lable-search">
-            <Input.Search placeholder="输入搜索关键字" />
-          </div>
+          <NavLink to="/search" className="lable-search" title="搜索">
+            <SearchOutlined />
+          </NavLink>
           <Dropdown
             className="lable-dro-nav"
             overlay={menu}

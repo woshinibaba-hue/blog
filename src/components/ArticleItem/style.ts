@@ -37,7 +37,8 @@ export const ArticleItemStyle = styled.div`
       width: 100%;
       height: 100%;
       margin: 10px 0;
-      object-fit: contain;
+      border-radius: 6px;
+      object-fit: cover;
     }
 
     .not-cover {

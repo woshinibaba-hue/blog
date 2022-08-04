@@ -35,6 +35,11 @@ export const HeaderWrap = styled.div<{ isAffix: boolean }>`
       }
     }
 
+    .lable-search {
+      cursor: pointer;
+      font-size: 20px;
+    }
+
     .logo {
       display: flex;
       justify-content: center;

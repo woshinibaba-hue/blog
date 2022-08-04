@@ -14,10 +14,12 @@ export const HomeStyled = styled.div`
   .loading,
   .more {
     padding: 10px;
-    background-color: #fff;
     border-radius: var(--borderRadius);
   }
 
+  .loading {
+    background-color: #fff;
+  }
   .more {
     padding: 30px;
   }

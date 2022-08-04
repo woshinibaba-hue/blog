@@ -53,13 +53,10 @@ export const ContentStyle = styled.div`
     }
 
     .cover {
-      width: 100%;
-      height: 150px;
-
+      margin: 10px 0;
       img {
         width: 100%;
         height: 100%;
-        object-fit: contain;
       }
     }
   }
