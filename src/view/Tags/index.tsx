@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
+
+import { useUpdateEffect } from 'ahooks'
 
 import classNames from 'classnames'
 
@@ -33,12 +35,12 @@ function Tags() {
     })
   }
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     if (!currentTag) return
     findArticles()
   }, [currentTag?.id])
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     findArticles()
   }, [pagination])
 

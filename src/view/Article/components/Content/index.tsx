@@ -136,7 +136,7 @@ function Content({ count, userId }: { count: number; userId: number }) {
         <p>
           本文作者：
           <a href={currentLocation?.origin} target="_block">
-            一名菜鸡
+            {articleDetail?.user.username}
           </a>
         </p>
         <p>

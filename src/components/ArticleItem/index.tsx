@@ -21,6 +21,7 @@ function ArticleItem({ article }: { article: ArticleType }) {
       <h3 className="articleItem-title ellipsis-1">{article.title}</h3>
       <Space split={<Divider type="vertical" />} className="meta ellipsis-1">
         <Space>
+          {article.isTop === 1 && <Tag color="red">置顶</Tag>}
           <Tag color="geekblue">{article.user.username}</Tag>
           <Tag color="blue">{format.formatTime(article.createtime)}</Tag>
         </Space>

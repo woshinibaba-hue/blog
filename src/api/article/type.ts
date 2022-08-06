@@ -10,8 +10,10 @@ export type CommentType = {
     username: string
   }
   user: {
+    id: number
     avatar: string
     username: string
+    isBoss: number
   }
   children?: CommentType[]
 }
@@ -36,6 +38,8 @@ export type ArticleType = {
   like_count: number
   cover?: string
   description: string
+  isTop: number
+  isComment: number
   user: {
     id: number
     avatar?: string

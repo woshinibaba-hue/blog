@@ -1,6 +1,8 @@
 import React, { lazy, LazyExoticComponent, Suspense } from 'react'
 import { RouteObject } from 'react-router-dom'
 
+import { Spin } from 'antd'
+
 interface IRoute {
   path: string
   component: LazyExoticComponent<React.ComponentType>
@@ -59,7 +61,20 @@ const syncRouter = (routers: IRoute[]): RouteObject[] => {
     mRouters.push({
       path: route.path,
       element: (
-        <Suspense fallback={<div>页面正在努力加载中...</div>}>
+        <Suspense
+          fallback={
+            <Spin
+              style={{
+                height: '100vh',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+              tip="正在努力加载中..."
+            />
+          }
+        >
           <route.component />
         </Suspense>
       ),

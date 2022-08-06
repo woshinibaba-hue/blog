@@ -1,6 +1,9 @@
 import React, { memo, useState } from 'react'
 
-import { Space, Divider, message as Message } from 'antd'
+import { useSelector } from 'react-redux'
+import { RootStateType } from '@/store/types'
+
+import { Space, Divider, message as Message, Tag } from 'antd'
 
 import classNames from 'classnames'
 
@@ -8,8 +11,8 @@ import {
   // LikeFilled,
   // LikeOutlined,
   MessageFilled,
-  MessageOutlined
-  // DeleteOutlined
+  MessageOutlined,
+  DeleteOutlined
 } from '@ant-design/icons'
 
 import format from '@/utils/format'
@@ -31,6 +34,9 @@ const CommitItem: React.FC<ICommentItemProps> = ({
   // const [like, setLike] = useState(true)
   const [isReplyMessage, setIsReplyMessage] = useState(false)
   const [message, setMessage] = useState('')
+
+  // 获取当前用户信息
+  const id = useSelector((state: RootStateType) => state.layoutStore.user?.id)
 
   const messageClikc = () => {
     // if (handlerMessage) {
@@ -54,6 +60,10 @@ const CommitItem: React.FC<ICommentItemProps> = ({
     }
   }
 
+  const handlerDel = () => {
+    console.log('删除', comment.id)
+  }
+
   const handlerChange = (value: string) => {
     setMessage(value)
   }
@@ -66,6 +76,7 @@ const CommitItem: React.FC<ICommentItemProps> = ({
       <div className="content">
         <div className="content-header">
           <p className="name">
+            {comment.user.isBoss === 1 && <Tag color="red">博主</Tag>}
             {comment.user.username}
             {comment.parent_comment && (
               <span className="reply">
@@ -105,10 +116,14 @@ const CommitItem: React.FC<ICommentItemProps> = ({
                 </>
               )}
             </Space>
-            {/* <div className="del">
-              <DeleteOutlined style={{ marginRight: '6px' }} />
-              删除
-            </div> */}
+            {comment.user.id === id && (
+              <div className="delele" onClick={handlerDel}>
+                <Space>
+                  <DeleteOutlined />
+                  删除
+                </Space>
+              </div>
+            )}
           </Space>
 
           {isReplyMessage && (

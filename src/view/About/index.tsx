@@ -11,10 +11,7 @@ function About() {
   return (
     <AboutContainer>
       <div className="bg">
-        <img
-          src="http://rfz86pha6.hn-bkt.clouddn.com/FmRQoFqh7d7rswPVxWNvFht_4wqp"
-          alt=""
-        />
+        <img src="http://rfz86pha6.hn-bkt.clouddn.com/aboutbg.webp" alt="" />
       </div>
       <div className="container">
         <header>

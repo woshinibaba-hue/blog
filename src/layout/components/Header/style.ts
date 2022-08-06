@@ -50,8 +50,16 @@ export const HeaderWrap = styled.div<{ isAffix: boolean }>`
       text-align: center;
 
       .title {
+        position: relative;
         font-size: 20px;
         margin-left: 10px;
+
+        &::after {
+          position: absolute;
+          right: -35px;
+          content: 'BLOG';
+          font-size: 12px;
+        }
       }
 
       .img {

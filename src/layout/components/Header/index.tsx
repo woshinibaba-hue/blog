@@ -111,9 +111,6 @@ function Header() {
           {!isShowSidebar ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}
         </div>
         <NavLink to="/" className="logo">
-          <div className="img">
-            <img src="http://rfz86pha6.hn-bkt.clouddn.com/1657255015650-logo.gif" />
-          </div>
           <div className="title">一名菜鸡</div>
         </NavLink>
         <div className="lable-nav">

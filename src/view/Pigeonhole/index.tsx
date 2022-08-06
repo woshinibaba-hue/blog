@@ -31,7 +31,10 @@ function Pigeonhole() {
 
   return (
     <PigeonholeStyled className="pigeonhole">
-      <Timeline mode="alternate" reverse>
+      <Timeline mode="alternate">
+        <Timeline.Item dot={<SmileOutlined />}>
+          共记录了 {articleList?.total} 篇文章
+        </Timeline.Item>
         {articleList?.articles.map((item) => (
           <Timeline.Item
             key={item.id}
@@ -40,9 +43,6 @@ function Pigeonhole() {
             <a href={`/article/${item.id}`}>{item.title}</a>
           </Timeline.Item>
         ))}
-        <Timeline.Item dot={<SmileOutlined />}>
-          共记录了 {articleList?.total} 文章
-        </Timeline.Item>
       </Timeline>
 
       <Pagination total={articleList?.total} onChange={onChange} />
