@@ -46,6 +46,8 @@ class Request {
         return response.data
       },
       (err: AxiosError<IDataResult>) => {
+        if (err.message) message.error(err.message)
+
         if (err.response?.data.message) {
           message.config({
             duration: 2,

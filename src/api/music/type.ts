@@ -11,6 +11,7 @@ export type SongDetailType = {
   al: string
   dt: number
   ar: string
+  id?: string
 }
 
 export interface SongItmeType extends BaseSongTtype {

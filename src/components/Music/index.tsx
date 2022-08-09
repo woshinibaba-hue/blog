@@ -7,12 +7,16 @@ import { getSongDetail, getSongLyric } from '@/api/music'
 import { useText } from '@/hooks'
 import Play from '@/utils/play'
 import format from '@/utils/format'
+import storage from '@/utils/storage'
 
 import { SongDetailType } from '@/api/music/type'
 import PlayPage from './components/Play'
 import { MusicWrap } from './styled'
 
 let play: Play
+
+const songDetail = storage.get<SongDetailType>('songDetail')
+const lyric = storage.get<{ time: number; lyric: string }[]>('lyric')
 
 function Music({ isShowMusic }: { isShowMusic: boolean }) {
   const [isPlay, setIsPlay] = useState(false)
@@ -43,16 +47,25 @@ function Music({ isShowMusic }: { isShowMusic: boolean }) {
     getSongDetail(id).then((res) => {
       const songDetail = res
       setDetail(songDetail.data)
+      storage.set('songDetail', { ...songDetail.data, id })
     })
 
     getSongLyric(id).then((res) => {
       const lyricArr = format.formatLyric(res.data)
       setLycics(lyricArr)
+      storage.set('lyric', lyricArr)
     })
   }
 
   useEffect(() => {
-    getDetail()
+    if (songDetail && lyric) {
+      if (songDetail?.id != id) {
+        getDetail()
+      } else {
+        setDetail(songDetail)
+        setLycics(lyric)
+      }
+    }
   }, [id])
 
   const player = (ids?: string) => {

@@ -27,6 +27,16 @@ export const login = (data: LoginBase) => {
   })
 }
 
+// github 登录
+export const githubLogin = (code: string) => {
+  return request.post<ILoginRes>({
+    url: '/github',
+    data: {
+      code
+    }
+  })
+}
+
 // 注册用户
 export const register = (data: any) => {
   return request.post<ILoginRes>({
