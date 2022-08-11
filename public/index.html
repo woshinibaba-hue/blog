@@ -8,11 +8,16 @@
     />
     <link rel="icon" href="./logo.ico" />
     <title>一名正在努力的菜鸡</title>
+    <!-- css cnd 加载 -->
+    <% htmlWebpackPlugin?.options?.cdn.css.forEach(cdnURL => { %>
+    <link rel="stylesheet" href="<%= cdnURL %>" />
+    <% }) %>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
 
+    <!-- js cnd 加载 -->
     <% htmlWebpackPlugin?.options?.cdn.js.forEach(cdnURL => { %>
     <script src="<%= cdnURL %>"></script>
     <% }) %>

@@ -65,6 +65,8 @@ function Music({ isShowMusic }: { isShowMusic: boolean }) {
         setDetail(songDetail)
         setLycics(lyric)
       }
+    } else {
+      getDetail()
     }
   }, [id])
 

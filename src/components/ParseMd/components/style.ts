@@ -44,6 +44,25 @@ export const MarkdownNavbarStyle = styled.div<{ isAffix: boolean }>`
         padding-bottom: 0;
       }
     }
+
+    .title-level1 {
+      padding-left: 1.2em;
+    }
+    .title-level2 {
+      padding-left: 2em;
+    }
+    .title-level3 {
+      padding-left: 3em;
+    }
+    .title-level4 {
+      padding-left: 4em;
+    }
+    .title-level5 {
+      padding-left: 5em;
+    }
+    .title-level6 {
+      padding-left: 6em;
+    }
   }
 
   .not-nav {

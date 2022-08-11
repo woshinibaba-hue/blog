@@ -12,6 +12,7 @@ import { login } from '@/api/login'
 import { ILogin } from '@/api/login/types'
 
 const redirect_uri = process.env.REACT_APP_REDIRECT_URL
+const client_id = process.env.REACT_APP_CLIENT_ID
 
 function Login({ handleClose }: { handleClose: () => void }) {
   const dispatch = useDispatch()
@@ -28,9 +29,10 @@ function Login({ handleClose }: { handleClose: () => void }) {
 
   // github 登录
   const githubLogin = async () => {
-    // 保存登录前的地址，用于登录后跳转
-    storage.set('location', window.location.href)
-    window.location.href = `https://github.com/login/oauth/authorize?client_id=a948126501fe95560646&scope=user&redirect_uri=${redirect_uri}`
+    console.log('redirect_uri', redirect_uri)
+    console.log('client_id', client_id)
+
+    window.location.href = `https://github.com/login/oauth/authorize?client_id=${client_id}&scope=user&redirect_uri=${redirect_uri}`
   }
 
   return (

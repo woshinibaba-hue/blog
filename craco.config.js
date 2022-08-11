@@ -22,16 +22,18 @@ module.exports = {
         webpackConfig.externals = {
           react: 'React',
           'react-dom': 'ReactDOM',
-          redux: 'Redux'
+          redux: 'Redux',
+          antd: 'antd'
         }
 
         cdn = {
           js: [
-            'https://cdn.bootcdn.net/ajax/libs/react/18.2.0/umd/react.production.min.js',
-            'https://cdn.bootcdn.net/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js',
-            'https://cdn.bootcdn.net/ajax/libs/redux/4.2.0/redux.min.js'
+            'https://unpkg.com/react@18.2.0/umd/react.production.min.js',
+            'https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js',
+            'https://cdn.bootcss.com/redux/4.2.0/redux.min.js',
+            'https://cdn.bootcdn.net/ajax/libs/antd/4.22.3/antd.min.js'
           ],
-          css: []
+          css: ['https://cdn.bootcdn.net/ajax/libs/antd/4.22.3/antd.min.css']
         }
       })
 
