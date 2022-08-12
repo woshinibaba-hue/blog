@@ -46,15 +46,19 @@ export const MusicWrap = styled.div<{ isShowMusic: boolean }>`
     position: absolute;
     width: 100px;
     height: 100px;
-    top: 10px;
+    top: 0;
     left: 50%;
     transform: translateX(-50%);
     line-height: 100px;
 
     text-align: center;
 
-    .anticon {
+    .iconfont {
       font-size: 40px;
+    }
+
+    .icon-zanting1 {
+      font-size: 33px;
     }
   }
 

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 
-import { PauseCircleFilled, PlayCircleFilled } from '@ant-design/icons'
+import classNames from 'classnames'
 
 import { getSongDetail, getSongLyric } from '@/api/music'
 
@@ -89,7 +89,12 @@ function Music({ isShowMusic }: { isShowMusic: boolean }) {
             style={{ animationPlayState: !isPlay ? 'paused' : 'running' }}
           />
           <div className="mask" onClick={() => player()}>
-            {!isPlay ? <PlayCircleFilled /> : <PauseCircleFilled />}
+            <i
+              className={classNames([
+                'iconfont',
+                isPlay ? 'icon-zanting1' : 'icon-bofang'
+              ])}
+            ></i>
           </div>
         </div>
         <span className="lyric ellipsis-1" onClick={() => setIsOpen(true)}>

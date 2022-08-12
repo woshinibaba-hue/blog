@@ -39,6 +39,9 @@
   font-weight: 600;
 }
 
+/* 引入字体阿里图标 */
+@import url('//at.alicdn.com/t/c/font_3584551_thsyxhsuyt.css');
+
 .del {
   text-decoration: line-through;
 }

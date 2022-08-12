@@ -7,14 +7,6 @@ import { Space, Divider, message as Message, Tag } from 'antd'
 
 import classNames from 'classnames'
 
-import {
-  // LikeFilled,
-  // LikeOutlined,
-  MessageFilled,
-  MessageOutlined,
-  DeleteOutlined
-} from '@ant-design/icons'
-
 import format from '@/utils/format'
 
 import EditorInput from '../EditorInput'
@@ -106,12 +98,12 @@ const CommitItem: React.FC<ICommentItemProps> = ({
             >
               {!isReplyMessage ? (
                 <>
-                  <MessageOutlined />
+                  <i className="iconfont icon-pinglun2"></i>
                   <span className="count">回复</span>
                 </>
               ) : (
                 <>
-                  <MessageFilled />
+                  <i className="iconfont icon-pinglun2"></i>
                   <span className="count">取消回复</span>
                 </>
               )}
@@ -119,7 +111,7 @@ const CommitItem: React.FC<ICommentItemProps> = ({
             {comment.user.id === id && (
               <div className="delele" onClick={handlerDel}>
                 <Space>
-                  <DeleteOutlined />
+                  <i className="iconfont icon-shanchu"></i>
                   删除
                 </Space>
               </div>

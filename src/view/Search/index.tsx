@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-import {
-  SearchOutlined,
-  StockOutlined,
-  DesktopOutlined
-} from '@ant-design/icons'
-
 import { getArticleList } from '@/api/article'
 import { ArticleType, ArticleParamsType } from '@/api/article/type'
 
@@ -49,13 +43,13 @@ function Search() {
           onKeyDown={(e) => e.key === 'Enter' && search()}
         />
         <div className="btn" onClick={search}>
-          <SearchOutlined />
+          <i className="iconfont icon-sousuo" />
         </div>
       </div>
       <div className="list">
         <div className="search-res">
           <div className="title">
-            <DesktopOutlined /> 搜索结果
+            <i className="iconfont icon-sousuojieguo" /> 搜索结果
             {searchArticle.map((item) => (
               <SearchArticle key={item.id} item={item} />
             ))}
@@ -63,7 +57,8 @@ function Search() {
         </div>
         <div className="lately">
           <div className="title">
-            <StockOutlined /> 最近更新
+            <i className="iconfont icon-shujukaifagongzuoliushujutansuozuijindakai" />{' '}
+            最近更新
             {updateArticle.map((item) => (
               <SearchArticle key={item.id} item={item} />
             ))}

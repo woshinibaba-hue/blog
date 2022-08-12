@@ -1,13 +1,6 @@
 import React, { useRef } from 'react'
 
 import { Avatar, Divider } from 'antd'
-import {
-  EnvironmentOutlined,
-  QqOutlined,
-  WechatOutlined,
-  GithubOutlined,
-  GoogleOutlined
-} from '@ant-design/icons'
 
 import { useText } from '@/hooks'
 
@@ -32,7 +25,7 @@ function BaseNav() {
           <p>计算机科学与技术</p>
           <p>2019 - 2023级</p>
           <p>
-            <EnvironmentOutlined />
+            <i className="iconfont icon-dingxiang"></i>
             &nbsp;湖北 - 武汉
           </p>
           <a
@@ -44,7 +37,7 @@ function BaseNav() {
           </a>
           <p>
             前端:{' '}
-            <a href="https://v3.cn.vuejs.org/" target="_blank" rel="noreferrer">
+            <a href="https://cn.vuejs.org/" target="_blank" rel="noreferrer">
               Vue3
             </a>{' '}
             +{' '}
@@ -96,28 +89,28 @@ function BaseNav() {
               href="http://wpa.qq.com/msgrd?v=3&uin=2011358693&site=qq&menu=yes"
               rel="noreferrer"
             >
-              <QqOutlined />
+              <i className="iconfont icon-qq"></i>
             </a>
             <a
               href="http://rfz86pha6.hn-bkt.clouddn.com/Fj7qRg43aPojTYW0CxKLqTS27Jov"
               target="_blank"
               rel="noreferrer"
             >
-              <WechatOutlined />
+              <i className="iconfont icon-weixin"></i>
             </a>
             <a
               href="https://github.com/woshinibaba-hue"
               target="_blank"
               rel="noreferrer"
             >
-              <GithubOutlined />
+              <i className="iconfont icon-github"></i>
             </a>
             <a
               href="https://gitee.com/saihdow"
               target="_blank"
               rel="noreferrer"
             >
-              <GoogleOutlined />
+              <i className="iconfont icon-gitee-fill-round"></i>
             </a>
           </p>
         </div>

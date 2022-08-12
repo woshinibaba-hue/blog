@@ -2,37 +2,23 @@ import React, { useState, useEffect, useRef } from 'react'
 
 import { Form, Input, Button, message, Upload, FormInstance } from 'antd'
 
-import {
-  UserOutlined,
-  LockOutlined,
-  MobileOutlined,
-  LoadingOutlined,
-  PlusOutlined,
-  KeyOutlined,
-  createFromIconfontCN
-} from '@ant-design/icons'
-
 import { useUpload } from '@/hooks'
 import { debounce } from '@/utils/debounce'
 
 import * as loginReq from '@/api/login'
 
-// 引用阿里图标库
-const IconFont = createFromIconfontCN({
-  scriptUrl: ['//at.alicdn.com/t/font_3368951_4j4ajr0fxvl.js']
-})
-
 function Register() {
-  const [loading, setLoading] = useState(false)
+  // const [loading, setLoading] = useState(false)
   const [code, setCode] = useState<string>('')
 
   const formRef = useRef<FormInstance>(null)
 
-  const { url, upload, setUrl } = useUpload(setLoading)
+  const { url, upload, setUrl } = useUpload() // setLoading
 
   const uploadButton = (
     <div>
-      {loading ? <LoadingOutlined /> : <PlusOutlined />}
+      {/* {loading ? <LoadingOutlined /> : <PlusOutlined />} */}
+      <i className="iconfont icon-jiahao" />
       <div style={{ marginTop: 8 }}>上传头像</div>
     </div>
   )
@@ -85,7 +71,7 @@ function Register() {
         ]}
       >
         <Input
-          prefix={<UserOutlined className="site-form-item-icon" />}
+          prefix={<i className="iconfont icon-yonghuming" />}
           placeholder="请输入用户姓名"
         />
       </Form.Item>
@@ -100,7 +86,7 @@ function Register() {
         ]}
       >
         <Input
-          prefix={<MobileOutlined className="site-form-item-icon" />}
+          prefix={<i className="iconfont icon-youxiang" />}
           placeholder="请输入手机号"
         />
       </Form.Item>
@@ -119,7 +105,7 @@ function Register() {
         ]}
       >
         <Input
-          prefix={<IconFont type="icon-youxiang1" />}
+          prefix={<i className="iconfont icon-youxiang" />}
           placeholder="请输入邮箱"
         />
       </Form.Item>
@@ -129,7 +115,7 @@ function Register() {
         rules={[{ required: true, message: '密码不能为空' }]}
       >
         <Input.Password
-          prefix={<LockOutlined className="site-form-item-icon" />}
+          prefix={<i className="iconfont icon-mima" />}
           type="password"
           placeholder="请输入密码"
         />
@@ -152,7 +138,11 @@ function Register() {
         }
         rules={[{ validator: checkCode }]}
       >
-        <Input prefix={<KeyOutlined />} placeholder="验证码" key={1} />
+        <Input
+          prefix={<i className="iconfont icon-yanzhengma" />}
+          placeholder="验证码"
+          key={1}
+        />
       </Form.Item>
       <Upload
         name="image"

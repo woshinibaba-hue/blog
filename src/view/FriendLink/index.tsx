@@ -1,5 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react'
 
+import { useSelector } from 'react-redux'
+import { RootStateType } from '@/store/types'
+
 import { Form, Input, Button, message, FormInstance } from 'antd'
 
 import { getFriendLinkList, applyFriendLink } from '@/api/friendLink'
@@ -12,6 +15,8 @@ function FriendLink() {
 
   const formRef = useRef<FormInstance>(null)
 
+  const user = useSelector((state: RootStateType) => state.layoutStore.user)
+
   useEffect(() => {
     getFriendLinkList().then((res) => {
       setFriendLink(res.data.data)
@@ -19,10 +24,14 @@ function FriendLink() {
   }, [])
 
   const onFinish = (values: any) => {
-    applyFriendLink(values).then((res) => {
-      message.success(res.message)
-      formRef.current?.resetFields()
-    })
+    if (user?.token) {
+      applyFriendLink(values).then((res) => {
+        message.success(res.message)
+        formRef.current?.resetFields()
+      })
+    } else {
+      message.error('请先登录')
+    }
   }
   return (
     <LinkStyled className="layout-friendLink">

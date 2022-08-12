@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 import { useDispatch } from 'react-redux'
 import { setArticleDetailAction } from '@/view/Home/store/actionCreatore'
@@ -7,7 +7,6 @@ import { setArticleDetailAction } from '@/view/Home/store/actionCreatore'
 import classNames from 'classnames'
 
 import { Badge, Divider, Tag, message, Space } from 'antd'
-import { LikeFilled, MessageFilled, LeftCircleFilled } from '@ant-design/icons'
 
 import format from '@/utils/format'
 
@@ -22,7 +21,6 @@ function Content({ count, userId }: { count: number; userId: number }) {
   const { id } = useParams()
   const currentLocation = window.location
 
-  const navigator = useNavigate()
   const dispatch = useDispatch()
 
   const [articleDetail, setArticleDetail] = useState<ArticleType>()
@@ -48,16 +46,16 @@ function Content({ count, userId }: { count: number; userId: number }) {
     <>
       <div onClick={() => like()}>
         <Badge
-          count={articleDetail?.like_user.length ?? 0}
+          count={articleDetail?.like_user?.length ?? 0}
           color="#c2c8d1"
           showZero
           offset={[-8, 8]}
           overflowCount={99}
           className={classNames({
-            active: articleDetail?.like_user.includes(userId)
+            active: articleDetail?.like_user?.includes(userId)
           })}
         >
-          <LikeFilled />
+          <i className="iconfont icon-dianzan_kuai" />
         </Badge>
       </div>
       <a href="#comment">
@@ -68,12 +66,9 @@ function Content({ count, userId }: { count: number; userId: number }) {
           offset={[-8, 8]}
           overflowCount={99}
         >
-          <MessageFilled />
+          <i className="iconfont icon-pinglun2" />
         </Badge>
       </a>
-      <Badge title="返回上一级">
-        <LeftCircleFilled onClick={() => navigator(-1)} />
-      </Badge>
     </>
   )
 

@@ -19,17 +19,11 @@ import {
   Divider
 } from 'antd'
 
-import {
-  DownOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  SearchOutlined
-} from '@ant-design/icons'
-
 import { useScroll, useTip } from '@/hooks'
 import { useUser } from '../../hooks'
 
 import { HeaderWrap } from './style'
+import classNames from 'classnames'
 
 // nav 导航
 const navName = [
@@ -108,7 +102,14 @@ function Header() {
           className="sidebar"
           onClick={() => dispatch(setIsShowSidebarAction())}
         >
-          {!isShowSidebar ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}
+          <i
+            className={classNames([
+              'iconfont',
+              !isShowSidebar
+                ? 'icon-a-cebianlanfenleizhedie'
+                : 'icon-a-fenleizhediecebianlan'
+            ])}
+          ></i>
         </div>
         <NavLink to="/" className="logo">
           <div className="title">一名菜鸡</div>
@@ -122,16 +123,14 @@ function Header() {
         </div>
         <div className="lable-right">
           <NavLink to="/search" className="lable-search" title="搜索">
-            <SearchOutlined />
+            <i className="iconfont icon-sousuo"></i>
           </NavLink>
           <Dropdown
             className="lable-dro-nav"
             overlay={menu}
             trigger={['click']}
           >
-            <Typography.Link>
-              {selectKey.name} <DownOutlined />
-            </Typography.Link>
+            <Typography.Link>{selectKey.name}</Typography.Link>
           </Dropdown>
         </div>
         {user ? (

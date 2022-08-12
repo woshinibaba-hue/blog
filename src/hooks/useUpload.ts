@@ -6,11 +6,12 @@ import { uploadFileImg } from '@/api/upload'
 
 const baseUrl = process.env.REACT_APP_CLOUD_URL
 
-export function useUpload(setLoading: (loading: boolean) => void) {
+// setLoading?: (loading: boolean) => void
+export function useUpload() {
   const [url, setUrl] = useState('')
   // 将图像上传至七牛云
   const upload = (options: any) => {
-    setLoading(true)
+    // setLoading(true)
     return new Promise((resolve, reject) => {
       // 获取七牛云 token
       uploadFileImg().then((res) => {
@@ -41,7 +42,7 @@ export function useUpload(setLoading: (loading: boolean) => void) {
                 resolve('上传成功')
               }
             })
-            setLoading(false)
+            // setLoading(false)
           })
       })
     })

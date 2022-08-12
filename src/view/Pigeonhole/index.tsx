@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
 import { Timeline } from 'antd'
-import { SmileOutlined } from '@ant-design/icons'
 
 import { getArticleList } from '@/api/article'
 import { ArticleListType } from '@/api/article/type'
@@ -32,7 +31,7 @@ function Pigeonhole() {
   return (
     <PigeonholeStyled className="pigeonhole">
       <Timeline mode="alternate">
-        <Timeline.Item dot={<SmileOutlined />}>
+        <Timeline.Item dot={<i className="iconfont icon-qiajilu" />}>
           共记录了 {articleList?.total} 篇文章
         </Timeline.Item>
         {articleList?.articles.map((item) => (

@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux'
 import { setUserAction } from '@/layout/store/actioncreatore'
 
 import { Form, Input, Button, Checkbox, message, Space, Divider } from 'antd'
-import { UserOutlined, LockOutlined, GithubOutlined } from '@ant-design/icons'
 
 import storage from '@/utils/storage'
 
@@ -51,7 +50,7 @@ function Login({ handleClose }: { handleClose: () => void }) {
         ]}
       >
         <Input
-          prefix={<UserOutlined className="site-form-item-icon" />}
+          prefix={<i className="iconfont icon-youxiang" />}
           placeholder="邮箱"
         />
       </Form.Item>
@@ -61,7 +60,7 @@ function Login({ handleClose }: { handleClose: () => void }) {
         rules={[{ required: true, message: '密码不能为空' }]}
       >
         <Input.Password
-          prefix={<LockOutlined className="site-form-item-icon" />}
+          prefix={<i className="iconfont icon-mima" />}
           type="password"
           placeholder="密码"
         />
@@ -78,10 +77,7 @@ function Login({ handleClose }: { handleClose: () => void }) {
       <Form.Item>
         <Space split={<Divider type="horizontal" />}>
           其他登录方式
-          <GithubOutlined
-            style={{ cursor: 'pointer', fontSize: '18px' }}
-            onClick={githubLogin}
-          />
+          <i className="iconfont icon-github" onClick={githubLogin}></i>
         </Space>
       </Form.Item>
 

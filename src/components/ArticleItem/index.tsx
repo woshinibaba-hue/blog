@@ -2,7 +2,6 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { Tag, Space, Divider } from 'antd'
-import { TagsOutlined, CommentOutlined, LikeOutlined } from '@ant-design/icons'
 
 import { ArticleType } from '@/api/article/type'
 
@@ -27,15 +26,17 @@ function ArticleItem({ article }: { article: ArticleType }) {
         </Space>
         <Space>
           <Tag color="green">
-            <CommentOutlined /> {article.comment_count}
+            <i className="iconfont icon-pinglun2"></i>{' '}
+            {article?.comment_count ?? 0}
           </Tag>
           <Tag color="red">
-            <LikeOutlined /> {article.like_user.length}
+            <i className="iconfont icon-dianzan_kuai"></i>
+            {article.like_user?.length ?? 0}
           </Tag>
         </Space>
         {article.tags?.length && (
           <Space className="articleItem_tags">
-            <TagsOutlined className="icon" />
+            <i className="iconfont icon-biaoqian icon"></i>
             {article.tags?.map((tag) => (
               <Tag key={tag.name} color={tag.color} className="tag">
                 {tag.name}

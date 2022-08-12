@@ -3,6 +3,12 @@ import styled from 'styled-components'
 export const NavStyle = styled.div`
   width: 260px;
 
+  .iconfont {
+    font-size: 18px;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
   .social {
     cursor: pointer;
     padding: 10px;

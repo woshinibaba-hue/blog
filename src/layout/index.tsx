@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 
 import { BackTop, message } from 'antd'
-import { RocketOutlined } from '@ant-design/icons'
 
 import { useDispatch } from 'react-redux'
 import { setUserAction } from '@/layout/store/actioncreatore'
@@ -51,7 +50,7 @@ function ZLayout() {
       <Footer />
       <LoginModal />
       <BackTop style={style}>
-        <RocketOutlined />
+        <i className="iconfont icon-4fanhuidingbubai"></i>
       </BackTop>
     </>
   )

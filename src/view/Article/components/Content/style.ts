@@ -68,11 +68,14 @@ export const ContentStyle = styled.div`
       width: 50px;
       height: 50px;
       line-height: 50px;
-      font-size: 20px;
       background-color: #fff;
       border-radius: 50%;
       margin-bottom: 20px;
       color: #8a919f;
+
+      i {
+        font-size: 20px;
+      }
 
       &.active {
         color: var(--hover-color);

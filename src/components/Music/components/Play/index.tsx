@@ -2,13 +2,6 @@ import React, { useEffect, useState, useRef } from 'react'
 import classNames from 'classnames'
 import { Table, Space, Input, Tooltip } from 'antd'
 
-import {
-  PlayCircleOutlined,
-  // PlusCircleOutlined,
-  PauseCircleOutlined,
-  SyncOutlined
-} from '@ant-design/icons'
-
 import type { ColumnsType } from 'antd/lib/table'
 
 import { PlayStyle } from './style'
@@ -86,23 +79,16 @@ function Play({
       key: 'action',
       render: (_, { key }) => (
         <Space size="middle">
-          {isPlay && key === songId ? (
-            <PauseCircleOutlined
-              onClick={() => {
-                setId(key)
-                player(key)
-              }}
-            />
-          ) : (
-            <PlayCircleOutlined
-              onClick={() => {
-                setId(key)
-                player(key)
-              }}
-            />
-          )}
-
-          {/* <PlusCircleOutlined /> */}
+          <i
+            className={classNames([
+              'iconfont',
+              isPlay && key === songId ? 'icon-zanting1' : 'icon-bofang'
+            ])}
+            onClick={() => {
+              setId(key)
+              player(key)
+            }}
+          />
         </Space>
       )
     }
@@ -175,7 +161,7 @@ function Play({
           <div className="left">
             <div className="refresh" onClick={refresh}>
               <Tooltip title="点击我刷新歌单">
-                <SyncOutlined spin />
+                <i className="iconfont icon-shuaxin" />
               </Tooltip>
             </div>
             <div className="title">歌曲列表</div>

@@ -1,13 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 
-import {
-  SettingOutlined,
-  // LineChartOutlined,
-  // SendOutlined,
-  TagsOutlined
-  // RocketOutlined
-} from '@ant-design/icons'
 import { Collapse, Switch, Tag } from 'antd'
 
 import { useText } from '@/hooks'
@@ -53,7 +46,7 @@ function Nav() {
             <Collapse.Panel
               header={
                 <span>
-                  <SettingOutlined spin /> 设置
+                  <i className="iconfont icon-shezhi" /> 设置
                 </span>
               }
               key="1"
@@ -110,7 +103,7 @@ function Nav() {
               <Collapse.Panel
                 header={
                   <span>
-                    <TagsOutlined /> 标签
+                    <i className="iconfont icon-biaoqian" /> 标签
                   </span>
                 }
                 key="1"

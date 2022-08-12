@@ -6,6 +6,12 @@ export const ArticleItemStyle = styled.div`
   border-radius: var(--borderRadius);
   background-color: #fff;
 
+  .iconfont {
+    margin-right: 5px;
+    font-size: 13px;
+    vertical-align: middle;
+  }
+
   .ant-space-item {
     margin-right: 0 !important;
   }
@@ -60,3 +66,5 @@ export const ArticleItemStyle = styled.div`
     font-size: 15px;
   }
 `
+
+// export const ArticleItemStyle = styled.div``

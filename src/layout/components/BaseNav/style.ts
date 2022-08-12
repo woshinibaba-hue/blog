@@ -37,10 +37,22 @@ export const BaseNavStyle = styled.div`
       }
     }
 
+    .icon-dingxiang {
+      font-size: 12px;
+      vertical-align: middle;
+    }
+
     .relation {
       display: flex;
       justify-content: space-evenly;
-      font-size: 30px;
+
+      i {
+        font-size: 25px;
+      }
+
+      & a:first-child i {
+        font-size: 23px;
+      }
     }
   }
 `
