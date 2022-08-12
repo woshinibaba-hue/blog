@@ -21,7 +21,10 @@ export const HeaderWrap = styled.div<{ isAffix: boolean }>`
 
     .sidebar {
       display: none;
-      font-size: 20px;
+
+      i {
+        font-size: 20px;
+      }
     }
 
     .lable-right {

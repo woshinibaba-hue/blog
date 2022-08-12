@@ -28,11 +28,7 @@ function BaseNav() {
             <i className="iconfont icon-dingxiang"></i>
             &nbsp;湖北 - 武汉
           </p>
-          <a
-            href="http://122.112.240.26:9999/"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="http://121.37.104.49:9999/" target="_blank" rel="noreferrer">
             后台管理系统
           </a>
           <p>
@@ -79,7 +75,7 @@ function BaseNav() {
               MySql
             </a>
           </p>
-          <p>邮箱: 2011358693@qq.com</p>
+          <p>邮箱: zz2011358693@163.com</p>
           <span className="introduce" ref={elRef}></span>
 
           <Divider style={{ color: 'var(--main-color)' }}>社交账号</Divider>

@@ -29,9 +29,13 @@ export default function () {
 
   return (
     <BackTopStyle
+      className="back-top"
       onClick={() => backTop()}
       title="返回顶部"
       show={show}
-    ></BackTopStyle>
+    >
+      <div className="bg"></div>
+      <i className="iconfont icon-icon-test" />
+    </BackTopStyle>
   )
 }

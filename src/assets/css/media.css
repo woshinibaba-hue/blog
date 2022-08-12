@@ -110,7 +110,7 @@
   }
 
   .layout-main .content {
-    margin: 8px 0 !important;
+    margin: 8px 0 0 0 !important;
   }
 }
 
@@ -128,5 +128,25 @@
 
   .meta .articleItem_tags {
     display: none;
+  }
+
+  .articleItem .cover {
+    display: none !important;
+  }
+  /*
+  .articleItem .article-content .info .right {
+    display: none;
+  } */
+
+  .back-top .bg {
+    display: none;
+  }
+
+  .back-top .icon-icon-test {
+    display: block !important;
+  }
+
+  .more {
+    padding: 0 !important;
   }
 }

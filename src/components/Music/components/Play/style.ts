@@ -171,10 +171,10 @@ export const PlayStyle = styled.div<Props>`
           .bg {
             position: absolute;
             top: 0;
-            left: 36px;
-            width: 210px;
-            height: 200px;
-            background: url(http://rfz86pha6.hn-bkt.clouddn.com/FvfgZfknEh4vZ0CdhYgPPbDIviIH})
+            left: 35px;
+            width: 208px;
+            height: 177px;
+            background: url(http://rfz86pha6.hn-bkt.clouddn.com/FvfgZfknEh4vZ0CdhYgPPbDIviIH)
               no-repeat;
           }
         }

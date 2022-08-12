@@ -23,7 +23,7 @@ function ArticleItem({ article }: { article: ArticleType }) {
         )}
       </div>
       <div className="article-content">
-        <p className="title">
+        <p className="title ellipsis-1">
           {article.isTop === 1 && <span className="isTop z-tag">置顶</span>}
           {article.title}
         </p>

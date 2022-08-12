@@ -12,18 +12,16 @@ export const ArticleItemStyle = styled.div`
 
   font-weight: 400;
 
-  .cover,
-  .not-cover {
+  .cover {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 25px;
 
-    width: 300px;
+    /* width: 300px; */
+    width: 35%;
     height: 100%;
     flex-shrink: 0;
-
-    margin-right: 15px;
 
     img {
       width: 100%;
@@ -33,11 +31,13 @@ export const ArticleItemStyle = styled.div`
   }
 
   .article-content {
+    flex: 1;
     display: flex;
     flex-direction: column;
     padding: 10px;
 
     .title {
+      width: 90%;
       font-size: 18px;
 
       .isTop {
@@ -47,6 +47,7 @@ export const ArticleItemStyle = styled.div`
 
     .description {
       color: var(--minor);
+      margin-top: 6px;
     }
 
     .info {

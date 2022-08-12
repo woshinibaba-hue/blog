@@ -1,40 +1,67 @@
 import styled from 'styled-components'
 
 export const BackTopStyle = styled.div<{ show: boolean }>`
-  position: fixed;
-  top: ${({ show }) => (show ? '0' : '-100%')};
-  right: 0;
-  z-index: 99999;
-  width: 100px;
-  height: 65vh;
   cursor: pointer;
 
-  background: url(http://rfz86pha6.hn-bkt.clouddn.com/back_top.e9ad881.webp)
-    no-repeat center bottom;
+  .bg,
+  .icon-icon-test {
+    position: fixed;
+    right: 0;
+    z-index: 99;
+  }
 
-  transition: all 1s;
+  .bg {
+    top: ${({ show }) => (show ? '0' : '-100%')};
 
-  animation: slowAction 1s linear infinite alternate;
+    width: 100px;
+    height: 65vh;
 
-  @keyframes slowAction {
-    0% {
-      transform: translateY(0);
+    background: url(http://rfz86pha6.hn-bkt.clouddn.com/back_top.e9ad881.webp)
+      no-repeat center bottom;
+
+    transition: all 1s;
+
+    animation: slowAction 1s linear infinite alternate;
+
+    @keyframes slowAction {
+      0% {
+        transform: translateY(0);
+      }
+
+      25% {
+        transform: translateY(-6px);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+
+      75% {
+        transform: translateY(-14px);
+      }
+
+      100% {
+        transform: translateY(-18px);
+      }
     }
+  }
 
-    25% {
-      transform: translateY(-6px);
-    }
+  .icon-icon-test {
+    display: none;
+    opacity: ${({ show }) => (show ? '1' : '0')};
+    right: ${({ show }) => (show ? '30px' : '-40px')};
+    bottom: 120px;
+    transition: all 0.3s;
 
-    50% {
-      transform: translateY(-10px);
-    }
+    width: 40px;
+    height: 40px;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.05);
 
-    75% {
-      transform: translateY(-14px);
-    }
+    text-align: center;
+    font-size: 25px;
+    color: red;
 
-    100% {
-      transform: translateY(-18px);
-    }
+    border-radius: 50%;
+    background-color: #fff;
   }
 `
