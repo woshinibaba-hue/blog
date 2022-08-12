@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import { BackTop, message } from 'antd'
+import { message } from 'antd'
 
 import { useDispatch } from 'react-redux'
 import { setUserAction } from '@/layout/store/actioncreatore'
@@ -11,19 +11,11 @@ import Header from './components/Header'
 import Main from './components/Main'
 import Footer from './components/Footer'
 import LoginModal from './components/LoginModal'
+import BackTop from '@/components/BackTop'
 
 import { githubLogin } from '@/api/login'
 
 function ZLayout() {
-  const style: React.CSSProperties = {
-    fontSize: '25px',
-    textAlign: 'center',
-    width: '40px',
-    height: '40px',
-    backgroundColor: '#eee',
-    borderRadius: '50%'
-  }
-
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -49,9 +41,7 @@ function ZLayout() {
       <Main />
       <Footer />
       <LoginModal />
-      <BackTop style={style}>
-        <i className="iconfont icon-4fanhuidingbubai"></i>
-      </BackTop>
+      <BackTop />
     </>
   )
 }

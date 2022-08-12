@@ -35,8 +35,8 @@ export const PlayStyle = styled.div<Props>`
     backdrop-filter: saturate(170%) contrast(60%) blur(65px);
   }
 
-  .icon-bofang {
-    font-size: 18px;
+  .icon-zanting1 {
+    font-size: 16px !important;
   }
 
   main {
