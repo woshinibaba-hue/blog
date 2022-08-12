@@ -8,7 +8,6 @@ export const SearchStyle = styled.div`
   color: #666;
 
   .iconfont {
-    vertical-align: middle;
     margin-right: 5px;
   }
 

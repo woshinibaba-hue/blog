@@ -102,12 +102,13 @@ export const HeaderWrap = styled.div<{ isAffix: boolean }>`
           transform: scaleX(0);
           transform-origin: center;
           transition: all 0.2s;
-          background-color: var(--hover-color);
+          background-color: var(--main-color);
         }
       }
 
       .active {
-        color: var(--hover-color);
+        color: var(--main-color);
+
         &::after {
           transform: scaleX(1);
         }

@@ -1,8 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { Tag, Space, Divider } from 'antd'
-
 import { ArticleType } from '@/api/article/type'
 
 import format from '@/utils/format'
@@ -17,34 +15,6 @@ function ArticleItem({ article }: { article: ArticleType }) {
       className="articleItem"
       onClick={() => navigate(`/article/${article.id}`)}
     >
-      <h3 className="articleItem-title ellipsis-1">{article.title}</h3>
-      <Space split={<Divider type="vertical" />} className="meta ellipsis-1">
-        <Space>
-          {article.isTop === 1 && <Tag color="red">置顶</Tag>}
-          <Tag color="geekblue">{article.user.username}</Tag>
-          <Tag color="blue">{format.formatTime(article.createtime)}</Tag>
-        </Space>
-        <Space>
-          <Tag color="green">
-            <i className="iconfont icon-pinglun2"></i>{' '}
-            {article?.comment_count ?? 0}
-          </Tag>
-          <Tag color="red">
-            <i className="iconfont icon-dianzan_kuai"></i>
-            {article.like_user?.length ?? 0}
-          </Tag>
-        </Space>
-        {article.tags?.length && (
-          <Space className="articleItem_tags">
-            <i className="iconfont icon-biaoqian icon"></i>
-            {article.tags?.map((tag) => (
-              <Tag key={tag.name} color={tag.color} className="tag">
-                {tag.name}
-              </Tag>
-            ))}
-          </Space>
-        )}
-      </Space>
       <div className="cover">
         {article.cover ? (
           <img src={article.cover} alt={article.title} />
@@ -52,7 +22,34 @@ function ArticleItem({ article }: { article: ArticleType }) {
           <div className="not-cover">暂无封面</div>
         )}
       </div>
-      <div className="description ellipsis-3">{article.description}</div>
+      <div className="article-content">
+        <p className="title">
+          {article.isTop === 1 && <span className="isTop z-tag">置顶</span>}
+          {article.title}
+        </p>
+        <p className="description ellipsis-3">{article.description}</p>
+        <div className="info">
+          <ul className="left">
+            <li>{format.formatTime(article.createtime, 'YYYY-MM-DD')}</li>
+            <li>
+              <i className="iconfont icon-pinglun2" />
+              {article?.comment_count ?? 0}
+            </li>
+            <li>
+              <i className="iconfont icon-dianzan" />
+              {article.like_user?.length ?? 0}
+            </li>
+          </ul>
+          <div className="right ellipsis-1">
+            <i className="iconfont icon-biaoqian icon" />
+            {article.tags?.map((tag) => (
+              <span key={tag.name} className="tag" style={{ color: tag.color }}>
+                {tag.name}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
     </ArticleItemStyle>
   )
 }

@@ -11,7 +11,7 @@ export const MarkdownNavbarStyle = styled.div<{ isAffix: boolean }>`
 
   .title {
     font-size: 18px;
-    color: var(--hover-color);
+    color: var(--main-color);
   }
 
   .markdown-navigation {
@@ -26,7 +26,7 @@ export const MarkdownNavbarStyle = styled.div<{ isAffix: boolean }>`
 
       &.active {
         position: relative;
-        color: var(--hover-color);
+        color: var(--main-color);
 
         &::before {
           content: '';
@@ -69,7 +69,7 @@ export const MarkdownNavbarStyle = styled.div<{ isAffix: boolean }>`
     display: none;
     text-align: center;
     font-size: 16px;
-    color: var(--hover-color);
+    color: var(--main-color);
   }
 
   /* css 小技巧 巧妙的运用 :empty 伪元素来实现 当.markdown-navigation元素内没有子元素的时候，让 .not-nav 展示出来  */

@@ -39,7 +39,7 @@ export const AboutContainer = styled.div`
 
         .name {
           margin: 10px 0;
-          color: var(--hover-color);
+          color: var(--main-color);
         }
 
         .info {
@@ -59,7 +59,7 @@ export const AboutContainer = styled.div`
       }
 
       .ant-divider {
-        color: var(--hover-color);
+        color: var(--main-color);
         font-size: 20px;
       }
 

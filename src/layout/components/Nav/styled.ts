@@ -6,7 +6,6 @@ export const NavStyle = styled.div`
   .iconfont {
     font-size: 18px;
     margin-right: 5px;
-    vertical-align: middle;
   }
 
   .social {

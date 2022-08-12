@@ -48,7 +48,7 @@ function Sidebar() {
           <div className="login-succeed">
             <p>
               欢迎回来{' '}
-              <span style={{ color: 'var(--hover-color)', fontSize: '16px' }}>
+              <span style={{ color: 'var(--main-color)', fontSize: '16px' }}>
                 {user.username}
               </span>{' '}
               ~

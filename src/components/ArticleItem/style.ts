@@ -1,70 +1,96 @@
 import styled from 'styled-components'
 
 export const ArticleItemStyle = styled.div`
-  padding: 15px;
+  cursor: pointer;
+  height: 150px;
   margin-bottom: 15px;
   border-radius: var(--borderRadius);
+  overflow: hidden;
   background-color: #fff;
 
-  .iconfont {
-    margin-right: 5px;
-    font-size: 13px;
-    vertical-align: middle;
-  }
+  display: flex;
 
-  .ant-space-item {
-    margin-right: 0 !important;
-  }
+  font-weight: 400;
 
-  .articleItem-title {
-    cursor: pointer;
+  .cover,
+  .not-cover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 25px;
-    color: var(--hover-color);
-  }
 
-  .meta {
-    width: 100%;
+    width: 300px;
+    height: 100%;
+    flex-shrink: 0;
 
-    .articleItem_tags {
-      .icon {
-        margin: 0 10px 0 5px;
-      }
-    }
-  }
-
-  .cover {
-    cursor: pointer;
-    width: 100%;
-    height: 180px;
-    overflow: hidden;
-    line-height: 180px;
+    margin-right: 15px;
 
     img {
       width: 100%;
       height: 100%;
-      margin: 10px 0;
-      border-radius: 6px;
       object-fit: cover;
     }
+  }
 
-    .not-cover {
-      text-align: center;
-      font-size: 23px;
+  .article-content {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
+    .title {
+      font-size: 18px;
+
+      .isTop {
+        margin-right: 10px;
+      }
     }
 
-    img,
-    .not-cover {
-      transition: all 0.3s;
+    .description {
+      color: var(--minor);
+    }
 
-      &:hover {
-        transform: scale(1.1);
+    .info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-top: auto;
+      color: var(--minor);
+
+      .left {
+        display: flex;
+
+        li {
+          display: flex;
+          align-items: center;
+
+          &::after {
+            font-size: 12px;
+            margin: 0 6px;
+            content: '/';
+            color: #c0c4cc;
+          }
+
+          &:last-child {
+            &::after {
+              content: '';
+            }
+          }
+        }
+      }
+
+      .iconfont {
+        font-size: 12px;
+        margin-right: 5px;
+      }
+
+      .right {
+        width: 50%;
+        text-align: right;
+
+        .tag {
+          margin-right: 6px;
+        }
       }
     }
   }
-
-  .description {
-    font-size: 15px;
-  }
 `
-
-// export const ArticleItemStyle = styled.div``

@@ -82,7 +82,7 @@ function BaseNav() {
           <p>邮箱: 2011358693@qq.com</p>
           <span className="introduce" ref={elRef}></span>
 
-          <Divider style={{ color: 'var(--hover-color)' }}>社交账号</Divider>
+          <Divider style={{ color: 'var(--main-color)' }}>社交账号</Divider>
           <p className="relation">
             <a
               target="_blank"

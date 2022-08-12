@@ -39,7 +39,6 @@ export const BaseNavStyle = styled.div`
 
     .icon-dingxiang {
       font-size: 12px;
-      vertical-align: middle;
     }
 
     .relation {

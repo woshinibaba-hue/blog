@@ -55,7 +55,15 @@ function Content({ count, userId }: { count: number; userId: number }) {
             active: articleDetail?.like_user?.includes(userId)
           })}
         >
-          <i className="iconfont icon-dianzan_kuai" />
+          {/* <i className="iconfont icon-dianzan" /> */}
+          <i
+            className={classNames([
+              'iconfont',
+              articleDetail?.like_user?.includes(userId)
+                ? 'icon-dianzan_kuai'
+                : 'icon-dianzan'
+            ])}
+          />
         </Badge>
       </div>
       <a href="#comment">

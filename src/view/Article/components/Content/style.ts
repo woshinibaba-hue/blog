@@ -14,7 +14,7 @@ export const ContentStyle = styled.div`
 
   .divider {
     margin: 25px 0;
-    color: var(--hover-color);
+    color: var(--main-color);
   }
 
   .header {
@@ -77,8 +77,8 @@ export const ContentStyle = styled.div`
         font-size: 20px;
       }
 
-      &.active {
-        color: var(--hover-color);
+      .icon-dianzan_kuai {
+        color: var(--main-color);
       }
     }
   }

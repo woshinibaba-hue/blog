@@ -3,17 +3,23 @@
   --main-bg: #fff;
   --header-footer: #fff;
   --border-color: #e4e6eb;
-  --not-hover: #1e80ff;
+  /* 主体颜色 */
+  --main-color: #1e80ff;
+  /* hover 颜色 */
   --hover-color: #1171ee;
   --header-height: 60px;
-  --footer-height: 75px;
+  --footer-height: 140px;
   --container: 1140px;
   --font-color: #515767;
   --nav-color: #8f8f8f;
   --song-color: rgba(255, 255, 255, 0.75);
+  /* 歌词颜色 */
   --lyric: #26ce8a;
   --borderRadius: 6px;
   --contentPadding: 40px;
+
+  /* 次要文字颜色 */
+  --minor: #909399;
 
   /* markdown var */
   --strong-color: #2196f3;
@@ -40,7 +46,7 @@
 }
 
 /* 引入字体阿里图标 */
-@import url('//at.alicdn.com/t/c/font_3584551_thsyxhsuyt.css');
+@import url('//at.alicdn.com/t/c/font_3584551_uv3tod5jo0h.css');
 
 .del {
   text-decoration: line-through;
@@ -117,4 +123,20 @@ a {
 
 .ant-drawer-content-wrapper {
   width: 70% !important;
+}
+
+.z-tag {
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  color: #fff;
+  padding: 0 6px;
+  font-weight: 400;
+  font-size: 12px;
+  background-image: -webkit-linear-gradient(0deg, #3ca5f6 0, #a86af9 100%);
+  border-radius: 0 6px 0 6px;
+}
+
+.iconfont {
+  vertical-align: middle;
 }
