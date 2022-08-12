@@ -2,13 +2,14 @@ import styled from 'styled-components'
 
 export const HeaderWrap = styled.div<{ isAffix: boolean }>`
   position: sticky;
-  top: ${({ isAffix }) => (isAffix ? 0 : '-60px')};
+  top: ${({ isAffix }) => (isAffix ? 0 : '-80px')};
   z-index: 99;
   background-color: var(--header-footer);
   box-sizing: border-box;
+  box-shadow: 0px 1px 20px 1px rgba(0, 0, 0, 0.05);
   height: var(--header-height);
   border-bottom: 1px solid #eee;
-  transition: all 0.3s;
+  transition: all 0.5s;
 
   .container {
     display: flex;

@@ -14,7 +14,7 @@ export const BackTopStyle = styled.div<{ show: boolean }>`
     top: ${({ show }) => (show ? '0' : '-100%')};
 
     width: 100px;
-    height: 65vh;
+    height: 75vh;
 
     background: url(http://rfz86pha6.hn-bkt.clouddn.com/back_top.e9ad881.webp)
       no-repeat center bottom;

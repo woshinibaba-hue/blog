@@ -1,16 +1,22 @@
 import styled from 'styled-components'
 
 export const ArticleItemStyle = styled.div`
+  display: flex;
+
   cursor: pointer;
   height: 150px;
   margin-bottom: 15px;
   border-radius: var(--borderRadius);
   overflow: hidden;
   background-color: #fff;
-
-  display: flex;
+  transition: all 0.3s;
 
   font-weight: 400;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1px 20px 1px rgba(0, 0, 0, 0.05);
+  }
 
   .cover {
     display: flex;
