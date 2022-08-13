@@ -18,6 +18,6 @@ export const FooterWrap = styled.div<{ isBottom: boolean }>`
   }
 
   @media screen and (max-width: 768px) {
-    margin-bottom: ${({ isBottom }) => (isBottom ? '140px' : '0px')};
+    margin-bottom: ${({ isBottom }) => (isBottom ? '70px' : '0px')};
   }
 `

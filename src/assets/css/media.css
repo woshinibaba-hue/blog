@@ -8,6 +8,13 @@
   .layout-header .container {
     padding: 0 25px;
   }
+
+  .layout-main .content .header .article-time {
+    display: none;
+  }
+  .layout-main .content .header .date {
+    display: block !important;
+  }
 }
 
 @media screen and (max-width: 1140px) {
@@ -93,6 +100,10 @@
     display: none;
   }
 
+  .articleItem .cover {
+    display: none !important;
+  }
+
   .layout-main .content .pigeonhole {
     padding: 20px !important;
   }
@@ -110,7 +121,15 @@
   }
 
   .layout-main .content {
-    margin: 8px 0 0 0 !important;
+    margin: 8px 0 !important;
+  }
+
+  /* 切换返回顶部样式 */
+  .back-top .bg {
+    display: none;
+  }
+  .back-top .icon-icon-test {
+    display: block !important;
   }
 }
 
@@ -126,27 +145,8 @@
     display: none;
   }
 
-  .meta .articleItem_tags {
-    display: none;
-  }
-
-  .articleItem .cover {
-    display: none !important;
-  }
-  /*
+  /* 隐藏文章列表 标签 */
   .articleItem .article-content .info .right {
     display: none;
-  } */
-
-  .back-top .bg {
-    display: none;
-  }
-
-  .back-top .icon-icon-test {
-    display: block !important;
-  }
-
-  .more {
-    padding: 0 !important;
   }
 }

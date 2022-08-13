@@ -16,7 +16,7 @@ function Footer() {
   setInterval(function () {
     // 获取当前时间距离给定时间毫秒数
     const cha_hao_time =
-      new Date().getTime() - new Date('2022-07-24 00:00:00').getTime()
+      new Date().getTime() - new Date('2022/07/24 00:00:00').getTime()
     //一天的毫秒数
     const oneDay_hao = 24 * 60 * 60 * 1000
     //总天数（含小数点）（小数点以天为单位）
@@ -79,13 +79,7 @@ function Footer() {
         </a>{' '}
         数据库
       </p>
-      <p>
-        本站以苟且偷生{' '}
-        <i
-          className="iconfont icon-shijianzhouqi"
-        />{' '}
-        {date}
-      </p>
+      <p>本站已坚持运行 {date}</p>
     </FooterWrap>
   )
 }

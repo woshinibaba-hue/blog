@@ -90,7 +90,7 @@ function Content({ count, userId }: { count: number; userId: number }) {
           </div>
           <div className="right">
             <div className="name">文章作者：{articleDetail?.user.username}</div>
-            <Space split={<Divider type="vertical" />}>
+            <Space split={<Divider type="vertical" />} className="article-time">
               <span>
                 文章发表于：
                 {format.formatTime(
@@ -106,6 +106,22 @@ function Content({ count, userId }: { count: number; userId: number }) {
                 )}
               </span>
             </Space>
+            <div className="date">
+              <p>
+                文章发表于：
+                {format.formatTime(
+                  articleDetail?.createtime,
+                  'YYYY-MM-DD HH:mm:ss'
+                )}
+              </p>
+              <p>
+                文章更新于：
+                {format.formatTime(
+                  articleDetail?.updatetime,
+                  'YYYY-MM-DD HH:mm:ss'
+                )}
+              </p>
+            </div>
           </div>
         </div>
         {articleDetail?.cover && (

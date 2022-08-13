@@ -13,14 +13,16 @@ export const HomeStyled = styled.div`
 
   .loading,
   .more {
-    padding: 10px;
+    /* padding: 10px; */
     border-radius: var(--borderRadius);
   }
 
   .loading {
     background-color: #fff;
   }
+
   .more {
-    padding: 30px;
+    /* padding: 30px; */
+    margin-bottom: 6px;
   }
 `

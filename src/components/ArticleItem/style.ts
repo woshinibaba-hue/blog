@@ -82,6 +82,13 @@ export const ArticleItemStyle = styled.div`
               content: '';
             }
           }
+
+          .avatar {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            vertical-align: top;
+          }
         }
       }
 

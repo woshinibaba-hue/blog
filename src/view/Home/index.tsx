@@ -67,6 +67,7 @@ function Home() {
         key={1}
         hasMore={isMore}
         loader={loading()}
+        style={{ overflow: 'unset' }}
         endMessage={
           <Divider plain className="more">
             没有更多文章辣~ 🤐

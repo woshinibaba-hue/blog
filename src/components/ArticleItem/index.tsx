@@ -30,6 +30,9 @@ function ArticleItem({ article }: { article: ArticleType }) {
         <p className="description ellipsis-3">{article.description}</p>
         <div className="info">
           <ul className="left">
+            <li>
+              <img className="avatar" src={article.user.avatar} alt="" />
+            </li>
             <li>{format.formatTime(article.createtime, 'YYYY-MM-DD')}</li>
             <li>
               <i className="iconfont icon-pinglun2" />

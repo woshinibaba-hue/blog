@@ -47,6 +47,10 @@ export const ContentStyle = styled.div`
           color: #515767;
           font-size: 16px;
         }
+
+        .date {
+          display: none;
+        }
       }
     }
 
