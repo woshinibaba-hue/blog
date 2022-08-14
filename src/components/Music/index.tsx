@@ -87,6 +87,7 @@ function Music({ isShowMusic }: { isShowMusic: boolean }) {
           <img
             src={`${detail?.cover}?param=120y120`}
             style={{ animationPlayState: !isPlay ? 'paused' : 'running' }}
+            className="lazyload"
           />
           <div className="mask" onClick={() => player()}>
             <i

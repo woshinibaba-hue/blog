@@ -89,7 +89,7 @@ function FriendLink() {
         {friendLink.map((item) => (
           <a href={item.link} target="_block" className="item" key={item.id}>
             <div className="cover">
-              <img src={item.cover} />
+              <img src={item.cover} className="lazyload" />
             </div>
             <div className="info">
               <div className="name ellipsis-1">{item.name}</div>

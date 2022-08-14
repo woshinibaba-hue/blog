@@ -7,6 +7,8 @@ import format from '@/utils/format'
 
 import { ArticleItemStyle } from './style'
 
+import 'lazysizes'
+
 function ArticleItem({ article }: { article: ArticleType }) {
   const navigate = useNavigate()
 
@@ -17,7 +19,7 @@ function ArticleItem({ article }: { article: ArticleType }) {
     >
       <div className="cover">
         {article.cover ? (
-          <img src={article.cover} alt={article.title} />
+          <img src={article.cover} alt={article.title} className="lazyload" />
         ) : (
           <div className="not-cover">暂无封面</div>
         )}
@@ -31,7 +33,11 @@ function ArticleItem({ article }: { article: ArticleType }) {
         <div className="info">
           <ul className="left">
             <li>
-              <img className="avatar" src={article.user.avatar} alt="" />
+              <img
+                className="avatar lazyload"
+                src={article.user.avatar}
+                alt=""
+              />
             </li>
             <li>{format.formatTime(article.createtime, 'YYYY-MM-DD')}</li>
             <li>

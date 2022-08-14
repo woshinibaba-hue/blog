@@ -86,7 +86,7 @@ function Content({ count, userId }: { count: number; userId: number }) {
         <h1 className="title">{articleDetail?.title}</h1>
         <div className="info">
           <div className="left">
-            <img src={articleDetail?.user.avatar} />
+            <img src={articleDetail?.user.avatar} className="lazyload" />
           </div>
           <div className="right">
             <div className="name">文章作者：{articleDetail?.user.username}</div>
@@ -126,7 +126,7 @@ function Content({ count, userId }: { count: number; userId: number }) {
         </div>
         {articleDetail?.cover && (
           <div className="cover">
-            <img src={articleDetail?.cover} />
+            <img src={articleDetail?.cover} className="lazyload" />
           </div>
         )}
         <Divider className="divider" orientation="center" dashed>

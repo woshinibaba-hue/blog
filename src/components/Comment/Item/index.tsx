@@ -63,7 +63,11 @@ const CommitItem: React.FC<ICommentItemProps> = ({
   return (
     <CommentItemStyle mainMarginBottom={!!children}>
       <div className="avatar">
-        <img src={comment.user.avatar} alt={comment.user.username} />
+        <img
+          src={comment.user.avatar}
+          alt={comment.user.username}
+          className="lazyload"
+        />
       </div>
       <div className="content">
         <div className="content-header">

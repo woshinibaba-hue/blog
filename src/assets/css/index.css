@@ -144,3 +144,18 @@ a {
 .ant-form-item-with-help {
   margin-bottom: 23px !important;
 }
+
+/* 使用 lazysizes 实现图片懒加载  */
+/* 图片展示效果动画 */
+.lazyload,
+.lazyloading {
+  opacity: 0;
+  transform: scale(0);
+  transform-origin: center center;
+}
+
+.lazyloaded {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 500ms ease-in-out;
+}

@@ -43,7 +43,7 @@ function Play({
         <>
           {isPlay && key == songId ? (
             <img
-              className="mave"
+              className="mave lazyload"
               src="http://rfz86pha6.hn-bkt.clouddn.com/wave.gif"
               alt=""
             />
@@ -201,7 +201,11 @@ function Play({
           </div>
           <div className="detail">
             <div className="cover">
-              <img src={`${songDetail?.cover}?param=175y175`} alt="" />
+              <img
+                src={`${songDetail?.cover}?param=175y175`}
+                alt=""
+                className="lazyload"
+              />
               <div className="bg" />
             </div>
             <p className="ellipsis-1">歌曲名称: {songDetail?.name}</p>

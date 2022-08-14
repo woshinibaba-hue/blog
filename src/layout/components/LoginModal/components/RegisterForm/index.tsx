@@ -132,6 +132,7 @@ function Register() {
             <img
               src={`data:image/svg+xml;utf8,${encodeURIComponent(code)}`}
               alt=""
+              className="lazyload"
             />
             <span>点击刷新验证码</span>
           </div>
@@ -155,6 +156,7 @@ function Register() {
           <img
             src={url}
             alt="avatar"
+            className="lazyload"
             style={{
               width: '100%',
               objectFit: 'cover',

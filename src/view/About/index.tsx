@@ -11,13 +11,18 @@ function About() {
   return (
     <AboutContainer>
       <div className="bg">
-        <img src="http://rfz86pha6.hn-bkt.clouddn.com/aboutbg.webp" alt="" />
+        <img
+          src="http://rfz86pha6.hn-bkt.clouddn.com/aboutbg.webp"
+          alt=""
+          className="lazyload"
+        />
       </div>
       <div className="container">
         <header>
           <div className="left">
             <img
               src="http://rfz86pha6.hn-bkt.clouddn.com/FhJqrWCZNnbVJmZug8Sx6Xgnmbr2"
+              className="lazyload"
               alt=""
             />
           </div>

@@ -54,7 +54,10 @@ function Footer() {
       </div>
       <p>
         本站由
-        <img src="https://console-static.huaweicloud.com/static/authui/20220714145424/public/hws/images/logo.svg" />
+        <img
+          src="https://console-static.huaweicloud.com/static/authui/20220714145424/public/hws/images/logo.svg"
+          className="lazyload"
+        />
         提供云服务支持
       </p>
       <p>
