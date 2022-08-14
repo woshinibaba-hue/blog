@@ -45,8 +45,8 @@ function ArticleItem({ article }: { article: ArticleType }) {
           </ul>
           <div className="right ellipsis-1">
             <i className="iconfont icon-biaoqian icon" />
-            {article.tags?.map((tag) => (
-              <span key={tag.name} className="tag" style={{ color: tag.color }}>
+            {article.tags?.map((tag, index) => (
+              <span key={index} className="tag" style={{ color: tag.color }}>
                 {tag.name}
               </span>
             ))}

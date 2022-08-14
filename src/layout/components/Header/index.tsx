@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 
 import { useDispatch } from 'react-redux'
 import {
@@ -29,7 +29,7 @@ import classNames from 'classnames'
 const navName = [
   {
     name: '首页',
-    path: '/'
+    path: '/home'
   },
   {
     name: '时间旅途',
@@ -55,6 +55,8 @@ const navName = [
 
 function Header() {
   const isAffix = useScroll()
+
+  const navigate = useNavigate()
 
   const [selectKey, setSelectKey] = useState(navName[0])
 
@@ -88,6 +90,11 @@ function Header() {
   useEffect(() => {
     const selectKey = navName.find((item) => item.path === pathname)
     if (selectKey) setSelectKey(selectKey)
+
+    // 当访问 / 时，跳转到 /home
+    if (pathname === '/') {
+      navigate('/home')
+    }
   }, [pathname])
 
   const dispatch = useDispatch()

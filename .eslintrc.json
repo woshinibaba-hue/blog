@@ -29,6 +29,7 @@
     "react/no-children-prop": 0,
     "react/display-name": 0,
     "@typescript-eslint/no-non-null-assertion": 0,
-    "prefer-const": 0
+    "prefer-const": 0,
+    "no-empty": 0
   }
 }

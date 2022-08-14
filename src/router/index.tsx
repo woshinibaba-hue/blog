@@ -15,7 +15,7 @@ const routers: IRoute[] = [
     component: lazy(() => import('@/layout')),
     children: [
       {
-        path: '',
+        path: '/home',
         component: lazy(() => import('@/view/Home'))
       },
       {

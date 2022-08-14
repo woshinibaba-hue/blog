@@ -9,6 +9,11 @@ export const MarkdownNavbarStyle = styled.div<{ isAffix: boolean }>`
 
   transition: all 0.3s;
 
+  .markdown-navigation {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
   .title {
     font-size: 18px;
     color: var(--main-color);

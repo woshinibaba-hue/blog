@@ -74,8 +74,8 @@ function Home() {
           </Divider>
         }
       >
-        {articleList.map((item, index) => (
-          <ArticleItem key={index} article={item} />
+        {articleList?.map((item) => (
+          <ArticleItem key={item.id} article={item} />
         ))}
       </InfiniteScroll>
     </HomeStyled>

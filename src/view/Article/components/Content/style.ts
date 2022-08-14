@@ -7,7 +7,6 @@ export const ContentStyle = styled.div`
   padding: var(--contentPadding);
 
   img {
-    width: 100%;
     object-fit: cover;
     border-radius: var(--borderRadius);
   }
