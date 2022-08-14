@@ -72,7 +72,7 @@ function Tags() {
 
   return (
     <TagStyled className="layout-tags">
-      <div className="title">全部分类</div>
+      <div className="tags-title">全部标签</div>
       {showTags()}
       <div className="articles">
         <div className="articles-title">

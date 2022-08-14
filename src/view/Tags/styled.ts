@@ -5,8 +5,7 @@ export const TagStyled = styled.div`
   border-radius: var(--borderRadius);
   background-color: #fff;
 
-  .title {
-    text-align: center;
+  .tags-title {
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 15px;

@@ -31,21 +31,22 @@ module.exports = {
       whenProd(() => {
         // 只会在生产环境执行
         webpackConfig.externals = {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          redux: 'Redux',
-          antd: 'antd'
+          'redux-devtools-extension': 'window.__REDUX_DEVTOOLS_EXTENSION__',
+          // react: 'React',
+          // 'react-dom': 'ReactDOM',
+          // redux: 'Redux',
+          // antd: 'antd'
         }
 
-        cdn = {
-          js: [
-            'https://unpkg.com/react@18.2.0/umd/react.production.min.js',
-            'https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js',
-            'https://unpkg.com/redux@4.2.0/dist/redux.min.js',
-            'https://unpkg.com/antd@4.22.4/dist/antd.min.js'
-          ],
-          css: ['https://unpkg.com/antd@4.22.4/dist/antd.min.css']
-        }
+        // cdn = {
+        //   js: [
+        //     'https://unpkg.com/react@18.2.0/umd/react.production.min.js',
+        //     'https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js',
+        //     'https://unpkg.com/redux@4.2.0/dist/redux.min.js',
+        //     'https://unpkg.com/antd@4.22.4/dist/antd.min.js'
+        //   ],
+        //   css: ['https://unpkg.com/antd@4.22.4/dist/antd.min.css']
+        // }
       })
 
       const { isFound, match } = getPlugin(

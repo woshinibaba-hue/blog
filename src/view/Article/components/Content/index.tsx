@@ -55,7 +55,6 @@ function Content({ count, userId }: { count: number; userId: number }) {
             active: articleDetail?.like_user?.includes(userId)
           })}
         >
-          {/* <i className="iconfont icon-dianzan" /> */}
           <i
             className={classNames([
               'iconfont',

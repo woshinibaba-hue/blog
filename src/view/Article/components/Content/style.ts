@@ -134,7 +134,6 @@ export const ContentStyle = styled.div`
   }
 
   .tags {
-    margin-top: 30px;
     font-size: 15px;
     color: #515767;
   }

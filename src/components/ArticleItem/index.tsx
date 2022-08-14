@@ -7,8 +7,6 @@ import format from '@/utils/format'
 
 import { ArticleItemStyle } from './style'
 
-import 'lazysizes'
-
 function ArticleItem({ article }: { article: ArticleType }) {
   const navigate = useNavigate()
 
@@ -19,7 +17,11 @@ function ArticleItem({ article }: { article: ArticleType }) {
     >
       <div className="cover">
         {article.cover ? (
-          <img src={article.cover} alt={article.title} className="lazyload" />
+          <img
+            src={article.cover}
+            alt={article.title}
+            className="lazyload"
+          />
         ) : (
           <div className="not-cover">暂无封面</div>
         )}

@@ -36,7 +36,7 @@ const navName = [
     path: '/history'
   },
   {
-    name: '分类',
+    name: '标签',
     path: '/tags'
   },
   {

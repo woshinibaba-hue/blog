@@ -9,29 +9,82 @@
   font-size: 16px;
   line-height: 1.5;
   word-wrap: break-word;
+  background-image: linear-gradient(
+      0deg,
+      transparent 24%,
+      rgba(201, 195, 195, 0.329) 25%,
+      hsla(0, 8%, 80.4%, 0.05) 26%,
+      transparent 27%,
+      transparent 74%,
+      hsla(0, 5.2%, 81%, 0.185) 75%,
+      rgba(180, 176, 176, 0.05) 76%,
+      transparent 77%,
+      transparent
+    ),
+    linear-gradient(
+      90deg,
+      transparent 24%,
+      rgba(204, 196, 196, 0.226) 25%,
+      hsla(0, 4%, 66.1%, 0.05) 26%,
+      transparent 27%,
+      transparent 74%,
+      hsla(0, 5.2%, 81%, 0.185) 75%,
+      rgba(180, 176, 176, 0.05) 76%,
+      transparent 77%,
+      transparent
+    );
+  background-size: 50px 50px;
+  padding-bottom: 30px;
 }
 
-/* @media screen and (max-width: 1240px) {
-  .markdown-body {
-    font-size: 0.1613rem;
-  }
-  .markdown-body p {
-    font-size: 0.129rem !important;
-  }
+/* hover 效果 */
+.markdown-body pre > div,
+.markdown-body img {
+  transition: all 0.3s;
+}
 
-  .markdown-body h2 {
-    padding-left: 0 !important;
-  }
+/* 标题样式以及文字大小 */
+.markdown-body h2::after {
+  content: '」';
+  position: absolute;
+  top: 6px;
+  right: auto;
+}
 
-  .markdown-body h2::before {
-    top: -0.0484rem !important;
-  }
+.markdown-body h2::before {
+  content: '「';
+  position: absolute;
+  top: -6px;
+  left: -14px;
+}
 
-  .markdown-body h2::after {
-    top: 3px !important;
-    left: 3px;
-  }
-} */
+.markdown-body h3 {
+  font-size: 1.25em;
+}
+
+.markdown-body h3::before {
+  content: '»';
+  padding-right: 6px;
+  color: var(--strong-color);
+}
+
+.markdown-body h4 {
+  font-size: 1em;
+}
+
+.markdown-body h5 {
+  font-size: 0.75em;
+}
+
+.markdown-body h6 {
+  font-size: 0.5em;
+}
+
+.markdown-body pre > div:hover,
+.markdown-body img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.03);
+}
 
 .markdown-body .octicon {
   display: inline-block;
@@ -239,7 +292,6 @@
 }
 
 .markdown-body a:hover::after {
-  /* text-decoration: underline; */
   left: 0;
   opacity: 1;
 }
@@ -312,46 +364,6 @@
   padding-bottom: 0.6em;
   font-size: 1.5em;
   border-bottom: 1px solid hsla(210, 18%, 87%, 1);
-}
-
-.markdown-body h2::after {
-  content: '」';
-  position: relative;
-  top: 6px;
-  right: auto;
-}
-
-.markdown-body h2::before {
-  content: '「';
-  position: absolute;
-  top: -6px;
-  left: -14px;
-}
-
-.markdown-body h3 {
-  font-weight: 600;
-  font-size: 1.25em;
-}
-
-.markdown-body h3::before {
-  content: '»';
-  padding-right: 6px;
-  color: var(--strong-color);
-}
-
-.markdown-body h4 {
-  font-weight: 600;
-  font-size: 1em;
-}
-
-.markdown-body h5 {
-  font-weight: 600;
-  font-size: 0.875em;
-}
-
-.markdown-body h6 {
-  font-weight: 600;
-  font-size: 0.85em;
 }
 
 .markdown-body p {
@@ -915,7 +927,6 @@
   overflow: auto;
   font-size: 108%;
   line-height: 1.45;
-  background-color: #f6f8fa;
   border-radius: 6px;
 }
 
