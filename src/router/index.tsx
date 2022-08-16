@@ -23,6 +23,10 @@ const routers: IRoute[] = [
         component: lazy(() => import('@/view/About'))
       },
       {
+        path: '/showreel',
+        component: lazy(() => import('@/view/Showreel'))
+      },
+      {
         path: '/link',
         component: lazy(() => import('@/view/FriendLink'))
       },

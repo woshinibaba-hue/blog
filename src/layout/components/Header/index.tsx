@@ -40,6 +40,10 @@ const navName = [
     path: '/tags'
   },
   {
+    name: '作品集',
+    path: '/showreel'
+  },
+  {
     name: '友链',
     path: '/link'
   },
