@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const SearchStyle = styled.div`
   a {
-    cursor: pointer;
+    cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
     display: flex;
     justify-content: space-between;
     padding: 10px 20px;

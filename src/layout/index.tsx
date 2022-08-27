@@ -20,6 +20,7 @@ function ZLayout() {
 
   useEffect(() => {
     const code = window.location.href.split('=')[1]
+
     if (!code) return
     // 去除 url 参数
     let url = window.location.href
@@ -28,11 +29,16 @@ function ZLayout() {
       url = url.replace(/(\?|#)[^'"]*/, '') //去除参数
       window.history.pushState({}, '0', url)
     }
-    githubLogin(code).then((res) => {
-      dispatch(setUserAction(res.data))
-      storage.set('user', res.data)
-      message.success(res.message)
-    })
+
+    githubLogin(code)
+      .then((res) => {
+        dispatch(setUserAction(res.data))
+        storage.set('user', res.data)
+        message.success(res.message)
+      })
+      .catch((err) => {
+        message.error(err.message)
+      })
   }, [])
 
   return (

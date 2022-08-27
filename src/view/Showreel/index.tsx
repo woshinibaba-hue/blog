@@ -15,8 +15,6 @@ export default function () {
   return (
     <div
       style={{
-        backgroundColor: 'var(--main-bg)',
-        padding: '20px',
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-between',

@@ -18,7 +18,7 @@ export const TagStyled = styled.div`
     .item {
       display: inline-block;
       padding: 3px 10px;
-      cursor: pointer;
+      cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
       border-radius: 5px;
 
       &.active {

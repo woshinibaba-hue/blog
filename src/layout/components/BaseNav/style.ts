@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const BaseNavStyle = styled.div`
   .blog_Info {
     text-align: center;
-    cursor: pointer;
+    cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
     padding: 10px;
     border-radius: var(--borderRadius);
     margin-bottom: 10px;

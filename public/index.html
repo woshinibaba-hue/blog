@@ -8,10 +8,19 @@
     />
     <link rel="icon" href="./logo.ico" />
     <title>一名正在努力的菜鸡</title>
+    <meta http-equiv="Content-Security-Policy" content="img-src http:" />
     <!-- css cnd 加载 -->
     <% htmlWebpackPlugin?.options?.cdn.css.forEach(cdnURL => { %>
     <link rel="stylesheet" href="<%= cdnURL %>" />
     <% }) %>
+
+    <script
+      type="text/javascript"
+      charset="utf-8"
+      src="https://connect.qq.com/qc_jssdk.js"
+      data-appid="102018709"
+      data-redirecturi="https://www.yimiciji.top:7777"
+    ></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

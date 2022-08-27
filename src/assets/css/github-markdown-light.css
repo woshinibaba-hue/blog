@@ -322,7 +322,7 @@
 }
 
 .markdown-body details summary {
-  cursor: pointer;
+  cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
 }
 
 .markdown-body details:not([open]) > *:not(summary) {
@@ -1013,7 +1013,7 @@
 }
 
 .markdown-body .task-list-item.enabled label {
-  cursor: pointer;
+  cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
 }
 
 .markdown-body .task-list-item + .task-list-item {

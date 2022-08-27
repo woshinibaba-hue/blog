@@ -33,7 +33,7 @@ export const SearchStyle = styled.div`
     }
 
     .btn {
-      cursor: pointer;
+      cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
       font-size: 28px;
       padding: 0 16px;
       border-radius: 20px;

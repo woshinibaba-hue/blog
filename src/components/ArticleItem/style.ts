@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const ArticleItemStyle = styled.div`
   display: flex;
 
-  cursor: pointer;
+  cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
   height: 150px;
   margin-bottom: 15px;
   border-radius: var(--borderRadius);

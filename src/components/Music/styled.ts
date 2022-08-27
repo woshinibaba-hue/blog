@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const MusicWrap = styled.div<{ isShowMusic: boolean }>`
-  cursor: pointer;
+  cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
 
   display: flex;
   flex-direction: column;

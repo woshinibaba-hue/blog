@@ -40,7 +40,7 @@ export const HeaderWrap = styled.div<{ isAffix: boolean }>`
     }
 
     .lable-search {
-      cursor: pointer;
+      cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
       font-size: 20px;
     }
 
@@ -124,7 +124,7 @@ export const HeaderWrap = styled.div<{ isAffix: boolean }>`
     }
 
     .login {
-      cursor: pointer;
+      cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
       margin-left: 20px;
 
       &:hover {

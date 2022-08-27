@@ -175,7 +175,7 @@ export const NotFound = styled.div`
         opacity: 0;
         font-size: 14px;
         line-height: 36px;
-        cursor: pointer;
+        cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
         animation-name: slideUp;
         animation-duration: 0.5s;
         animation-delay: 0.3s;

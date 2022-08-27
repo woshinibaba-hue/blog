@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { useDispatch } from 'react-redux'
 import { setUserAction } from '@/layout/store/actioncreatore'
@@ -10,7 +10,7 @@ import storage from '@/utils/storage'
 import { login } from '@/api/login'
 import { ILogin } from '@/api/login/types'
 
-const redirect_uri = process.env.REACT_APP_REDIRECT_URL
+// const redirect_uri = process.env.REACT_APP_REDIRECT_URL
 const client_id = process.env.REACT_APP_CLIENT_ID
 
 function Login({ handleClose }: { handleClose: () => void }) {
@@ -28,11 +28,15 @@ function Login({ handleClose }: { handleClose: () => void }) {
 
   // github 登录
   const githubLogin = async () => {
-    console.log('redirect_uri', redirect_uri)
-    console.log('client_id', client_id)
-
-    window.location.href = `https://github.com/login/oauth/authorize?client_id=${client_id}&scope=user&redirect_uri=${redirect_uri}`
+    window.location.href = `https://github.com/login/oauth/authorize?client_id=${client_id}&scope=user`
   }
+
+  useEffect(() => {
+    QC.Login({
+      btnId: 'qqLoginBtn', //插入按钮的节点id
+      size: 'C_S'
+    })
+  }, [])
 
   return (
     <Form
@@ -78,6 +82,7 @@ function Login({ handleClose }: { handleClose: () => void }) {
         <Space split={<Divider type="horizontal" />}>
           其他登录方式
           <i className="iconfont icon-github" onClick={githubLogin}></i>
+          <span id="qqLoginBtn"></span>
         </Space>
       </Form.Item>
 

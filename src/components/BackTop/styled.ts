@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const BackTopStyle = styled.div<{ show: boolean }>`
-  cursor: pointer;
+  cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
 
   .bg,
   .icon-icon-test {

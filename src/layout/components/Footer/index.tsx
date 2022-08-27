@@ -61,6 +61,15 @@ function Footer() {
         提供云服务支持
       </p>
       <p>
+        <a
+          href="https://beian.miit.gov.cn/#/Integrated/index"
+          target="_blank"
+          rel="noreferrer"
+        >
+          鄂ICP备2022013787号
+        </a>
+      </p>
+      <p>
         本网站由{' '}
         <a href="https://react.docschina.org/" target="_blank" rel="noreferrer">
           React

@@ -73,7 +73,7 @@ export const CommentItemStyle = styled.div<Props>`
 
     .handler {
       .ant-space-item {
-        cursor: pointer;
+        cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
         color: #8a919f;
       }
     }
@@ -102,7 +102,7 @@ export const CommentItemStyle = styled.div<Props>`
     }
 
     .del {
-      cursor: pointer;
+      cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
       color: #f53f3f;
     }
   }

@@ -58,6 +58,21 @@ html {
   height: unset;
 }
 
+img,
+body {
+  cursor: url(https://yimiciji.top/NormalSelect.cur), default;
+}
+
+a {
+  cursor: url(https://yimiciji.top/linkSelect.cur), pointer !important;
+}
+
+input,
+span,
+p {
+  cursor: url(https://yimiciji.top/TextSelect.cur), text !important;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
