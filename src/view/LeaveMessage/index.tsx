@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 
 import { message } from 'antd'
 
@@ -6,7 +6,8 @@ import {
   getLeaveMessage,
   postLeaveMessage,
   replyLeaveMessage,
-  LeaveMessageType
+  LeaveMessageType,
+  deleteMsg
 } from '@/api/LeaveMessage'
 
 import storage from '@/utils/storage'
@@ -56,6 +57,12 @@ function LeaveMessage() {
       setGuestbooks(res.data)
     })
   }
+
+  const handlerDelete = useCallback(async (id: number) => {
+    await deleteMsg(id)
+    message.success('删除留言成功~')
+    getGuestbook()
+  }, [])
 
   useEffect(() => {
     const token = storage.get<string>('user_token')
@@ -118,6 +125,7 @@ function LeaveMessage() {
           reply={handlerReply}
           count={guestbooks?.count ?? 0}
           onPageChange={onPageChange}
+          handlerDelete={handlerDelete}
         />
       </div>
     </LeaveMessageStyle>

@@ -1,9 +1,8 @@
 import React, { memo, useState } from 'react'
-
 import { useSelector } from 'react-redux'
 import { RootStateType } from '@/store/types'
 
-import { Space, Divider, message as Message, Tag } from 'antd'
+import { Space, Divider, message as Message, Tag, Popconfirm } from 'antd'
 
 import classNames from 'classnames'
 
@@ -21,7 +20,8 @@ const CommitItem: React.FC<ICommentItemProps> = ({
   reply,
   // mainText,
   children,
-  isLogin
+  isLogin,
+  handlerDelete
 }) => {
   // const [like, setLike] = useState(true)
   const [isReplyMessage, setIsReplyMessage] = useState(false)
@@ -49,11 +49,8 @@ const CommitItem: React.FC<ICommentItemProps> = ({
   const handlerSubmit = () => {
     if (reply) {
       reply(comment.id, message, setMessage)
+      setIsReplyMessage(false)
     }
-  }
-
-  const handlerDel = () => {
-    console.log('删除', comment.id)
   }
 
   const handlerChange = (value: string) => {
@@ -113,12 +110,19 @@ const CommitItem: React.FC<ICommentItemProps> = ({
               )}
             </Space>
             {comment.user.id === id && (
-              <div className="delele" onClick={handlerDel}>
+              // <div className="delele">
+              <Popconfirm
+                title="确定永久删除该数据？"
+                onConfirm={() => handlerDelete(comment.id)}
+                okText="确认"
+                cancelText="取消"
+              >
                 <Space>
                   <i className="iconfont icon-shanchu"></i>
                   删除
                 </Space>
-              </div>
+              </Popconfirm>
+              // </div>
             )}
           </Space>
 

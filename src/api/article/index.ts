@@ -66,3 +66,10 @@ export const likeArticle = (id: number) => {
     url: `/article/${id}/like`
   })
 }
+
+// 删除文章评论
+export const deleteArticle = (id: number) => {
+  return request.delete({
+    url: `/article/comment?id=${id}`
+  })
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { message } from 'antd'
@@ -72,6 +72,12 @@ function Comment({
     })
   }
 
+  const handlerDelete = useCallback(async (id: number) => {
+    await request.deleteArticle(id)
+    message.success('删除评论成功~')
+    gitComment()
+  }, [])
+
   useEffect(() => {
     gitComment()
   }, [])
@@ -99,6 +105,7 @@ function Comment({
         handlerLike={handlerLike}
         reply={handlerReply}
         count={commentList?.count}
+        handlerDelete={handlerDelete}
       />
     </div>
   )

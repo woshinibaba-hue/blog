@@ -35,3 +35,10 @@ export const replyLeaveMessage = (guestbookId: number, content: string) => {
     }
   })
 }
+
+// 删除留言
+export const deleteMsg = (id: number) => {
+  return request.delete({
+    url: `/guestbook?id=${id}`
+  })
+}

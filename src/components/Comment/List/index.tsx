@@ -20,7 +20,8 @@ const CommentList: React.FC<CommentListProps> = ({
   reply,
   isLogin,
   count,
-  onChange
+  onChange,
+  handlerDelete
 }) => {
   return (
     <ListStyled>
@@ -42,6 +43,7 @@ const CommentList: React.FC<CommentListProps> = ({
             mainText={titleText ?? '未知'}
             reply={reply}
             isLogin={isLogin}
+            handlerDelete={handlerDelete}
           >
             {item.children &&
               item.children.map((child) => {
@@ -53,6 +55,7 @@ const CommentList: React.FC<CommentListProps> = ({
                     handlerLike={handlerLike}
                     reply={reply}
                     isLogin={isLogin}
+                    handlerDelete={handlerDelete}
                   />
                 )
               })}

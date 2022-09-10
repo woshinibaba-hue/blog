@@ -16,4 +16,5 @@ export interface CommentProps extends EditorProps {
   describe?: string
   count?: number
   onPageChange: (page: number, pageSize: number) => void
+  handlerDelete: (id: number) => void
 }

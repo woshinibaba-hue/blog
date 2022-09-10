@@ -25,7 +25,8 @@ const Comments: React.FC<CommentProps> = ({
   // isLogin, // 是否登录
   describe, // 评论(留言)框上方描述文字
   count = 0, // 评论(留言)数量
-  onPageChange // 分页改变事件
+  onPageChange, // 分页改变事件
+  handlerDelete // 删除事件
 }) => {
   const { user } = useUser()
 
@@ -62,6 +63,7 @@ const Comments: React.FC<CommentProps> = ({
         isLogin={!!user}
         count={count}
         onChange={onPageChange}
+        handlerDelete={handlerDelete}
       />
     </CommentStyled>
   )

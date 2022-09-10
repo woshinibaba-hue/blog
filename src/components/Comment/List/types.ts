@@ -15,4 +15,5 @@ export type CommentListProps = {
   isLogin: boolean
   count?: number
   onChange: (page: number, pageSize: number) => void
+  handlerDelete: (id: number) => void
 }

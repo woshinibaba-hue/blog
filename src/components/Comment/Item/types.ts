@@ -14,4 +14,5 @@ export interface ICommentItemProps {
   ) => void
   children?: React.ReactNode
   isLogin: boolean
+  handlerDelete: (id: number) => void
 }
