@@ -321,9 +321,6 @@
   padding: 0;
 }
 
-.markdown-body details summary {
-  cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
-}
 
 .markdown-body details:not([open]) > *:not(summary) {
   display: none !important;
@@ -1012,9 +1009,6 @@
   font-weight: 400;
 }
 
-.markdown-body .task-list-item.enabled label {
-  cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
-}
 
 .markdown-body .task-list-item + .task-list-item {
   margin-top: 3px;

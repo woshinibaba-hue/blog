@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const ItemStyle = styled.div<{ bg: string }>`
-  cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
+  cursor: pointer;
   position: relative;
   width: 49%;
   height: 250px;

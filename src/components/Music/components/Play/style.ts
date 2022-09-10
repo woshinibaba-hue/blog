@@ -61,14 +61,14 @@ export const PlayStyle = styled.div<Props>`
         }
 
         .refresh {
-          cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
+          cursor: pointer;
           margin: 0 20px;
         }
       }
 
       .close {
         font-size: 50px;
-        cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
+        cursor: pointer;
       }
     }
 
@@ -80,7 +80,7 @@ export const PlayStyle = styled.div<Props>`
       .nav {
         ul {
           li {
-            cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
+            cursor: pointer;
             width: 100px;
             height: 40px;
             line-height: 38px;
@@ -137,7 +137,7 @@ export const PlayStyle = styled.div<Props>`
 
         .ant-space-item {
           opacity: 0;
-          cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
+          cursor: pointer;
           font-size: 20px;
 
           transition: all 0.3s;
@@ -174,7 +174,7 @@ export const PlayStyle = styled.div<Props>`
             left: 35px;
             width: 208px;
             height: 177px;
-            background: url(http://rfz86pha6.hn-bkt.clouddn.com/FvfgZfknEh4vZ0CdhYgPPbDIviIH)
+            background: url(https://yimiciji.top/FvfgZfknEh4vZ0CdhYgPPbDIviIH)
               no-repeat;
           }
         }

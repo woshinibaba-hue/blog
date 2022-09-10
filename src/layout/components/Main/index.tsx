@@ -15,9 +15,9 @@ function Main() {
       </div>
       <Nav />
       <Sidebar />
-      <canvas width="100vw" height="100vh">
+      {/* <canvas width="100vw" height="100vh">
         暂不支持 canvas
-      </canvas>
+      </canvas> */}
     </MainStyle>
   )
 }

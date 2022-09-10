@@ -44,7 +44,7 @@ function Play({
           {isPlay && key == songId ? (
             <img
               className="mave lazyload"
-              src="http://rfz86pha6.hn-bkt.clouddn.com/wave.gif"
+              src="https://yimiciji.top//wave.gif"
               alt=""
             />
           ) : (

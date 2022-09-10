@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const BackTopStyle = styled.div<{ show: boolean }>`
-  cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
+  cursor: pointer;
 
   .bg,
   .icon-icon-test {
@@ -16,8 +16,8 @@ export const BackTopStyle = styled.div<{ show: boolean }>`
     width: 100px;
     height: 75vh;
 
-    background: url(http://rfz86pha6.hn-bkt.clouddn.com/back_top.e9ad881.webp)
-      no-repeat center bottom;
+    background: url(https://yimiciji.top/back_top.e9ad881.webp) no-repeat center
+      bottom;
 
     transition: all 1s;
 

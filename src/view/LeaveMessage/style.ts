@@ -18,8 +18,8 @@ export const LeaveMessageStyle = styled.div`
     color: #fff;
     border-radius: 6px;
     overflow: hidden;
-    background: url(http://rfz86pha6.hn-bkt.clouddn.com/FsI_5yXsHOYwA-WlYD73F1T9pGe5)
-      no-repeat center bottom;
+    background: url(https://yimiciji.top/FsI_5yXsHOYwA-WlYD73F1T9pGe5) no-repeat
+      center bottom;
     background-size: cover;
 
     &::after {

@@ -44,7 +44,7 @@ const Comments: React.FC<CommentProps> = ({
       ) : (
         <div className="no-login">
           <img
-            src="http://rfz86pha6.hn-bkt.clouddn.com/bubble.gif"
+            src="https://yimiciji.top/bubble.gif"
             alt=""
             className="lazyload"
           />

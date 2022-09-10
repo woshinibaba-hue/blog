@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { useDispatch } from 'react-redux'
 import { setUserAction } from '@/layout/store/actioncreatore'
@@ -6,6 +6,8 @@ import { setUserAction } from '@/layout/store/actioncreatore'
 import { Form, Input, Button, Checkbox, message, Space, Divider } from 'antd'
 
 import storage from '@/utils/storage'
+
+import { QQLogin } from '@/api/login'
 
 import { login } from '@/api/login'
 import { ILogin } from '@/api/login/types'
@@ -16,27 +18,47 @@ const client_id = process.env.REACT_APP_CLIENT_ID
 function Login({ handleClose }: { handleClose: () => void }) {
   const dispatch = useDispatch()
 
+  function loginSuccess(res: any) {
+    dispatch(setUserAction(res.data))
+    storage.set('user', res.data)
+    message.success(res.message)
+    handleClose()
+  }
+
   // 登录
   const onFinish = (values: ILogin) => {
     login(values).then((res) => {
-      dispatch(setUserAction(res.data))
-      storage.set('user', res.data)
-      message.success(res.message)
-      handleClose()
+      loginSuccess(res)
     })
   }
 
   // github 登录
-  const githubLogin = async () => {
+  const githubLogin = () => {
     window.location.href = `https://github.com/login/oauth/authorize?client_id=${client_id}&scope=user`
   }
 
-  useEffect(() => {
-    QC.Login({
-      btnId: 'qqLoginBtn', //插入按钮的节点id
-      size: 'C_S'
-    })
-  }, [])
+  // qq登录
+  const qqLogin = () => {
+    const win = window.open(
+      'https://graph.qq.com/oauth2.0/show?which=Login&display=pc&client_id=102018709&response_type=token&scope=all&redirect_uri=https://www.yimiciji.top:7777/home',
+      'newwin',
+      'toolbar=no,scrollbars=yes,menubar=no'
+    )
+
+    const timerId = setInterval(() => {
+      // 检查用户是否登录成功
+      if (QC.Login.check()) {
+        // 获取 appenId 和 accessToken
+        QC.Login.getMe(async (appenId: string, accessToken: string) => {
+          const res = await QQLogin(appenId, accessToken)
+          loginSuccess(res)
+        })
+        // 关闭小窗口，清除定时器
+        win?.close()
+        clearInterval(timerId)
+      }
+    }, 500)
+  }
 
   return (
     <Form
@@ -82,7 +104,11 @@ function Login({ handleClose }: { handleClose: () => void }) {
         <Space split={<Divider type="horizontal" />}>
           其他登录方式
           <i className="iconfont icon-github" onClick={githubLogin}></i>
-          <span id="qqLoginBtn"></span>
+          {/* <span id="qqLoginBtn"></span> */}
+          <img
+            onClick={qqLogin}
+            src="https://qzonestyle.gtimg.cn/qzone/vas/opensns/res/img/Connect_logo_1.png"
+          />
         </Space>
       </Form.Item>
 

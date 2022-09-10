@@ -21,6 +21,7 @@ export const setUserAction: (
 
 export const logoutAction = () => {
   storage.remove('user')
+  // QC.Login.signOut()
   return {
     type: 'logout',
     payload: null

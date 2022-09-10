@@ -24,7 +24,7 @@ export const MarkdownNavbarStyle = styled.div<{ isAffix: boolean }>`
 
     .title-anchor {
       padding: 10px 20px;
-      cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
+      cursor: pointer;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;

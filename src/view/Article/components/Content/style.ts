@@ -65,7 +65,7 @@ export const ContentStyle = styled.div`
   .options,
   .fiex-bottom-options {
     .ant-badge {
-      cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
+      cursor: pointer;
       display: block;
       text-align: center;
       width: 50px;
@@ -145,8 +145,7 @@ export const ContentStyle = styled.div`
     padding-left: 10px;
     overflow: hidden;
 
-    background: #f5f5f5
-      url(http://rfz86pha6.hn-bkt.clouddn.com/Fi9bwm8_Rr-Bt4-EEfy2V-kDHuz-)
+    background: #f5f5f5 url(https://yimiciji.top/Fi9bwm8_Rr-Bt4-EEfy2V-kDHuz-)
       no-repeat right center;
     background-size: 150px;
 

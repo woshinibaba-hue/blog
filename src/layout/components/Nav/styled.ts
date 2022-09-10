@@ -9,7 +9,7 @@ export const NavStyle = styled.div`
   }
 
   .social {
-    cursor: url(https://yimiciji.top/linkSelect.cur), pointer;
+    cursor: pointer;
     padding: 10px;
     border-radius: var(--borderRadius);
     margin-bottom: 10px;

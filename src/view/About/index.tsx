@@ -12,7 +12,7 @@ function About() {
     <AboutContainer>
       <div className="bg">
         <img
-          src="http://rfz86pha6.hn-bkt.clouddn.com/aboutbg.webp"
+          src="https://yimiciji.top/aboutbg.webp"
           alt=""
           className="lazyload"
         />
@@ -21,7 +21,7 @@ function About() {
         <header>
           <div className="left">
             <img
-              src="http://rfz86pha6.hn-bkt.clouddn.com/FhJqrWCZNnbVJmZug8Sx6Xgnmbr2"
+              src="https://yimiciji.top/FhJqrWCZNnbVJmZug8Sx6Xgnmbr2"
               className="lazyload"
               alt=""
             />
@@ -69,7 +69,7 @@ function About() {
             <li>
               WX :{' '}
               <a
-                href="http://rfz86pha6.hn-bkt.clouddn.com/Fj7qRg43aPojTYW0CxKLqTS27Jov"
+                href="https://yimiciji.top/Fj7qRg43aPojTYW0CxKLqTS27Jov"
                 target="_blank"
                 rel="noreferrer"
               >

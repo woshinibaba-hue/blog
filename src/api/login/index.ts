@@ -36,6 +36,16 @@ export const githubLogin = (code: string) => {
     }
   })
 }
+// qq登录
+export const QQLogin = (appenId: string, accessToken: string) => {
+  return request.post<ILoginRes>({
+    url: '/qq',
+    data: {
+      appenId,
+      accessToken
+    }
+  })
+}
 
 // 注册用户
 export const register = (data: any) => {

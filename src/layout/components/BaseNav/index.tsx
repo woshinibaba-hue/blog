@@ -17,7 +17,7 @@ function BaseNav() {
         <div className="avatar">
           <Avatar
             size={50}
-            src="http://rfz86pha6.hn-bkt.clouddn.com/FhJqrWCZNnbVJmZug8Sx6Xgnmbr2"
+            src="https://yimiciji.top//FhJqrWCZNnbVJmZug8Sx6Xgnmbr2"
           />
         </div>
         <div className="info">
@@ -28,7 +28,11 @@ function BaseNav() {
             <i className="iconfont icon-dingxiang"></i>
             &nbsp;湖北 - 武汉
           </p>
-          <a href="http://121.37.104.49:9999/" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.yimiciji.top:9999"
+            target="_blank"
+            rel="noreferrer"
+          >
             后台管理系统
           </a>
           <p>
@@ -88,7 +92,7 @@ function BaseNav() {
               <i className="iconfont icon-qq"></i>
             </a>
             <a
-              href="http://rfz86pha6.hn-bkt.clouddn.com/Fj7qRg43aPojTYW0CxKLqTS27Jov"
+              href="https://yimiciji.top/Fj7qRg43aPojTYW0CxKLqTS27Jov"
               target="_blank"
               rel="noreferrer"
             >
